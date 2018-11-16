@@ -1,0 +1,7 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	dTwo              3017
+//	dOne              3013
+//	lOne              3000

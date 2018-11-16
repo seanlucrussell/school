@@ -1,0 +1,64 @@
+// Q3 Assignment
+// Author: Sean Russell, Sten Larson
+// Date:   Sep 16, 2014
+// Class:  CS160
+// Email:  slrussel@rams.colostate.edu
+
+import java.util.Scanner;
+
+public class Q3 {
+
+	public static void main(String[] args) {
+		
+		Scanner keyboard = new Scanner(System.in);
+		
+		// Declare variables
+		String restaurantName;
+		String serverName;
+		double subtotal;
+		double tax;
+		double total;
+		double taxRate = 0.06;
+		double tipRate1 = 0.10;
+		double tipRate2 = 0.15;
+		double tipRate3 = 0.20;
+				
+		// Ask and receive input from the user
+		
+		System.out.print("Restaurant name: ");
+		restaurantName = keyboard.nextLine();
+		
+		System.out.print("Server name: ");
+		serverName = keyboard.nextLine();
+		
+		System.out.print("Subtotal: ");
+		subtotal = keyboard.nextDouble();
+		
+		
+		// Perform calculations
+		
+		tax = subtotal * taxRate;
+		total = tax + subtotal;
+		
+		
+		// Print receipt
+
+		System.out.println("=====================================");
+		System.out.println(restaurantName);
+		System.out.println("Your server was: " + serverName);
+		System.out.printf("Subtotal: $%.2f\n", subtotal);
+		System.out.printf("Tax: $%.2\nf", tax);
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+		System.out.println("=====================================");
+
+	}
+
+}

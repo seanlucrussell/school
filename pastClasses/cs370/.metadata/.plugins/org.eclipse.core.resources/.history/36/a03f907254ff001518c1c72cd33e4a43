@@ -1,0 +1,8 @@
+
+public class consumer implements Runnable{
+
+	public void run() {
+		
+	}
+
+}

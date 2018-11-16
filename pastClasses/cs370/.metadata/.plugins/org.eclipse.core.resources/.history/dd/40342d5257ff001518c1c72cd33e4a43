@@ -1,0 +1,11 @@
+import java.util.Random;
+
+public class producer implements Runnable{
+
+	public void run() {
+		Random random = new Random();
+		for(int i=5;i<10;i++)
+			System.out.println(random.nextDouble() * 100.0);
+	}
+
+}

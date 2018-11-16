@@ -1,0 +1,614 @@
+ 
+<!-- This page is based upon the CSU CS Roo PHP Course Website Template -->
+<!-- Version 3.1.1 January 22, 2016: updated for bootstrap version 3.3.6 -->
+
+<!DOCTYPE html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   <title>CS 457 Syllabus</title>
+   
+    <!-- Bootstrap -->
+    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+	<link href="./styles.css" rel="stylesheet" type="text/css" />    <link href="styles.css" rel="stylesheet" type="text/css" /> 
+</head>
+
+<body>
+    <!-- The following two scripts are required as part of supporet for bootstrap: JRB 1/8/2016 -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <div id="page">
+
+        <div id="banner">
+        	<div class="row">
+                <!-- Left side course logo acts as another link to course homepage -->
+                <div class="col-sm-4 hidden-xs" id="course_logo">
+                    <a href="./index.php" title="Course Homepage"> <img
+                        src="./res_images/Global-computer-network.jpg" alt="CS 457 - Computer Networks and the Internet"
+                        width="250" height="140" style="border: 0px;" />
+                    </a>
+                </div>
+                
+                <!-- Center of banner provides course title, course subtitle, department name and line, and finally term -->
+                <div class="col-sm-4 col-xs-12" id="banner_title">
+                    <span class="course_title">      CS 457 - Computer Networks and the Internet </span><br />
+                    <span class="csdept">   <a href="http://www.cs.colostate.edu">Computer Science Department</a></span><br/>
+                    <span class="course_subtitle">   Spring 2018 </span><br />
+                    <span class="course_subtitle">   CS 457 Syllabus </span><br />
+                </div>
+                <!-- Right side CSU logo is a link to CSU main homepage -->
+               	<div class="col-sm-4 hidden-xs" >
+                    <div  id="csu_logo">
+                        <a href="http://welcome.colostate.edu/" title="CSU Welcome Page"> <img
+                            src="./res_images/co_state_univ_fr_grn_glow.png" alt="CSU Logo" width="205"
+                            height="91" style="border: 0px;"  />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Collapsible Nav Bar -->
+             <nav class="navbar" role="navigation" id="navagation">
+             	<div class="pull-center">
+                    <!-- Toggles menu for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#global-navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    
+                    <div class="collapse navbar-collapse" id="global-navbar">
+                        <ul class="nav navbar-nav">
+                            <li ><a  class="navi" href="./index.php" >Home</a></li>
+                            <li class="active"><a  class="navi" href="./home_syllabus.php" >Syllabus</a></li>
+                            <!-- li ><a  class="navi" href="./home_progress.php" >Progress</a></li> -->
+                            <!-- li ><a  class="navi" href="./home_assignments.php" >Assignments</a></li> -->
+                            <!-- li ><a  class="navi" href="./home_checkin.php" >Checkin</a></li> -->
+                            <li ><a  class="navi" href="./home_resources.php" >Resources</a></li>
+                            <li ><a  class="navi" href="http://info.canvas.colostate.edu">Canvas</a></li> 
+                        </ul>
+                     </div>
+                </div> 
+        	</nav>
+        </div>  <!-- End of the Banner at the top of the page -->
+
+<!-- Start contents of main page here. -->
+<div id="contents">
+
+	<h3>Description</h3>
+	<!-- Start of the Description -->
+	<div class="indented">
+
+<div id="whowhatwhere">
+<dl>
+<dt>Instructor:</dt>
+<dd><a href="http://www.cs.colostate.edu/~gersch"> Dr. Joseph Gersch </a><br />
+Office: 464 CS Building <br />
+Office Hours: 1-2 T, TH or by arrangement<br />
+Email: gersch [at] cs.colostate.edu
+</dd>
+<dt>GTA:</dt>
+<dd>Athith Amarnath <br /> 
+Office: CSB 120 <br />
+Office Hours: Wednesdays - 12PM to 2PM Fridays - 5PM to 7PM<br />
+Email: athith.amarnath@colostate.edu<br />
+</dd>
+<dt>Lecture Time and Place:</dt>
+<dd>9:30 – 10:45 am, Tue, Thur, CSB 130 </dd>
+<dt>Recitation 1 Time and Place:</dt>
+<dd>9:00 am – 9:50 am, Wednesdays, Rm 315 CSB </dd>
+<dt>Recitation 2 Time and Place:</dt>
+<dd>11:00 am – 11:50 am, Wednesday, Rm 315 CSB </dd>
+</dl>
+</div>
+<!-- End of Who What Where Division -->
+<p>
+   <p>
+This senior level undergraduate course covers principles of data communications, local area networks, communications protocols, TCP/IP, and the Internet. 
+<P>
+CS457 is now being offered in both the Fall and Spring semesters.  This course is also offered as an online course for distance learning students.
+<P>
+If you want to learn how the Internet and its applications work,
+ you should take this class. Note, however, that it is not an easy class as there is a wide variety of material that will be covered.
+ Typically there are three programming assignments, weekly homework, a midterm and final exam. 
+All programming is done in C/C++, Python and GO, so make sure you are comfortable with these languages. If you don't know them, learn them NOW! There are lots of tutorials and videos on the web. Each Project will take between 10 and 50 hours to complete.   
+   </p>
+        <h3>Course Objectives</h3>
+        <div class="indented">
+
+                <p>
+
+                Upon completion of this course, students will be able to:
+                <ul>
+
+                        <li>Understand network communication principles, service models and packet switching</li>
+                        <li>Learn about internetworking, transport protocols, IPv4 and IPv6 and Network Address Translation</li>
+                        <li>Learn about network routing and the BGP protocol</li>
+                        <li>Learn how congestion control is handled</li>
+                        <li>Learn about DNS, Multicast and Multimedia streaming</li>
+                        <li>Review an alternative networking architecture (Named Data Networks)</li>
+                        <li>Learn how the internet continues to evolve, including Software Defined Networks (SDN)</li>
+                        <li>Examine various internet application protocols such as VOIP and real-time streaming</li>
+                        <li>Review wireless networking and network security principles </li>
+                </ul>
+        </div>
+
+
+</p>
+
+</div>
+	<!-- End of the Description -->
+
+<!--
+	<p style="color: red">What follows is taken from the CS 253 Fall 2015
+		Syllabus - it will NEED modification.</p>
+-->
+
+	<h3>Prerequisites</h3>
+	<!-- Start of the Prerequisites -->
+	<div class="indented">
+		<p>CS 370 with a C [2.0] or better.
+			STAT 301 or STAT/ECE 303 or STAT/ERHS 307 or STAT 309 or STAT 315 or STAT 311 (all with a C [2.0] or better).
+			CS 253 with a C [2.0] or better. </p>
+	</div>
+
+	<h3>Textbook</h3>
+	<!-- Start of the Textbook Section -->
+	<div class="indented">
+		<p>
+			Optional Textbook: Computer Networks, A Systems Approach; 5th Edition by Larry Peterson and Bruce Davie. You may use other versions, but make sure you get the homework assignments correct. Even though this textbook is optional, it is worth purchasing by anyone serious about networking.
+		</p>
+	</div>
+	
+	<h3>Attendance</h3>
+	<div class="indented">
+	<p>Students are expected to attend lectures, where
+	information will be given that is not available at any other place.
+	Attendance at recitations is recorded and contributes to your grade.
+	Students are expected to:
+	<ul>
+	<li>to be on time to class and stay until the class is complete, 
+	<li>silence cell phones, </li>
+	<li>to be alert and attentive,</li>
+	<li>to participate in class meetings,</li>
+	<li>to use laptops only for class purposes.</li>
+	</ul>
+
+	<p>Excused absences are handled in accordance with 
+	CSU policies. If you are ill please let us know right away. CSU requires 
+	verifiable proof (e.g. a note from the health center) for students 
+	who wish to not be penalized for missed classes and work.
+
+	<p> We also do not want you to come to class ill. Makeup work will 
+	need to be explicitly negotiated. The objectives include: getting 
+	students to class; not spreading illness; and making 
+	sure students who are ill receive appropriate treatment.
+	The material in this course (including learning to come to class and 
+	stay awake) is important. Excessive absences will impact your grade. 
+	<br />
+	</div>
+
+	<h3>Grading</h3>
+	<!-- Start of the Grading Section -->
+	<div class="indented">
+		<p>Here are the formally graded elements of the course and associated
+			weighting:</p>
+		<div class="indented">
+			<table border="4" cellspacing="4" cellpadding="4" summary="Grading percentages">
+				<tr>
+					<th scope="col" align="left">Activity</th>
+					<th scope="col" align="left">Weight</th>
+				</tr>
+				<tr>
+					<td>Weekly Homeworks</td>
+					<td>10 %</td>
+				</tr>
+				<tr>
+					<td>Programming Projects</td>
+					<td>40 %</td>
+				</tr>
+				<tr>
+					<td>Midterm</td>
+					<td>20 %</td>
+				</tr>
+				<tr>
+					<td>Final Exam</td>
+					<td>30 %</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<!--
+		<h4>On-line Quizzes</h4>
+		<div class="indented">
+			<p>On-line quizzes are associated with every reading assignment, and
+				are required. The quizzes are mostly yes/no or multiple choice
+				questions about the reading assignment, and they are designed to be
+				straightforward if you have done the reading. Even better, they are
+				open book (but not open neighbor or open colleague, see below). All
+				quizzes are administered through Canvas; you have 15 minutes to take
+				a quiz and you may take a quiz only once. The quizzes become
+				available after the lecture in which the reading is assigned, and
+				must be completed BEFORE THE LECTURE for which the reading is due.
+				Quizzes become unavailable 15 minutes before class starts. No
+				"make-up" quizzes are given, and no quiz is dropped.
+		
+		</div>
+-->
+
+		<h4>Recitations</h4>
+		<div class="indented">
+
+			<p>Recitations will typically cover elements and fundamentals of Socket Programming. We will initially begin by introducing some basic UNIX concepts required for networking, a small makefile tutorial and a little overview of the GNU debugger. From then onwards we will cover socket programming and related material for homeworks and projects.</p>
+
+		</div>
+
+		<h4>Programming Projects</h4>
+		<div class="indented">
+			<p>
+				There will be 3 programming projects. The grading policies related to the projects are mentioned on this page. The projects will primarily deal with socket programming. However, socket programming will only be the base technology used in each of the projects. On a high level, each project will represent a different problem.
+				
+				C and C++ are to be used as the language of coding with the exception of one small sub-project to be written in Python. 
+				The projects will basically reflect topics taught in class.  Note: we may use the GO language for some of the projects, as well as the MININET emulation system.  The recitation sections will cover the needed tutorials.
+
+		</div>
+
+		<h3>Late and Makeup Policy</h3>
+		<!-- Start of the Policies -->
+		<div class="indented">
+				<p>Midterms: Make-up exams are only given for extraordinary circumstances (e.g., illness, death of family member). Students must consult with the instructor as soon as possible, preferably before the start of the exam. Examination dates are listed in the syllabus; be aware of them and plan accordingly.</p>
+
+				<p>Programming Projects: Programs are submitted electronically. Details of how this is done appears with the first assignment. Always check the progress page for due dates. The due date will include a day and time. The assignment will also specify a late acceptance period which will include a late penalty of 50%. After the late period, electronic submission is closed; students that have not submitted programs receive no points for the assignment.</p>
+
+				<p>Homeworks: Homeworks must be submitted per the instructions in the assignment and are due at the beginning of class on Tuesdays. Handwritten and scanned is acceptable, but the handwriting must be legible. The instructors and TAs reserve the right to decide whether or not a paper is legible. Late homeworks may be turned in at beginning of class on Thursday, and are subject to a 50% late penalty.</p>
+
+<!--
+				Quizzes: Make-up quizzes are not given. In the case of extraordinary circumstances (e.g., illness, death of family member), the grade will be exempted. 
+-->
+<!--
+			<p>Deadlines are deadlines. If you fail to take a quiz, do a
+				recitation, hand in a programming assignment, or take a test/exam on
+				time, you get no points for that element.</p>
+
+			<p>There is one important class of exceptions to the rule above:
+				unforeseeable emergencies. Examples might include severe illness,
+				the death of a family member or close friend, a house fire, etc. In
+				the case of an unforeseeable emergency, please talk to the
+				instructor.
+-->
+		
+		</div>
+		
+		
+	<h3>Important Dates</h3>
+	<!-- Start of the Dates -->
+	<div class="indented">
+<!--
+		<b>TBD</b>
+-->
+
+		<table border="4" cellspacing="4" cellpadding=4" summary="Important Dates">
+			<tr> <th scope="col" align="left">Description</th> <th scope="col" align="left">Date</th> </tr>
+			<tr> <td>First day of class</td> <td>Tuesday, January 16</td> </tr>
+			<tr> <td>Last Day to Add/Drop</td> <td>Wednesday, January 31</td> </tr>
+			<tr> <td>Midterm Exam</td> <td>Tuesday, March 6</td> </tr>
+			<tr> <td>Spring Break!!!</td> <td>Saturday, March 10 through Sunday, March 18</td> </tr>
+			<tr> <td>Last day to Withdraw ("W")</td> <td>Monday, March 19</td> </tr>
+			<tr> <td>Last Lecture</td> <td>Thursday, May 3</td> </tr
+			<tr> <td>Final Exam</td> <td>Thursday, May 10, 2-4PM</td> </tr>
+		</table>
+
+	</div>
+
+	<h3>Class Schedule</h3>
+        <div class="indented">
+		<p>Note: this schedule is subject to change.
+		</p>
+		<div class="indented">
+
+                        <table class="syllabus" border="4" cellspacing="4" cellpadding="4" summary="Grading percentages">
+                                <tr>
+                                        <th scope="col" align="left">Week</th>
+                                        <th scope="col" align="left">Dates</th>
+                                        <th scope="col" align="left">Topics</th>
+                                </tr>
+                        	<tr>
+                               		<td>Week 1</td>
+					<td>1/16, 1/18</td>
+					<td>Intro and Networking Overview</td>
+				</tr>
+				<tr>
+                                	<td>Week 2</td>
+                                	<td>1/23, 1/25</td>
+					<td>Service Models</td>
+				</tr>
+				<tr>
+                                	<td>Week 3</td>
+                                	<td>1/30, 2/1</td>
+					<td>Packet Switching</td>
+				</tr>
+				<tr>
+                                	<td>Week 4</td>
+                                	<td>2/6, 2/8</td>
+					<td>Internetworking, Transport Protocols</td>
+				</tr>
+				<tr>
+                                	<td>Week 5</td>
+                                	<td>2/13, 2/15</td>
+					<td>Transport Protocols (continued), Forwarding, NAT, IPv6</td>
+				</tr>
+				<tr>
+                                	<td>Week 6</td>
+                                	<td>2/20, 2/22</td>
+					<td>NAT, IPv6 (continued), Routing</td>
+				</tr>
+				<tr>
+                                	<td>Week 7</td>
+                                	<td>2/27, 3/1</td>
+					<td>Routing (continued), Review</td>
+				</tr>
+				<tr>
+                                	<td>Week 8</td>
+                                	<td>3/6, 3/8</td>
+					<td>Midterm Exam, DNS</td>
+				</tr>
+				<tr>
+                                	<td>Week 9</td>
+                                	<td>3/13, 3/15
+					<td>Spring Break; no classes</td>
+				</tr>
+				<tr>
+                                	<td>Week 10</td>
+                                	<td>3/20, 3/22</td>
+					<td>Midterm Review, BGP</td>
+				</tr>
+				<tr>
+                                	<td>Week 11</td>
+                                	<td>3/27, 3/29</td>
+					<td>BGP (continued), route hijacking</td>
+				</tr>
+				<tr>
+                                	<td>Week 12</td>
+                                	<td>4/3, 4/5</td>
+					<td>Congestion Control</td>
+				</tr>
+				<tr>
+                                	<td>Week 13</td>
+                                	<td>4/10, 4/12</td>
+					<td>Congestion Control (continued), Software Defined Networks - SDN</td>
+				</tr>
+				<tr>
+                                	<td>Week 14</td>
+                                	<td>4/17, 4/19</td>
+					<td>Multicast Networking, Peer-to-Peer Networking</td>
+				</tr>
+				<tr>
+                                	<td>Week 15</td>
+                                	<td>4/24, 4/26</td>
+					<td>Traditional and Multimedia Applications</td>
+				</tr>
+				<tr>
+                                	<td>Week 16</td>
+                                	<td>5/1, 5/3</td>
+					<td>Named Data Networks Overview, WIFI and/or Network Security, Final Exam Review</td>
+
+				</tr>
+				<tr>
+                                	<td>Week 17</td>
+                                	<td>5/10</td>
+					<td>Final Exam on Thursday, 2 to 4 PM</td>
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+
+	<h3>Professional Conduct</h3>
+	<!-- Start of Conduct -->
+	<div class="indented">
+		
+	<p>In addition to responsibilities enumerated in the Colorado State University Student Conduct Code, the Computer Science 
+	Department advocates rights and responsibilities of conduct for all its Members: faculty, staff and students, in 		accordance with the intent of the Code of Ethics of the Association of Computing Machinery.In particular, all
+	department members are obligated to</p>
+
+<ol class="listMain">
+	<li>Respect the rights of others and protect fundamental human rights including respect of the diversity of all cultures, and to 
+	foster a safe and comfortable social environment.</li>
+	<li>Avoid harm to others:
+	<ol class="listSub">
+		<li>All members are expected to treat one another with professional courtesy at all times.
+		Harassment or humiliation of one member by another will not be tolerated.</li>
+		<li>Members will dress appropriately for an educational and professional setting, refraining from modes of 
+		dress that may shock or disturb others.</li>
+		<li>Members will refrain from using offensive or abusive language.</li>
+		<li>Members will refrain from offensive public displays, including on computer monitors, wall posters, or engaging in overt public disturbances.</li>
+		</ol>
+	</li>
+	<li>Be honest and trustworthy:
+	<ol class="listSub">
+		<li>Members will relate honestly with one another, will not submit work that is not their own (unless properly cited), will keep their 
+		promises, and will act to merit the trust of others.</li>
+		<li>Members should adhere to the ACNS policy on acceptable use of computing resources. </li>
+	</ol>
+	</li>
+	<li>Be fair and take action not to discriminate:
+	<ol class="listSub">
+		<li>Members will treat others fairly, evenhandedly and without capriciousness. a. Members will not single out any other Members or groups of 
+		Members for discrimination or criticism or unwelcome treatment especially based on race, physical characteristics, age, gender, religious 
+		convictions, or membership in any cultural group. </li>
+	</ol> 
+	</li>
+	<li>Honor property rights:
+	<ol class="listSub">
+		<li>Members will respect the personal property of others. </li>
+	</ol> 
+	</li>
+ 	<li>Give proper credit for intellectual property:
+	<ol class="listSub">
+		<li>Members will respect the work product of others, and will never claim ownership of intellectual work of others as their own.</li>
+	</ol> 
+	</li>
+ 		<li>Respect the privacy of others:
+	<ol class="listSub">
+	<li>a. Members will respect the rights of others to be left alone, and will refrain from unwelcome actions towards them, and unwanted 
+	intrusions into their affairs. </li>
+	</ol> 
+	</li>
+</ol>
+
+	<p>For questions, explanations, or to report violations, contact your instructor
+	or appropriate department administrator. Mediation of violations will be conducted within the
+	Department and may be referred to the CSU Student Conduct and Conflict Resolution Office.</p>
+	<p>
+	Colorado State University students should be familiar with the 
+	<a href = "http://tilt.colostate.edu/integrity/honorpledge/">
+	University Honor Pledge</a>.
+	<p>
+<!--
+		<p>
+			All students are expected to conduct themselves professionally. We,
+			specifically the instructors and GTAs, assume you are familiar with
+			the policies in the <a
+				href="http://www.cs.colostate.edu/~info/student-info">student
+				information sheet</a> for the department. This course will adhere to
+			CSU's policies as explained at the <a
+				href="http://www.conflictresolution.colostate.edu/academic-integrity">Academic
+				Integrity website</a> and the <a
+				href="http://www.conflictresolution.colostate.edu/conduct-code">Student
+				Conduct Code</a>. At a minimum, violations will result in a grading
+			penalty in this course and a report to the Office of Conflict
+			Resolution and Student Conduct Services.
+		</p>
+		<p>
+			Additionally, you are computing professionals. You should be familiar
+			with the code of conduct for the primary professional society, ACM.
+			You can read the ACM Code of Conduct <a
+				href="http://www.cs.colostate.edu/~howe/acm-code.html">HERE</a>.
+		</p>
+
+		<p>We work to maintain an environment supportive of learning in the
+			classroom and laboratory. Towards that end, we require that you be
+			courteous to and respectful of your fellow participants (i.e.,
+			classmates, instructors, GTAs and any tutors). In particular:</p>
+		<ul>
+			<li>Please turn off the ring on your cell phone. If you are expecting
+				an emergency call, sit near the door and slide out discretely to
+				take it.</li>
+			<li>In class use of electronic devices in general, and laptops
+				specifically, is permitted as a courtesy so that you may better
+				participate and learn. If at any time the instructor judges that
+				your use of an electronic device is becoming a distraction to
+				others, you may be asked to to turn it off and put it away.</li>
+			<li>All exams and quizzes are to be done without the aid of notes of
+				any kind. Laptops and all other electronic devices must be shut and
+				put away during exams and quizzes.</li>
+			<li>University labs (including but not limited to CSB 120) are
+				professional, not personal, spaces. We expect professional behavior
+				in these labs at all times.
+		
+		</ul>
+-->
+	</div>
+<!--
+	<h3>Discussion Boards (added 10/02/15 Ross)</h3>
+	<div class="indented">
+		<p>
+			A class discussion board is being used to support this course. In
+			particular, the discussion board is hosted at <a
+				href="https://piazza.com/class/idrsj19wjbr3vz">Piazza</a>. All
+			normal expectations regarding professional conduct apply to the
+			discussion board. In addition, here are some explicit guidelines to
+			assist in establishing the tone and expectations regarding the use of
+			Piazza.
+		</p>
+		<ol>
+			<li>No posting of any code for assignments.</li>
+			<li>No inappropriate postings: e.g. profanity, sexism, racism,
+				bullying, inflammatory remarks, bad taste.</li>
+			<li>No grade inquiries: make those directly to the instructors.</li>
+			<li>All students are expected to follow the discussions.</li>
+			<li>Instructor posts, like in-class announcments, may clarify and
+				even alter assignment specifications.</li>
+			<li>Use the existing topics. Please don't start new threads.</li>
+			<li>Only answer questions by other students when you are confident
+				you are both correct and able to craft a helpful explanation.</li>
+			<li>Questions may of course relate to how best to use tools.</li>
+			<li>Do not expect instant answers. While answers may often come
+				faster, a 24 hour response cycle is reasonable.</li>
+			<li>Posts are anonymous one student to another through the Piazza
+				interface.</li>
+			<li>Posts are archival and individualized for the instructors.</li>
+		</ol>
+		<p>This last item deserves additional comment. Please, keep in mind
+			every word you type may be retained and shared by the instructor with
+			others when the instructor determines there is good reason to do so.
+			This should not concern you. It is the nature of a public discussion
+			board that what you type is archival and public. However,
+			understanding the public and personally identifiable nature of the
+			discussion board should help reinforce the comments above about the
+			importance of Professionalism.</p>
+	</div>
+-->
+
+</div>
+<!-- End of contents -->
+
+<!-- Entering the common footer, page termination -->
+
+<div id="footer">
+	<div class="row">
+		<div class="col-sm-3 col-xs-12" id="footerLeft">
+			<!-- Session time and originating IP address shown to user.   -->
+			<!-- Use the user information as a link to login/logout page. -->
+           Session Time 0 Secs. <br />
+           Originating IP 129.82.44.62 <br />
+           User: 
+           <a class="foot" href="./ztools/authenticateLogin.php"> Guest </a>
+           
+        </div>
+		<div class="col-sm-6 col-xs-12" id="footerCenter">
+			<a class="foot" href="http://admissions.colostate.edu">Apply to CSU</a>
+			| <a class="foot"
+				href="http://www.colostate.edu/info-contact.aspx">Contact CSU</a>
+			| <a class="foot"
+				href="http://www.colostate.edu/info-disclaimer.aspx">Disclaimer</a>
+			| <a class="foot"
+				href="http://www.colostate.edu/info-equalop.aspx">Equal
+				Opportunity</a> <br /> Colorado State University, Fort Collins, CO
+			80523 USA<br /> &copy; 2016 Colorado State University
+		</div>
+		<!-- End of footer center division -->
+		<!-- End of footer left division -->
+		<div class="col-sm-3 col-xs-12">
+			<div id="footerRight">
+				<a href="http://www.cs.colostate.edu"> <img
+					src="./res_images/csBuildingLowerRight.png" alt="CS Department" height="48"
+					width="185" style="border: 0px;" /></a>
+			</div>
+		</div>
+		<!-- End of footer right division -->
+	</div>
+</div>
+<!-- End of the footer division -->
+
+</div>
+<!-- Closes the page contents division opened by the ct310header -->
+</body>
+</html>
+

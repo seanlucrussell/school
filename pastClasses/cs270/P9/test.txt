@@ -1,0 +1,47 @@
+add anderson 444
+add benhur 448
+add beveridge 348
+add bieman 462
+add bohm 470
+add boucher 344
+add chitsaz 342
+add draper 442
+add france 458
+add ghost 468
+add howe 446
+add malaya 356
+add massey 279
+add mcconnell 466
+add olschanowsky 242
+add pallickara 456
+add pallickaras 364
+add papdopoulos 362
+add rajopadhte 340
+add ray 560
+add rayi 440
+add ruiz 464
+add strout 244
+add taghavi 346
+add whitley 270
+add applin 246
+add bartlett 272
+add gersch 360
+add regelson 278
+add sieker 256
+add wakefield 248
+add wilcox 256
+add ehrlich 264
+add georg 360
+add hansen 472
+add judith 266
+add knebel 260
+add peterson 274
+add trzyna 474
+add vangorder 276
+
+count
+list
+search whitley
+search wilcox
+
+quit

@@ -1,0 +1,38 @@
+public class consumer implements Runnable{
+	
+	circBuffer buffer;
+	
+	public consumer(circBuffer buffer){
+		this.buffer = buffer;
+	}
+	
+	private synchronized double getItem(){
+		double item;
+		while(buffer.empty()){
+			try {
+				wait();
+				System.out.println("awoken");
+			} catch (InterruptedException e) {}
+		}
+		System.out.println("consuming");
+		item = buffer.get();
+		notifyAll();
+		return item;
+	}
+
+	public void run() {
+		double total = 0;
+		int count = 0;
+		double item = 0;
+		while (count <= 1000000){
+			// retrieve item from buffer
+			item = getItem();
+			// do other stuff
+			count ++;
+			total += item;
+			if(count%100000==0)
+				System.out.printf("Consumer: Consumed %d items, Cumulative value of consumed items=%.3f\n",count,total);
+		}
+	}
+
+}

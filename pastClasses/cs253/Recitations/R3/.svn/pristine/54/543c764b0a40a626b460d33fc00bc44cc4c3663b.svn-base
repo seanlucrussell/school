@@ -1,0 +1,26 @@
+\hypertarget{classDistanceArray}{}\section{Distance\+Array Class Reference}
+\label{classDistanceArray}\index{Distance\+Array@{Distance\+Array}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDistanceArray_ab84470888c50b602528d99860812404d}{}void {\bfseries pose\+Sequence\+Compare} (const \hyperlink{classPoseSequence}{Pose\+Sequence} \&a, const \hyperlink{classPoseSequence}{Pose\+Sequence} \&b, \hyperlink{classDistance}{Distance} \&d)\label{classDistanceArray_ab84470888c50b602528d99860812404d}
+
+\item 
+\hypertarget{classDistanceArray_abfefe1b3d781a062854d6a2191dc1194}{}void {\bfseries print\+Array} () const \label{classDistanceArray_abfefe1b3d781a062854d6a2191dc1194}
+
+\item 
+\hypertarget{classDistanceArray_a099459f0426eae862635871c85765b27}{}double {\bfseries dynamic\+Time\+Warping} ()\label{classDistanceArray_a099459f0426eae862635871c85765b27}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDistanceArray_a924227e33f2574d2bae0f35e9d73bcef}{}vector$<$ vector$<$ double $>$ $>$ {\bfseries distances}\label{classDistanceArray_a924227e33f2574d2bae0f35e9d73bcef}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Distance\+Array.\+h\item 
+Distance\+Array.\+cpp\end{DoxyCompactItemize}

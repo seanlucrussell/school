@@ -1,0 +1,56 @@
+\hypertarget{PoseDisplay_8cpp}{}\section{Pose\+Display.\+cpp File Reference}
+\label{PoseDisplay_8cpp}\index{Pose\+Display.\+cpp@{Pose\+Display.\+cpp}}
+
+
+Contains the \hyperlink{classPoseDisplay}{Pose\+Display} class implementation.  
+
+
+{\ttfamily \#include $<$Pose\+Display.\+h$>$}\\*
+{\ttfamily \#include $<$exception$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{PoseDisplay_8cpp_a03e3598ee22d7efcd268acf1d1ca75d0}{}int \hyperlink{PoseDisplay_8cpp_a03e3598ee22d7efcd268acf1d1ca75d0}{Handle\+X11\+Errors} (Display $\ast$d, X\+Error\+Event $\ast$e)\label{PoseDisplay_8cpp_a03e3598ee22d7efcd268acf1d1ca75d0}
+
+\begin{DoxyCompactList}\small\item\em X11 Error Handler. Make X11 throw std\+::exception(), so that all errors can be handled the same way. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{PoseDisplay_8cpp_a02b852ef5173bab9e7422e75c6160a05}{}const int \hyperlink{PoseDisplay_8cpp_a02b852ef5173bab9e7422e75c6160a05}{Header\+Height} = 20\label{PoseDisplay_8cpp_a02b852ef5173bab9e7422e75c6160a05}
+
+\begin{DoxyCompactList}\small\item\em Height of header used to label view planes (e.\+g. \char`\"{}\+X\+Y Plane\char`\"{}) \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a72533e710da237a19df290ab5bc33c67}{}const int \hyperlink{PoseDisplay_8cpp_a72533e710da237a19df290ab5bc33c67}{Frame\+Size} = 240\label{PoseDisplay_8cpp_a72533e710da237a19df290ab5bc33c67}
+
+\begin{DoxyCompactList}\small\item\em Size of (square) frame that contains both the pose view and the labeled axes. \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}{}const int \hyperlink{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}{View\+Size} = 200\label{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}
+
+\begin{DoxyCompactList}\small\item\em Height of (square) pose view containing the skeleton figure representing a pose. \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a2f9637b12bcd6f9452233804b1373fc6}{}const int \hyperlink{PoseDisplay_8cpp_a2f9637b12bcd6f9452233804b1373fc6}{View\+Offset} = (\hyperlink{PoseDisplay_8cpp_a72533e710da237a19df290ab5bc33c67}{Frame\+Size} -\/ \hyperlink{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}{View\+Size}) / 2\label{PoseDisplay_8cpp_a2f9637b12bcd6f9452233804b1373fc6}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classDistance}{Distance} from the beginning of the frame to the beginning of the view. \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a00c2e195d5351bdc92a84a7fc4c5a7c7}{}const int \hyperlink{PoseDisplay_8cpp_a00c2e195d5351bdc92a84a7fc4c5a7c7}{Window\+Height} = \hyperlink{PoseDisplay_8cpp_a72533e710da237a19df290ab5bc33c67}{Frame\+Size} + \hyperlink{PoseDisplay_8cpp_a02b852ef5173bab9e7422e75c6160a05}{Header\+Height}\label{PoseDisplay_8cpp_a00c2e195d5351bdc92a84a7fc4c5a7c7}
+
+\begin{DoxyCompactList}\small\item\em Total height of the X11 window (frame + header) \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a22d61ce60159be2579f9b403d2d6b72a}{}const int \hyperlink{PoseDisplay_8cpp_a22d61ce60159be2579f9b403d2d6b72a}{Window\+Width} = 3 $\ast$ \hyperlink{PoseDisplay_8cpp_a72533e710da237a19df290ab5bc33c67}{Frame\+Size}\label{PoseDisplay_8cpp_a22d61ce60159be2579f9b403d2d6b72a}
+
+\begin{DoxyCompactList}\small\item\em Total width of the X11 window (holds three frames sides by side) \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a8efa8034bc39024e2d18e80ab808eb10}{}const int \hyperlink{PoseDisplay_8cpp_a8efa8034bc39024e2d18e80ab808eb10}{View\+Top} = \hyperlink{PoseDisplay_8cpp_a02b852ef5173bab9e7422e75c6160a05}{Header\+Height} + \hyperlink{PoseDisplay_8cpp_a2f9637b12bcd6f9452233804b1373fc6}{View\+Offset}\label{PoseDisplay_8cpp_a8efa8034bc39024e2d18e80ab808eb10}
+
+\begin{DoxyCompactList}\small\item\em Y coordinate of the top of a view (all three views are at the same height) \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a467d38a411c515bb537f71d9c7a1c352}{}const int \hyperlink{PoseDisplay_8cpp_a467d38a411c515bb537f71d9c7a1c352}{View\+Middle} = \hyperlink{PoseDisplay_8cpp_a8efa8034bc39024e2d18e80ab808eb10}{View\+Top} + (\hyperlink{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}{View\+Size} / 2)\label{PoseDisplay_8cpp_a467d38a411c515bb537f71d9c7a1c352}
+
+\begin{DoxyCompactList}\small\item\em Y coordinate of the middle of a view (all three views are at the same height) \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a4b203c089a299104be5ccfe00854c600}{}const int \hyperlink{PoseDisplay_8cpp_a4b203c089a299104be5ccfe00854c600}{View\+Bottom} = \hyperlink{PoseDisplay_8cpp_a8efa8034bc39024e2d18e80ab808eb10}{View\+Top} + \hyperlink{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}{View\+Size}\label{PoseDisplay_8cpp_a4b203c089a299104be5ccfe00854c600}
+
+\begin{DoxyCompactList}\small\item\em Y coordinate of the bottom of a view (all three views are at the same height) \end{DoxyCompactList}\item 
+\hypertarget{PoseDisplay_8cpp_a1c693a1232d2a944f343c63f8e54c4f2}{}const double \hyperlink{PoseDisplay_8cpp_a1c693a1232d2a944f343c63f8e54c4f2}{View\+Scale} = \hyperlink{PoseDisplay_8cpp_a88964f5ce40bf4f0054457fc6c416e6b}{View\+Size} / 2.\+0\label{PoseDisplay_8cpp_a1c693a1232d2a944f343c63f8e54c4f2}
+
+\begin{DoxyCompactList}\small\item\em Scale factor for going from logical coordinates (-\/1 to 1) to pixels in the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains the \hyperlink{classPoseDisplay}{Pose\+Display} class implementation. 
+
+Not surprisingly, the declaration for the \hyperlink{classPoseDisplay}{Pose\+Display} class is in \hyperlink{PoseDisplay_8h}{Pose\+Display.\+h}. 

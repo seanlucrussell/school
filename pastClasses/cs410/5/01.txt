@@ -1,0 +1,12 @@
+eye 85 250 80
+look 0 0 0
+up 0 1 0
+d 200
+bounds -2 -2 2 2
+res 512 512
+resursionLevel 5
+ambient .1 .1 .1
+light 200 100 -200 1 .5 .5 .5
+light -200 100 200 1 .5 .5 .5
+model 1 0 0 90 1 0 0 0 checker.obj
+sphere 0 .5 0 .3 0 1 0 0 1 0 1 1 1 .9 .9 .9 1 1 1 32 1.3

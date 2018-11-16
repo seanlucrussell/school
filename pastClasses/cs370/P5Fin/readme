@@ -1,0 +1,8 @@
+To compile, type "make" into command line
+To run program, type "ProducerConsumer" into command line
+To clean directory, type "make clean" into command line
+
+ProducerConsumer.java controls everything
+circBuffer.java is an implementation of a circular buffer
+producer.java creates a thread that produces items for the buffer
+consumer.java creates a thread that consumes items from the buffer

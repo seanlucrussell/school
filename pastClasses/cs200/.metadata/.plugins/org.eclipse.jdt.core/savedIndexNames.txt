@@ -1,0 +1,10 @@
+INDEX VERSION 1.127+/s/bach/g/under/slrussel/cs200/.metadata/.plugins/org.eclipse.jdt.core
+3483433998.index
+4211967503.index
+467169041.index
+4234166806.index
+1826578311.index
+565091618.index
+1453960628.index
+352577315.index
+2349512345.index

@@ -1,0 +1,27 @@
+import java.util.Random;
+
+public class consumer implements Runnable{
+	
+	circBuffer buffer;
+	
+	public consumer(circBuffer buffer){
+		this.buffer = buffer;
+	}
+
+	public void run() {
+		double total = 0;
+		int count = 0;
+		double item;
+		while (count <= 1000000){
+			// retrieve item from buffer
+			item = buffer.get();
+			
+			// do other stuff
+			count ++;
+			total += item;
+			if(count%100000==0)
+				System.out.println("Consumer: " + total);
+		}
+	}
+
+}

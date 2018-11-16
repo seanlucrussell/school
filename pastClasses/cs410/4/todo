@@ -1,0 +1,4 @@
+Surface normals might be backwards, check to make sure all is well
+Implement recursive ray tracing
+Add shadows
+Each face can have multiple materials, need to add that

@@ -1,0 +1,127 @@
+\hypertarget{classPoseDisplay}{}\section{Pose\+Display Class Reference}
+\label{classPoseDisplay}\index{Pose\+Display@{Pose\+Display}}
+
+
+Class for outputting and (optionally) displaying body poses expressed as a vector of 25 Point3\+Ds.  
+
+
+
+
+{\ttfamily \#include $<$Pose\+Display.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPoseDisplay_aa1b69b1d84ef195caccbc763d1028c60}{Pose\+Display} (const string \&output\+\_\+filename, bool visual\+\_\+display=true)
+\begin{DoxyCompactList}\small\item\em Constructor. May throw a std\+::exception if the window or file can\textquotesingle{}t be opened. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_abe76af64858d725b705855056facbf3f}{}\hyperlink{classPoseDisplay_abe76af64858d725b705855056facbf3f}{$\sim$\+Pose\+Display} ()\label{classPoseDisplay_abe76af64858d725b705855056facbf3f}
+
+\begin{DoxyCompactList}\small\item\em Destructor. Closes the X11 window (if its open) and the output file. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a40edcdb672d0f785c4966021d6a2c9e2}{}bool \hyperlink{classPoseDisplay_a40edcdb672d0f785c4966021d6a2c9e2}{Pose} (const vector$<$ \hyperlink{classPoint3D}{Point3\+D} $>$ \&data, int ms\+\_\+delay=33)\label{classPoseDisplay_a40edcdb672d0f785c4966021d6a2c9e2}
+
+\begin{DoxyCompactList}\small\item\em Write a pose (25 body points) to the output file, and (optionally) display it to the window. ms\+\_\+delay is the delay for viewing in milliseconds. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a7dfe55ebb0ea62ba9f6852e2e61ec3d3}{}void \hyperlink{classPoseDisplay_a7dfe55ebb0ea62ba9f6852e2e61ec3d3}{Pause} (int delay=33)\label{classPoseDisplay_a7dfe55ebb0ea62ba9f6852e2e61ec3d3}
+
+\begin{DoxyCompactList}\small\item\em Pause briefly, to allow display to be seen. Units of pause are millisecond, so 33 is roughly frame rate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPoseDisplay_af9f9376866ce200739343b6ea5a9f2f4}{}bool \hyperlink{classPoseDisplay_af9f9376866ce200739343b6ea5a9f2f4}{Write\+Pose} (const vector$<$ \hyperlink{classPoint3D}{Point3\+D} $>$ \&data)\label{classPoseDisplay_af9f9376866ce200739343b6ea5a9f2f4}
+
+\begin{DoxyCompactList}\small\item\em Write a pose (25 body points) to the output file. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_af54050c57f676a23c6b5bdabdd0947db}{}void \hyperlink{classPoseDisplay_af54050c57f676a23c6b5bdabdd0947db}{Draw\+Pose} (const vector$<$ \hyperlink{classPoint3D}{Point3\+D} $>$ \&data) const \label{classPoseDisplay_af54050c57f676a23c6b5bdabdd0947db}
+
+\begin{DoxyCompactList}\small\item\em Draw a pose (25 body points) to the X11 window. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_aca5c1b0509ca136e5de383cbc9d7a1eb}{}void \hyperlink{classPoseDisplay_aca5c1b0509ca136e5de383cbc9d7a1eb}{Draw\+Connection} (const \hyperlink{classPoint3D}{Point3\+D} \&pt1, const \hyperlink{classPoint3D}{Point3\+D} \&pt2) const \label{classPoseDisplay_aca5c1b0509ca136e5de383cbc9d7a1eb}
+
+\begin{DoxyCompactList}\small\item\em Draw a line connecting two body points in all three views. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_af7cab412d8dab3ea4f5482a27fe2dcab}{}bool \hyperlink{classPoseDisplay_af7cab412d8dab3ea4f5482a27fe2dcab}{Open\+Output\+File} ()\label{classPoseDisplay_af7cab412d8dab3ea4f5482a27fe2dcab}
+
+\begin{DoxyCompactList}\small\item\em Open the output file. Return false if unable to open file. \end{DoxyCompactList}\item 
+bool \hyperlink{classPoseDisplay_a544a1d80438850ccfcc45107706de6cd}{Open\+Output\+Window} ()
+\begin{DoxyCompactList}\small\item\em Open an X11 window. Return false if unable to do so. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a0a2636aa2f67254c5de8f18c46660aeb}{}void \hyperlink{classPoseDisplay_a0a2636aa2f67254c5de8f18c46660aeb}{Draw\+Window\+Frames} () const \label{classPoseDisplay_a0a2636aa2f67254c5de8f18c46660aeb}
+
+\begin{DoxyCompactList}\small\item\em Draw the borders, axes and labels associated with all three views to the X11 window. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_af6c16081d868902bbbc34d8640d185e3}{}void \hyperlink{classPoseDisplay_af6c16081d868902bbbc34d8640d185e3}{Draw\+View} (string label, string horizontal\+\_\+axis, string vertical\+\_\+axis, int frame\+\_\+number) const \label{classPoseDisplay_af6c16081d868902bbbc34d8640d185e3}
+
+\begin{DoxyCompactList}\small\item\em Draw the axes and labels associated with one view to the X11 window. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a9708b913ab7a6258e5a67e6fe79a23a4}{}void \hyperlink{classPoseDisplay_a9708b913ab7a6258e5a67e6fe79a23a4}{Draw\+View\+Line} (int view\+\_\+number, double x1, double y1, double x2, double y2) const \label{classPoseDisplay_a9708b913ab7a6258e5a67e6fe79a23a4}
+
+\begin{DoxyCompactList}\small\item\em Draw a single line to a single image view. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a5c2541bf1dc46748a80fc4e8bac2736a}{}void \hyperlink{classPoseDisplay_a5c2541bf1dc46748a80fc4e8bac2736a}{Initialize\+Skeleton} ()\label{classPoseDisplay_a5c2541bf1dc46748a80fc4e8bac2736a}
+
+\begin{DoxyCompactList}\small\item\em Initialize the vector of pairs that signals which body parts connect to which other body parts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPoseDisplay_a5d2e9d3f9caa69c8eb1c348c56ba7a51}{}bool \hyperlink{classPoseDisplay_a5d2e9d3f9caa69c8eb1c348c56ba7a51}{displayp}\label{classPoseDisplay_a5d2e9d3f9caa69c8eb1c348c56ba7a51}
+
+\begin{DoxyCompactList}\small\item\em Whether or not poses are being displayed to a window. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a9a903a2b1a3d4985bfb36da23e5ae0fc}{}Display $\ast$ \hyperlink{classPoseDisplay_a9a903a2b1a3d4985bfb36da23e5ae0fc}{display\+\_\+ptr}\label{classPoseDisplay_a9a903a2b1a3d4985bfb36da23e5ae0fc}
+
+\begin{DoxyCompactList}\small\item\em Pointer to the X11 display structure. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a46c88e5385d36c96018000c22178734d}{}Window \hyperlink{classPoseDisplay_a46c88e5385d36c96018000c22178734d}{window}\label{classPoseDisplay_a46c88e5385d36c96018000c22178734d}
+
+\begin{DoxyCompactList}\small\item\em X11 window structure (one application can have many windows) \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_afccdac510a02e9447f54cdb896cf3c75}{}G\+C \hyperlink{classPoseDisplay_afccdac510a02e9447f54cdb896cf3c75}{graphics\+\_\+context}\label{classPoseDisplay_afccdac510a02e9447f54cdb896cf3c75}
+
+\begin{DoxyCompactList}\small\item\em X11 graphics context structure (holds colors, line widths, etc.) \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a4c736f7ac4b51817117c61daaf278937}{}string \hyperlink{classPoseDisplay_a4c736f7ac4b51817117c61daaf278937}{filename}\label{classPoseDisplay_a4c736f7ac4b51817117c61daaf278937}
+
+\begin{DoxyCompactList}\small\item\em Filename that poses will be recorded to. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_aa50c8842e3aff32a56a560e0199c81a8}{}ofstream \hyperlink{classPoseDisplay_aa50c8842e3aff32a56a560e0199c81a8}{ostr}\label{classPoseDisplay_aa50c8842e3aff32a56a560e0199c81a8}
+
+\begin{DoxyCompactList}\small\item\em Output stream associated with filename. \end{DoxyCompactList}\item 
+\hypertarget{classPoseDisplay_a85f6a7c05c2c97113cb614a15b2867e4}{}vector$<$ pair$<$ int, int $>$ $>$ \hyperlink{classPoseDisplay_a85f6a7c05c2c97113cb614a15b2867e4}{connections}\label{classPoseDisplay_a85f6a7c05c2c97113cb614a15b2867e4}
+
+\begin{DoxyCompactList}\small\item\em Point connection information. An $<$i,j$>$ pair indicates that Point i is connected to Point j. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for outputting and (optionally) displaying body poses expressed as a vector of 25 Point3\+Ds. 
+
+The \hyperlink{classPoseDisplay}{Pose\+Display} class has two purposes. The first is to display body poses to the screen so that you can see them. The second is to record all the displayed poses to a file, as a record of what your program displayed that we can grade.
+
+The public interface to \hyperlink{classPoseDisplay}{Pose\+Display} is simple. It has a constructor, a destructor, and a single public method called \hyperlink{classPose}{Pose}. The constructor takes a file name as an argument. This is the file it will write the poses to. There is an optional second argument called visual\+\_\+display that defaults to true. When this argument is true, poses will be drawn to the screen. When it is false, poses are written to the file but never displayed; in fact, no X11 window is ever created. This will be useful later in the semester when some assignments are graded by efficiency. The \hyperlink{classPose}{Pose} method takes a body pose, i.\+e. a vector of 25 Point3\+Ds, writes it to the output file, and displays it to the screen if visual\+\_\+display is true. The destructor simply cleans up when a \hyperlink{classPoseDisplay}{Pose\+Display} is deleted or falls out of scope by destroying the window (if applicable) and closing the output file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPoseDisplay_aa1b69b1d84ef195caccbc763d1028c60}{}\index{Pose\+Display@{Pose\+Display}!Pose\+Display@{Pose\+Display}}
+\index{Pose\+Display@{Pose\+Display}!Pose\+Display@{Pose\+Display}}
+\subsubsection[{Pose\+Display(const string \&output\+\_\+filename, bool visual\+\_\+display=true)}]{\setlength{\rightskip}{0pt plus 5cm}Pose\+Display\+::\+Pose\+Display (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{output\+\_\+filename, }
+\item[{bool}]{visual\+\_\+display = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classPoseDisplay_aa1b69b1d84ef195caccbc763d1028c60}
+
+
+Constructor. May throw a std\+::exception if the window or file can\textquotesingle{}t be opened. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+\_\+filename} & is the name of the file that will be opened for output, so that all poses will be saved to this file. \\
+\hline
+{\em visual\+\_\+display} & determines whether or not poses are displayed to an X11 window (and whether an X11 window is ever created).\\
+\hline
+\end{DoxyParams}
+This constructor will throw a std\+::exception() if it is unable to open the output file, or if visual\+\_\+display is true but it is unable to open an X11 window. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classPoseDisplay_a544a1d80438850ccfcc45107706de6cd}{}\index{Pose\+Display@{Pose\+Display}!Open\+Output\+Window@{Open\+Output\+Window}}
+\index{Open\+Output\+Window@{Open\+Output\+Window}!Pose\+Display@{Pose\+Display}}
+\subsubsection[{Open\+Output\+Window()}]{\setlength{\rightskip}{0pt plus 5cm}bool Pose\+Display\+::\+Open\+Output\+Window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classPoseDisplay_a544a1d80438850ccfcc45107706de6cd}
+
+
+Open an X11 window. Return false if unable to do so. 
+
+This method relies on the X11 library to crate the display window. If X\+Open\+Display, X\+Create\+Window or X\+Create\+C\+G return N\+U\+L\+L (in their attempt to create a display, window and graphics context, respectively), this method will return false. Otherwise it returns true. The window created will be empty (cleared); the headers and boundary are drawn when poses are displayed. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PoseDisplay_8h}{Pose\+Display.\+h}\item 
+\hyperlink{PoseDisplay_8cpp}{Pose\+Display.\+cpp}\end{DoxyCompactItemize}

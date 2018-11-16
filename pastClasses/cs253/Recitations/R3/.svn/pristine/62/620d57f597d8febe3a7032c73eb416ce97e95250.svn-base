@@ -1,0 +1,21 @@
+\hypertarget{classEuclidianDistance}{}\section{Euclidian\+Distance Class Reference}
+\label{classEuclidianDistance}\index{Euclidian\+Distance@{Euclidian\+Distance}}
+Inheritance diagram for Euclidian\+Distance\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classEuclidianDistance}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classEuclidianDistance_a431698e73e8c884d710c40a9d1541833}{}virtual double {\bfseries pose\+Distance} (const \hyperlink{classPose}{Pose} \&a, const \hyperlink{classPose}{Pose} \&b)\label{classEuclidianDistance_a431698e73e8c884d710c40a9d1541833}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Distance.\+h\item 
+Distance.\+cpp\end{DoxyCompactItemize}

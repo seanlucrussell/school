@@ -1,0 +1,29 @@
+
+Points:
+
+Valid Cases : 5 * 10 => 50 
+Input  		       Expectedoutput
+PALCA_7		       PALCA_7out.txt
+PALCA_77	       PALCA_77out.txt	
+PALCA_107	       PALCA_107out.txt
+single_line.txt	       singlelineout.txt
+PALCA_7out.txt	       PALCA_7out.txt
+
+Error testing Cases : 4 * 10 =>40
+
+Input:
+
+testcase_Invalid150values
+testcase_Invalid_emptyline.txt
+testcase_Invalid_truncatelast3.txt
+zeroinput.txt
+
+Expected output:
+      Should return "-1" Or throw an error message.
+
+Compilation/ Submission => 10
+ 
+
+
+
+

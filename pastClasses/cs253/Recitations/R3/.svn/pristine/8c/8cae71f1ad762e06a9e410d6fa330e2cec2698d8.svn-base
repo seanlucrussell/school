@@ -1,0 +1,27 @@
+\hypertarget{PoseDisplay_8h}{}\section{Pose\+Display.\+h File Reference}
+\label{PoseDisplay_8h}\index{Pose\+Display.\+h@{Pose\+Display.\+h}}
+
+
+Contains the \hyperlink{classPoseDisplay}{Pose\+Display} class declaration (header)  
+
+
+{\ttfamily \#include $<$Point3\+D.\+h$>$}\\*
+{\ttfamily \#include $<$X11/\+Xlib.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$thread$>$}\\*
+{\ttfamily \#include $<$chrono$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classPoseDisplay}{Pose\+Display}
+\begin{DoxyCompactList}\small\item\em Class for outputting and (optionally) displaying body poses expressed as a vector of 25 Point3\+Ds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains the \hyperlink{classPoseDisplay}{Pose\+Display} class declaration (header) 
+
+Not surprisingly, the implementation for the \hyperlink{classPoseDisplay}{Pose\+Display} class is in \hyperlink{PoseDisplay_8cpp}{Pose\+Display.\+cpp}. This file depends on the X11 graphics library. 

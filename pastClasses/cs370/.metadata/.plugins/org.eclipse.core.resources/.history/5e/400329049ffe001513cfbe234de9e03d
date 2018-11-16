@@ -1,0 +1,49 @@
+
+public class circBuffer<Type>{
+
+	private Type[] buffer;
+	private int tail;
+	private int head;
+	
+	// construct a buffer with provided size
+	public circBuffer(int size){
+		head = 0;
+		tail = 0;
+		buffer = (Type[]) new Object[size];
+	}
+	
+	// add an item to the buffer
+	// returns true if succesfully added, false if buffer is full
+	public boolean add(Type item){
+	    head = head % buffer.length;
+		if (head != (tail - 1))
+	        buffer[head++] = item;
+	    else
+	        return false;
+		return true;
+	}
+	
+	// get an item from the buffer
+	// returns item, or null if buffer is empty
+	public Type get(){
+		Type t = null;
+	    int adjTail = tail > head ? tail - buffer.length : tail;
+	    if (adjTail < head) {
+	        t = (Type) buffer[tail++];
+	        tail = tail % buffer.length;
+	    } else {
+	        return null;
+	    }
+	    return t;
+	}
+	
+	
+	public static void main(String[] args) {
+		circBuffer<String> b = new circBuffer<String>(3);
+	    System.out.println(b.add("element 1"));
+	    System.out.println(b.add("element 2"));
+	    System.out.println(b.add("element 3"));
+	    System.out.println(b.add("element 4"));
+	}
+
+}

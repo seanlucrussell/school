@@ -1,0 +1,11 @@
+eye 4000 0 0
+look 0 0 0
+up 0 1 0
+d 5
+bounds -2 -2 2 2
+res 64 64
+recursionLevel 5
+ambient 0.3 0.3 0.3
+light 9000 10000 1000 1 0.5 0.5 0.5
+light 80 8000 1000 1 0.5 0.5 0.5
+model 0 0 0 0 1 0 0 0 houses.obj

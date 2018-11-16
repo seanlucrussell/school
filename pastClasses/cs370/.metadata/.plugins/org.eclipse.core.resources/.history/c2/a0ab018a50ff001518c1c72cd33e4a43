@@ -1,0 +1,8 @@
+
+public class control {
+
+	public static void main(String[] args) {
+		circBuffer buffer = new circBuffer(1000); 
+	}
+
+}

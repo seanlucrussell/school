@@ -1,0 +1,59 @@
+
+public class circBuffer{
+
+	private double[] buffer;
+	private int tail;
+	private int head;
+	private int size;
+	
+	// construct a buffer with provided size
+	public circBuffer(int size){
+		buffer = new double[size];
+		head = 0;
+		tail = 0;
+		size = 0;
+	}
+	
+	public boolean empty(){
+		return size == 0;
+	}
+	
+	public boolean full(){
+		return size == buffer.length;
+	}
+	
+	// add an item to the buffer
+	// returns true if succesfully added, false if buffer is full
+	public boolean add(double item){
+		if (this.full())
+	        return false;
+	    head = (head+1) % buffer.length;
+	    size++;
+	    buffer[head] = item;
+		return true;
+	}
+	
+	// get an item from the buffer
+	// returns item, or null if buffer is empty
+	public double get(){
+		if (this.empty())
+			return 0;
+		tail = (tail+1) % buffer.length;
+		size--;
+		return buffer[tail];
+	}
+	
+	
+	public static void main(String[] args) {
+		circBuffer b = new circBuffer(3);
+	    System.out.println(b.add(1));
+	    System.out.println(b.add(2));
+	    System.out.println(b.add(3));
+	    System.out.println(b.add(4));
+	    System.out.println(b.get(1));
+	    System.out.println(b.get(2));
+	    System.out.println(b.get(3));
+	    System.out.println(b.get(4));
+	}
+
+}

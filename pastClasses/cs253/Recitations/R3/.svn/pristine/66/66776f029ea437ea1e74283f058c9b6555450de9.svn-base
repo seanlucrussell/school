@@ -1,0 +1,15 @@
+\section{Class Hierarchy}
+This inheritance list is sorted roughly, but not completely, alphabetically\+:\begin{DoxyCompactList}
+\item \contentsline{section}{Distance}{\pageref{classDistance}}{}
+\begin{DoxyCompactList}
+\item \contentsline{section}{Average\+Distance}{\pageref{classAverageDistance}}{}
+\item \contentsline{section}{Euclidian\+Distance}{\pageref{classEuclidianDistance}}{}
+\item \contentsline{section}{Max\+Distance}{\pageref{classMaxDistance}}{}
+\item \contentsline{section}{Median\+Distance}{\pageref{classMedianDistance}}{}
+\end{DoxyCompactList}
+\item \contentsline{section}{Distance\+Array}{\pageref{classDistanceArray}}{}
+\item \contentsline{section}{Point3\+D}{\pageref{classPoint3D}}{}
+\item \contentsline{section}{Pose}{\pageref{classPose}}{}
+\item \contentsline{section}{Pose\+Display}{\pageref{classPoseDisplay}}{}
+\item \contentsline{section}{Pose\+Sequence}{\pageref{classPoseSequence}}{}
+\end{DoxyCompactList}

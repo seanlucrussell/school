@@ -1,0 +1,369 @@
+!SESSION 2015-09-02 12:54:48.080 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-09-02 12:56:49.652
+!MESSAGE Could not auto-share project R1
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R1'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-09-02 12:56:49.653
+!MESSAGE Provided SVN information does not match that on disk for project 'R1'.
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 12:57:47.630
+!MESSAGE Plug-in 'org.eclipse.cdt.ui' contributed an invalid Menu Extension (Path: 'project/org.eclipse.cdt.ui.prjmenu' is invalid): org.eclipse.cdt.ui.manageConfigsAction2
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 12:57:47.632
+!MESSAGE Plug-in 'org.eclipse.cdt.ui' contributed an invalid Menu Extension (Path: 'project/org.eclipse.cdt.ui.prjmenu' is invalid): org.eclipse.cdt.ui.buildConfigMenuAction
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 12:57:47.634
+!MESSAGE Plug-in 'org.eclipse.cdt.ui' contributed an invalid Menu Extension (Path: 'project/org.eclipse.cdt.ui.prjmenu' is invalid): org.eclipse.cdt.ui.wsselection
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-09-02 12:58:15.138
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-09-09 12:52:25.878 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-09-09 12:52:57.959
+!MESSAGE Could not auto-share project R2
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R2'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-09-09 12:52:57.960
+!MESSAGE Provided SVN information does not match that on disk for project 'R2'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-09-09 12:59:11.970
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-09-16 12:51:59.445 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:03.358
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-modelbase.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:03.637
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/subclipse-clientadapter.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:03.718
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/egit.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:03.911
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/pydev.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:04.076
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/rpm.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:04.281
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/mylyn.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:04.453
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/emf.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:04.587
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/rse.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:04.779
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/changelog.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:04.899
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/linuxtools.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.049
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-sqldevtools.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.243
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/babel.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.339
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/emf-sdk.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.391
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-connectivity.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.445
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/epic.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.528
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/jgit.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.662
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/subclipse.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.693
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/valgrind.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.757
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-doc.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.790
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/remote.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.825
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/gef.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:05.875
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-enablement.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.043
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/subclipse-graph.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.121
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/ptp.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.325
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/sdk.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.560
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/cdt-parsers.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.617
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/cdt.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.756
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/cvs.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-09-16 12:52:06.784
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/jdt.
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-09-16 12:52:39.468
+!MESSAGE Could not auto-share project R3
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R3'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-09-16 12:52:39.469
+!MESSAGE Provided SVN information does not match that on disk for project 'R3'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-09-16 12:54:53.111
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-10-21 12:53:20.012 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.195
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/subclipse-clientadapter.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.342
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-connectivity.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.508
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-modelbase.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.599
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-sqldevtools.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.737
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/rpm.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.901
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/gef.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:25.947
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/ptp.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.105
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/pydev.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.354
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/valgrind.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.437
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/babel.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.640
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-doc.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.676
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/mylyn.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.905
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/changelog.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:26.968
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/rse.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:27.432
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/subclipse.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:27.481
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/epic.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:27.579
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/emf-sdk.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:27.626
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/dtp-enablement.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:27.767
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/emf.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:27.889
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/remote.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.027
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/egit.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.063
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/jgit.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.172
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/subclipse-graph.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.198
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/share/eclipse/dropins/linuxtools.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.275
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/cdt.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.413
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/cdt-parsers.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.463
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/jdt.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.506
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/sdk.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2015-10-21 12:53:28.747
+!MESSAGE Unable to acquire PluginConverter service during generation for: /usr/lib64/eclipse/dropins/cvs.
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-10-21 12:54:00.727
+!MESSAGE Could not auto-share project R7
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R7'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-10-21 12:54:00.728
+!MESSAGE Provided SVN information does not match that on disk for project 'R7'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-10-21 13:10:53.676
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-10-28 12:53:30.926 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-10-28 12:55:12.985
+!MESSAGE Could not auto-share project R8
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R8'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-10-28 12:55:12.986
+!MESSAGE Provided SVN information does not match that on disk for project 'R8'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-10-28 12:59:43.191
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-11-04 12:50:18.916 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-11-04 12:50:52.438
+!MESSAGE Could not auto-share project R9
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R9'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-11-04 12:50:52.439
+!MESSAGE Provided SVN information does not match that on disk for project 'R9'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-11-04 12:51:41.379
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-11-11 12:50:49.778 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-11-11 12:51:39.974
+!MESSAGE Could not auto-share project R10
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R10'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-11-11 12:51:39.975
+!MESSAGE Provided SVN information does not match that on disk for project 'R10'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-11-11 12:52:32.997
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-11-18 12:53:48.136 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-11-18 12:54:22.347
+!MESSAGE Could not auto-share project R11
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R11'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-11-18 12:54:22.348
+!MESSAGE Provided SVN information does not match that on disk for project 'R11'.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-11-18 13:01:08.080
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-12-09 13:17:49.112 -----------------------------------------------
+eclipse.buildId=4.4.2.Z20150304-1109
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -data
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -data
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2015-12-09 13:18:20.377
+!MESSAGE Could not auto-share project R13
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: Provided SVN information does not match that on disk for project 'R13'.
+	at org.tigris.subversion.subclipse.core.resources.SVNWorkspaceRoot.setSharing(SVNWorkspaceRoot.java:206)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.autoconnectSVNProject(SVNTeamProviderType.java:140)
+	at org.tigris.subversion.subclipse.core.SVNTeamProviderType$AutoShareJob.run(SVNTeamProviderType.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 4 2015-12-09 13:18:20.378
+!MESSAGE Provided SVN information does not match that on disk for project 'R13'.

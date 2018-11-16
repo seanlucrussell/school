@@ -1,0 +1,13 @@
+\section{Class List}
+Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
+\item\contentsline{section}{\hyperlink{classAverageDistance}{Average\+Distance} }{\pageref{classAverageDistance}}{}
+\item\contentsline{section}{\hyperlink{classDistance}{Distance} }{\pageref{classDistance}}{}
+\item\contentsline{section}{\hyperlink{classDistanceArray}{Distance\+Array} }{\pageref{classDistanceArray}}{}
+\item\contentsline{section}{\hyperlink{classEuclidianDistance}{Euclidian\+Distance} }{\pageref{classEuclidianDistance}}{}
+\item\contentsline{section}{\hyperlink{classMaxDistance}{Max\+Distance} }{\pageref{classMaxDistance}}{}
+\item\contentsline{section}{\hyperlink{classMedianDistance}{Median\+Distance} }{\pageref{classMedianDistance}}{}
+\item\contentsline{section}{\hyperlink{classPoint3D}{Point3\+D} \\*Real-\/valued points in 3 space, i.\+e. (x, y, z) }{\pageref{classPoint3D}}{}
+\item\contentsline{section}{\hyperlink{classPose}{Pose} }{\pageref{classPose}}{}
+\item\contentsline{section}{\hyperlink{classPoseDisplay}{Pose\+Display} \\*Class for outputting and (optionally) displaying body poses expressed as a vector of 25 Point3\+Ds }{\pageref{classPoseDisplay}}{}
+\item\contentsline{section}{\hyperlink{classPoseSequence}{Pose\+Sequence} }{\pageref{classPoseSequence}}{}
+\end{DoxyCompactList}

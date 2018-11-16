@@ -1,0 +1,11 @@
+To compile program, navigate to directory and type
+  make
+into a terminal.
+
+To run as chat server, type
+  ./chat
+into a terminal. This starts the chat server and lists the port and ip address of the server.
+
+To connect to the chat server, type
+  ./chat -p <port number> -s <server ip address>
+into a terminal. This starts the chat client and connects it to the chat server with the given port number and ip address.

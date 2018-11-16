@@ -1,0 +1,32 @@
+
+	CHAT SERVER
+madison:~/cs457$ python chatserver.py
+Chat server started on port 5000
+Cliient (127.0.0.1, 37808) connected
+Cliient (127.0.0.1, 37848) connected
+	FIRST CHAT CLIENT
+madison:~/cs457$ python chatclient.py localhost 5000
+Connected to remote host. Start sending messages
+<You> 
+Disconnected from chat server
+madison:~/cs457$ 
+madison:~/cs457$ python chatclient.py localhost 5000
+Connected to remote host. Start sending messages
+<You> word up
+<You> [127.0.0.1:37848] entered room
+<('127.0.0.1', 37848)> stop it
+<You> borrd
+<You> talking too mysalf
+<('127.0.0.1', 37848)> i cant see the lighgt
+<('127.0.0.1', 37848)> bob
+<You> 
+      SECOND CHAT CLIENT
+madison:~/cs457$ python chatclient.py localhost 5000
+Connected to remote host. Start sending messages
+<You> stop it
+<('127.0.0.1', 37808)> borrd
+<('127.0.0.1', 37808)> talking too mysalf
+<You> i cant see the lighgt
+<You> bob
+<You> 
+

@@ -1,0 +1,1136 @@
+No symbol table is loaded.  Use the "file" command.
+No symbol table is loaded.  Use the "file" command.
+No symbol table is loaded.  Use the "file" command.
+Starting program:  
+No executable file specified.
+Use the "file" or "exec-file" command.
+15	    printf("Enter b: ");
+16	    scanf("%d", &b);
+17	    printf("Enter c: ");
+18	    scanf("%d", &c);
+19	    quadratic(a, b, c, &r1, &r2);
+20	    printf("Roots are %.2f and %.2f\n", r1, r2);
+21	}
+Breakpoint 1 at 0x40087b: file main.c, line 19.
+Breakpoint 2 at 0x400896: file main.c, line 20.
+Starting program: /s/bach/g/under/slrussel/cs270/R3/r3 
+Missing separate debuginfos, use: debuginfo-install glibc-2.20-8.fc21.x86_64
+
+Breakpoint 1, main () at main.c:19
+19	    quadratic(a, b, c, &r1, &r2);
+$1 = 1
+$2 = -5
+$3 = -14
+$4 = -nan(0x7fe3f0)
+$5 = 0
+$6 = (float *) 0x7fffffffe300
+$7 = (float *) 0x7fffffffe2fc
+quadratic (coeff1=1, coeff2=-5, coeff3=-14, root1=0x7fffffffe300, root2=0x7fffffffe2fc) at r3.c:10
+10	    if (coeff1 == 0)
+Breakpoint 3 at 0x4007f8: file r3.c, line 21.
+$8 = (float *) 0x7fffffffe300
+$9 = (float *) 0x7fffffffe2fc
+$10 = -nan(0x7fe3f0)
+$11 = 0
+19	        *root1=(-coeff2+sqrt((coeff2*coeff2)-(4*coeff1*coeff3)))/(2*coeff1);
+$12 = -nan(0x7fe3f0)
+$13 = 0
+20	        *root2=(-coeff2-sqrt((coeff2*coeff2)-(4*coeff1*coeff3)))/(2*coeff1);
+$14 = 7
+$15 = 0
+
+Breakpoint 3, quadratic (coeff1=1, coeff2=-5, coeff3=-14, root1=0x7fffffffe300, root2=0x7fffffffe2fc)
+    at r3.c:22
+22	}
+$16 = 7
+$17 = -2
+0x7fffffffe300:	0x40e00000
+0x7fffffffe2fc:	0xc0000000
+0x7fffffffe300:	7
+0x7fffffffe2fc:	-2
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040087b in main at main.c:19
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400896 in main at main.c:20
+3       breakpoint     keep y   0x00000000004007f8 in quadratic at r3.c:21
+	breakpoint already hit 1 time
+Quit
+0x7fffffffe300:	7
+0x7fffffffe300:	1.75
+Continuing.
+
+Breakpoint 2, main () at main.c:20
+20	    printf("Roots are %.2f and %.2f\n", r1, r2);
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040087b in main at main.c:19
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400896 in main at main.c:20
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00000000004007f8 in quadratic at r3.c:21
+	breakpoint already hit 1 time
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep n   0x000000000040087b in main at main.c:19
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400896 in main at main.c:20
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00000000004007f8 in quadratic at r3.c:21
+	breakpoint already hit 1 time
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040087b in main at main.c:19
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400896 in main at main.c:20
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00000000004007f8 in quadratic at r3.c:21
+	breakpoint already hit 1 time
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x0000000000400896 in main at main.c:20
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00000000004007f8 in quadratic at r3.c:21
+	breakpoint already hit 1 time
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+Making program stop at certain points.
+
+List of commands:
+
+awatch -- Set a watchpoint for an expression
+break -- Set breakpoint at specified line or function
+break-range -- Set a breakpoint for an address range
+catch -- Set catchpoints to catch events
+catch assert -- Catch failed Ada assertions
+catch catch -- Catch an exception
+catch exception -- Catch Ada exceptions
+catch exec -- Catch calls to exec
+catch fork -- Catch calls to fork
+catch load -- Catch loads of shared libraries
+catch rethrow -- Catch an exception
+catch signal -- Catch signals by their names and/or numbers
+catch syscall -- Catch system calls by their names and/or numbers
+catch throw -- Catch an exception
+catch unload -- Catch unloads of shared libraries
+catch vfork -- Catch calls to vfork
+clear -- Clear breakpoint at specified line or function
+commands -- Set commands to be executed when a breakpoint is hit
+condition -- Specify breakpoint number N to break only if COND is true
+delete -- Delete some breakpoints or auto-display expressions
+delete bookmark -- Delete a bookmark from the bookmark list
+delete breakpoints -- Delete some breakpoints or auto-display expressions
+delete checkpoint -- Delete a checkpoint (experimental)
+delete display -- Cancel some expressions to be displayed when program stops
+delete mem -- Delete memory region
+delete tracepoints -- Delete specified tracepoints
+delete tvariable -- Delete one or more trace state variables
+disable -- Disable some breakpoints
+disable breakpoints -- Disable some breakpoints
+disable display -- Disable some expressions to be displayed when program stops
+disable frame-filter -- GDB command to disable the specified frame-filter
+disable mem -- Disable memory region
+disable pretty-printer -- GDB command to disable the specified pretty-printer
+disable tracepoints -- Disable specified tracepoints
+disable type-printer -- GDB command to disable the specified type-printer
+disable xmethod -- GDB command to disable a specified (group of) xmethod(s)
+dprintf -- Set a dynamic printf at specified line or function
+enable -- Enable some breakpoints
+enable breakpoints -- Enable some breakpoints
+enable breakpoints count -- Enable breakpoints for COUNT hits
+enable breakpoints delete -- Enable breakpoints and delete when hit
+enable breakpoints once -- Enable breakpoints for one hit
+enable count -- Enable breakpoints for COUNT hits
+enable delete -- Enable breakpoints and delete when hit
+enable display -- Enable some expressions to be displayed when program stops
+enable frame-filter -- GDB command to disable the specified frame-filter
+enable mem -- Enable memory region
+enable once -- Enable breakpoints for one hit
+enable pretty-printer -- GDB command to enable the specified pretty-printer
+enable tracepoints -- Enable specified tracepoints
+enable type-printer -- GDB command to enable the specified type printer
+enable xmethod -- GDB command to enable a specified (group of) xmethod(s)
+ftrace -- Set a fast tracepoint at specified line or function
+hbreak -- Set a hardware assisted breakpoint
+Quit
+Undefined command: "2".  Try "help".
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x0000000000400896 in main at main.c:20
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00000000004007f8 in quadratic at r3.c:21
+	breakpoint already hit 1 time
+Undefined command: "breakpoints".  Try "help".
+Undefined command: "breakpoint".  Try "help".
+Continuing.
+[Inferior 1 (process 9832) exited normally]
+Starting program: /s/bach/g/under/slrussel/cs270/R3/r3 
+[Inferior 1 (process 11363) exited normally]
+15	    printf("Enter b: ");
+16	    scanf("%d", &b);
+17	    printf("Enter c: ");
+18	    scanf("%d", &c);
+19	    quadratic(a, b, c, &r1, &r2);
+20	    printf("Roots are %.2f and %.2f\n", r1, r2);
+21	}
+Breakpoint 4 at 0x40087b: file main.c, line 19.
+The program is not being run.
+Starting program: /s/bach/g/under/slrussel/cs270/R3/r3 
+
+Breakpoint 4, main () at main.c:19
+19	    quadratic(a, b, c, &r1, &r2);
+quadratic (coeff1=1, coeff2=-5, coeff3=-14, root1=0x7fffffffe300, root2=0x7fffffffe2fc) at r3.c:10
+10	    if (coeff1 == 0)
+All defined functions:
+
+File main.c:
+int main();
+
+File r3.c:
+void quadratic(int, int, int, float *, float *);
+
+Non-debugging symbols:
+0x0000000000400570  _init
+0x00000000004005a0  puts@plt
+0x00000000004005b0  printf@plt
+0x00000000004005c0  __libc_start_main@plt
+0x00000000004005d0  __gmon_start__@plt
+0x00000000004005e0  __isoc99_scanf@plt
+0x00000000004005f0  sqrt@plt
+0x0000000000400600  _start
+0x0000000000400630  deregister_tm_clones
+0x0000000000400670  register_tm_clones
+0x00000000004006b0  __do_global_dtors_aux
+0x00000000004006d0  frame_dummy
+0x00000000004008c0  __libc_csu_init
+0x0000000000400930  __libc_csu_fini
+0x0000000000400934  _fini
+0x00007ffff7ddbab0  __libc_memalign@plt
+0x00007ffff7ddbac0  malloc@plt
+0x00007ffff7ddbad0  __tls_get_addr@plt
+0x00007ffff7ddbae0  calloc@plt
+0x00007ffff7ddbaf0  realloc@plt
+0x00007ffff7ddbb00  free@plt
+0x00007ffff7ddbb10  do_preload
+0x00007ffff7ddbb9a  init_tls
+0x00007ffff7ddbc96  add_name_to_object.isra.5.part
+0x00007ffff7ddbcad  _dl_protect_relro.part.3
+0x00007ffff7ddbcc6  oom
+0x00007ffff7ddbcf0  _start
+0x00007ffff7ddbcf8  _dl_start_user
+0x00007ffff7ddbd40  _dl_initial_error_catch_tsd
+0x00007ffff7ddbd50  rtld_lock_default_lock_recursive
+0x00007ffff7ddbd60  rtld_lock_default_unlock_recursive
+0x00007ffff7ddbd70  lookup_doit
+0x00007ffff7ddbde0  dlmopen_doit
+0x00007ffff7ddbe30  print_unresolved
+0x00007ffff7ddbe70  print_missing_version
+0x00007ffff7ddbeb0  map_doit
+0x00007ffff7ddbee0  print_statistics
+0x00007ffff7ddc5d0  relocate_doit
+0x00007ffff7ddc5f0  process_dl_debug
+0x00007ffff7ddc9e0  version_check_doit
+0x00007ffff7ddca20  dl_main
+0x00007ffff7ddf980  _dl_start
+0x00007ffff7ddfe20  is_trusted_path_normalize
+0x00007ffff7ddffb0  lose
+0x00007ffff7de0030  open_verify
+0x00007ffff7de05e0  open_verify.constprop
+0x00007ffff7de0b30  open_path
+0x00007ffff7de11a0  _dl_map_object_from_fd
+0x00007ffff7de2550  _dl_dst_count
+0x00007ffff7de2840  _dl_dst_substitute
+0x00007ffff7de2da0  fillin_rpath
+0x00007ffff7de3280  decompose_rpath
+0x00007ffff7de3460  _dl_init_paths
+0x00007ffff7de38c0  _dl_map_object
+0x00007ffff7de4470  _dl_rtld_di_serinfo
+0x00007ffff7de4ae0  check_match.isra
+0x00007ffff7de4c40  do_lookup_x
+0x00007ffff7de56c0  _dl_lookup_symbol_x
+0x00007ffff7de6830  _dl_setup_hash
+0x00007ffff7de68c0  _dl_add_to_namespace_list
+0x00007ffff7de6960  _dl_new_object
+0x00007ffff7de6cf0  _dl_try_allocate_static_tls
+0x00007ffff7de6dd0  _dl_allocate_static_tls
+0x00007ffff7de6e00  _dl_nothread_init_static_tls
+0x00007ffff7de6e60  _dl_protect_relro
+0x00007ffff7de6eb0  _dl_reloc_bad_type
+0x00007ffff7de6f80  _dl_relocate_object
+0x00007ffff7de8600  openaux
+0x00007ffff7de8640  _dl_build_local_scope
+0x00007ffff7de8a10  _dl_map_object_deps
+0x00007ffff7de9b70  _dl_important_hwcaps
+0x00007ffff7dea290  _dl_fixup
+0x00007ffff7dea460  _dl_profile_fixup
+0x00007ffff7deaa10  _dl_call_pltexit
+0x00007ffff7deab20  _dl_signal_error
+0x00007ffff7deacd0  _dl_signal_cerror
+0x00007ffff7dead60  _dl_catch_error
+0x00007ffff7deae30  _dl_receive_error
+0x00007ffff7deae90  call_init.part
+0x00007ffff7deafb0  _dl_init
+0x00007ffff7deafb0  _dl_init_internal
+0x00007ffff7deb0e0  _dl_sort_fini
+0x00007ffff7deb340  _dl_fini
+0x00007ffff7deb690  __GI__dl_debug_state
+0x00007ffff7deb690  _dl_debug_state
+0x00007ffff7deb6a0  _dl_debug_initialize
+0x00007ffff7deb730  _dl_debug_vdprintf
+0x00007ffff7debd50  _dl_sysdep_read_whole_file
+0x00007ffff7debde0  _dl_debug_printf
+0x00007ffff7debe40  _dl_debug_printf_c
+0x00007ffff7debea0  _dl_dprintf
+0x00007ffff7debef0  _dl_name_match_p
+0x00007ffff7debf60  _dl_higher_prime_number
+0x00007ffff7debfd0  match_symbol
+0x00007ffff7dec350  _dl_check_map_versions
+0x00007ffff7dec7d0  _dl_check_all_versions
+0x00007ffff7dec840  _dl_start_profile
+0x00007ffff7decff0  _dl_mcount
+0x00007ffff7decff0  _dl_mcount_internal
+0x00007ffff7ded240  _dl_resolve_conflicts
+0x00007ffff7ded390  tls_get_addr_tail
+0x00007ffff7ded500  _dl_next_tls_modid
+0x00007ffff7ded5a0  _dl_count_modids
+0x00007ffff7ded600  _dl_determine_tlsoffset
+0x00007ffff7ded720  __GI__dl_tls_setup
+0x00007ffff7ded720  _dl_tls_setup
+0x00007ffff7ded780  _dl_get_tls_static_info
+0x00007ffff7ded7a0  _dl_allocate_tls_storage
+0x00007ffff7ded850  __GI__dl_allocate_tls_init
+0x00007ffff7ded850  _dl_allocate_tls_init
+0x00007ffff7ded9c0  __GI__dl_allocate_tls
+0x00007ffff7ded9c0  _dl_allocate_tls
+0x00007ffff7dedab0  __GI__dl_deallocate_tls
+0x00007ffff7dedab0  _dl_deallocate_tls
+0x00007ffff7dedb40  _dl_update_slotinfo
+0x00007ffff7dede30  update_get_addr
+0x00007ffff7dede70  __tls_get_addr
+0x00007ffff7dedeb0  _dl_tls_get_addr_soft
+0x00007ffff7dedf40  _dl_add_to_slotinfo
+0x00007ffff7dee000  _dl_get_origin
+0x00007ffff7dee150  _dl_scope_free
+0x00007ffff7dee220  __GI__dl_make_stack_executable
+0x00007ffff7dee220  _dl_make_stack_executable
+0x00007ffff7dee2b0  _dl_check_caller
+0x00007ffff7deeb20  add_to_global
+0x00007ffff7deed50  __GI__dl_find_dso_for_object
+0x00007ffff7deed50  _dl_find_dso_for_object
+0x00007ffff7deee00  _dl_open
+0x00007ffff7def440  _dl_show_scope
+0x00007ffff7def570  dl_open_worker
+0x00007ffff7deffb0  _dl_addr_inside_object
+0x00007ffff7df0010  remove_slotinfo
+0x00007ffff7df0290  _dl_close_worker.part.0
+0x00007ffff7df1180  _dl_close_worker
+0x00007ffff7df1200  _dl_close
+0x00007ffff7df12e0  _dl_runtime_resolve
+0x00007ffff7df1380  _dl_runtime_profile
+0x00007ffff7df1db0  _dl_x86_64_save_sse
+0x00007ffff7df1f30  _dl_x86_64_restore_sse
+0x00007ffff7df2050  _dl_cache_libcmp
+0x00007ffff7df2140  _dl_load_cache_lookup
+0x00007ffff7df2710  _dl_unload_cache
+0x00007ffff7df2750  _dl_sysdep_start
+0x00007ffff7df2a00  _dl_sysdep_start_cleanup
+0x00007ffff7df2a10  _dl_show_auxv
+0x00007ffff7df2bc0  _dl_discover_osversion
+0x00007ffff7df2d90  _dl_next_ld_env_entry
+0x00007ffff7df2de0  unsetenv
+0x00007ffff7df2e50  __libc_memalign
+0x00007ffff7df2f50  malloc
+0x00007ffff7df2f60  calloc
+0x00007ffff7df2fa0  free
+0x00007ffff7df2fd0  realloc
+0x00007ffff7df3030  __sigjmp_save
+0x00007ffff7df3040  __strerror_r
+0x00007ffff7df3120  __strtoul_internal
+0x00007ffff7df32d0  _itoa
+0x00007ffff7df3300  __strsep
+0x00007ffff7df3300  __strsep_g
+0x00007ffff7df3300  strsep
+0x00007ffff7df3350  __GI___chk_fail
+0x00007ffff7df3350  __chk_fail
+0x00007ffff7df3360  __brk
+0x00007ffff7df3360  brk
+0x00007ffff7df33c0  __sbrk
+0x00007ffff7df33c0  sbrk
+0x00007ffff7df3450  __getcwd
+0x00007ffff7df3450  getcwd
+0x00007ffff7df3840  openat64
+0x00007ffff7df3870  __alloc_dir
+0x00007ffff7df3970  __opendirat
+0x00007ffff7df39c0  __opendir
+0x00007ffff7df39c0  opendir
+0x00007ffff7df39d0  __GI___fxstatat64
+0x00007ffff7df39d0  __fxstatat
+0x00007ffff7df39d0  __fxstatat64
+0x00007ffff7df3a20  _dl_make_tlsdesc_dynamic
+0x00007ffff7df3cf0  _dl_tlsdesc_resolve_rela_fixup
+0x00007ffff7df3eb0  _dl_tlsdesc_resolve_hold_fixup
+0x00007ffff7df3ef0  _dl_unmap
+0x00007ffff7df3f70  _dl_tlsdesc_return
+0x00007ffff7df3f80  _dl_tlsdesc_undefweak
+0x00007ffff7df3f90  _dl_tlsdesc_dynamic
+0x00007ffff7df4030  _dl_tlsdesc_resolve_rela
+0x00007ffff7df40a0  _dl_tlsdesc_resolve_hold
+0x00007ffff7df4120  __libc_check_standard_fds
+0x00007ffff7df42a0  __closedir
+0x00007ffff7df42a0  closedir
+0x00007ffff7df42d0  __readdir
+0x00007ffff7df42d0  __readdir64
+0x00007ffff7df42d0  readdir
+0x00007ffff7df42d0  readdir64
+0x00007ffff7df4360  rewinddir
+0x00007ffff7df4390  __getdents
+0x00007ffff7df4390  __getdents64
+0x00007ffff7df4430  __fdopendir
+0x00007ffff7df4430  fdopendir
+0x00007ffff7df44c0  profil_counter
+0x00007ffff7df4510  __profil
+0x00007ffff7df4510  profil
+0x00007ffff7df4640  __profile_frequency
+0x00007ffff7df4650  __GI___xstat
+0x00007ffff7df4650  __GI___xstat64
+0x00007ffff7df4650  __xstat
+0x00007ffff7df4650  __xstat64
+0x00007ffff7df4650  _xstat
+0x00007ffff7df4690  __GI___fxstat
+0x00007ffff7df4690  __GI___fxstat64
+0x00007ffff7df4690  __fxstat
+0x00007ffff7df4690  __fxstat64
+0x00007ffff7df4690  _fxstat
+0x00007ffff7df46d0  __GI___lxstat
+0x00007ffff7df46d0  __GI___lxstat64
+0x00007ffff7df46d0  __lxstat
+0x00007ffff7df46d0  __lxstat64
+0x00007ffff7df46d0  _lxstat
+0x00007ffff7df4710  __libc_open
+0x00007ffff7df4710  __open
+0x00007ffff7df4710  __open64
+0x00007ffff7df4710  open
+0x00007ffff7df4710  open64
+0x00007ffff7df4730  __libc_read
+0x00007ffff7df4730  __read
+0x00007ffff7df4730  read
+0x00007ffff7df4750  __libc_write
+0x00007ffff7df4750  __write
+0x00007ffff7df4750  write
+0x00007ffff7df4770  __access
+0x00007ffff7df4770  access
+0x00007ffff7df4790  __fcntl
+0x00007ffff7df4790  __libc_fcntl
+0x00007ffff7df4790  fcntl
+0x00007ffff7df4810  __close
+0x00007ffff7df4810  __libc_close
+0x00007ffff7df4810  close
+0x00007ffff7df4830  __mmap
+0x00007ffff7df4830  __mmap64
+0x00007ffff7df4830  mmap
+0x00007ffff7df4830  mmap64
+0x00007ffff7df4860  __munmap
+0x00007ffff7df4860  munmap
+0x00007ffff7df4880  __mprotect
+0x00007ffff7df4880  mprotect
+0x00007ffff7df48a0  __libc_lseek
+0x00007ffff7df48a0  __libc_lseek64
+0x00007ffff7df48a0  __llseek
+0x00007ffff7df48a0  __lseek
+0x00007ffff7df48a0  __lseek64
+0x00007ffff7df48a0  llseek
+0x00007ffff7df48a0  lseek
+0x00007ffff7df48a0  lseek64
+0x00007ffff7df48c0  __uname
+0x00007ffff7df48c0  uname
+0x00007ffff7df48e0  _Exit
+0x00007ffff7df48e0  _exit
+0x00007ffff7df4940  __getpid
+0x00007ffff7df4940  getpid
+0x00007ffff7df4950  __GI___sigsetjmp
+0x00007ffff7df4950  __sigsetjmp
+0x00007ffff7df49a0  __longjmp
+0x00007ffff7df4a00  __restore_rt
+0x00007ffff7df4a10  __libc_sigaction
+0x00007ffff7df4c30  __sigaction
+0x00007ffff7df4c30  sigaction
+0x00007ffff7df4c50  index
+0x00007ffff7df4c50  strchr
+0x00007ffff7df4e70  strcmp
+0x00007ffff7df4ea0  strlen
+0x00007ffff7df4f90  __strnlen
+0x00007ffff7df4f90  strnlen
+0x00007ffff7df51b0  __memchr
+0x00007ffff7df51b0  memchr
+0x00007ffff7df5500  bcmp
+0x00007ffff7df5500  memcmp
+0x00007ffff7df5a00  memmove
+0x00007ffff7df5b80  memset
+0x00007ffff7df5b90  __mempcpy
+0x00007ffff7df5b90  mempcpy
+0x00007ffff7df5ce0  __stpcpy
+0x00007ffff7df5ce0  stpcpy
+0x00007ffff7df5dc0  memcpy
+0x00007ffff7df5f20  _wordcopy_fwd_aligned
+0x00007ffff7df6060  _wordcopy_fwd_dest_aligned
+0x00007ffff7df6190  _wordcopy_bwd_aligned
+0x00007ffff7df6320  _wordcopy_bwd_dest_aligned
+0x00007ffff7df6480  __rawmemchr
+0x00007ffff7df6480  rawmemchr
+0x00007ffff7df6690  __setitimer
+0x00007ffff7df6690  setitimer
+0x00007ffff7df66b0  _etext
+0x00007ffff7ffa9e0  __vdso_clock_gettime
+0x00007ffff7ffa9e0  clock_gettime
+0x00007ffff7ffad00  __vdso_gettimeofday
+0x00007ffff7ffad00  gettimeofday
+0x00007ffff7ffaec0  __vdso_time
+0x00007ffff7ffaec0  time
+0x00007ffff7ffaee0  __vdso_getcpu
+0x00007ffff7ffaee0  getcpu
+0x00007ffff7ad83c0  _init
+0x00007ffff7ad83f0  __errno_location@plt
+0x00007ffff7ad8420  qsort@plt
+0x00007ffff7ad8430  strtod@plt
+0x00007ffff7ad8440  strlen@plt
+0x00007ffff7ad8450  __get_cpu_features@plt
+0x00007ffff7ad8460  fputs@plt
+0x00007ffff7ad8470  strtof@plt
+0x00007ffff7ad8480  memset@plt
+0x00007ffff7ad84b0  __gmon_start__@plt
+0x00007ffff7ad8530  memmove@plt
+0x00007ffff7ad8540  strtold@plt
+0x00007ffff7ad8570  sprintf@plt
+0x00007ffff7ad8580  fwrite@plt
+0x00007ffff7ad85a0  __cxa_finalize@plt
+0x00007ffff7ad85b0  matherr@plt
+0x00007ffff7ad85c0  deregister_tm_clones
+0x00007ffff7ad8600  register_tm_clones
+0x00007ffff7ad8650  __do_global_dtors_aux
+0x00007ffff7ad8690  frame_dummy
+0x00007ffff7ad86c0  __kernel_standard
+0x00007ffff7adacf0  __kernel_standard_f
+0x00007ffff7adad10  __kernel_standard_l
+0x00007ffff7adb0b0  __matherr
+0x00007ffff7adb0b0  matherr
+0x00007ffff7adb0c0  __GI_feclearexcept
+0x00007ffff7adb0c0  feclearexcept
+0x00007ffff7adb0f0  fegetexceptflag
+0x00007ffff7adb110  __GI_feraiseexcept
+0x00007ffff7adb110  __feraiseexcept
+0x00007ffff7adb110  feraiseexcept
+0x00007ffff7adb180  fesetexceptflag
+0x00007ffff7adb1d0  __GI_fetestexcept
+0x00007ffff7adb1d0  fetestexcept
+0x00007ffff7adb1f0  __GI_fegetround
+0x00007ffff7adb1f0  fegetround
+0x00007ffff7adb200  __GI_fesetround
+0x00007ffff7adb200  fesetround
+0x00007ffff7adb250  __GI_fegetenv
+0x00007ffff7adb250  fegetenv
+0x00007ffff7adb260  __GI_feholdexcept
+0x00007ffff7adb260  feholdexcept
+0x00007ffff7adb290  __GI_fesetenv
+0x00007ffff7adb290  fesetenv
+0x00007ffff7adb3c0  __GI_feupdateenv
+0x00007ffff7adb3c0  __feupdateenv
+0x00007ffff7adb3c0  feupdateenv
+0x00007ffff7adb3c0  feupdateenv@@GLIBC_2.2.5
+0x00007ffff7adb400  fedisableexcept
+0x00007ffff7adb440  feenableexcept
+0x00007ffff7adb480  fegetexcept
+0x00007ffff7adb490  __GI___powl_helper
+0x00007ffff7adb490  __powl_helper
+0x00007ffff7adbb40  __acosh_finite
+0x00007ffff7adbb40  __ieee754_acosh
+0x00007ffff7adbc40  __ieee754_asin_sse2
+0x00007ffff7adce60  __ieee754_acos_sse2
+0x00007ffff7ade120  __acos_finite
+0x00007ffff7ade120  __ieee754_acos
+0x00007ffff7ade150  __asin_finite
+0x00007ffff7ade150  __ieee754_asin
+0x00007ffff7ade180  normalized
+0x00007ffff7ade280  atan2Mp.constprop.0
+0x00007ffff7ade420  __ieee754_atan2_sse2
+0x00007ffff7ae2a30  __atan2_finite
+0x00007ffff7ae2a30  __ieee754_atan2
+0x00007ffff7ae2a80  __atanh_finite
+0x00007ffff7ae2a80  __ieee754_atanh
+0x00007ffff7ae2ba0  __cosh_finite
+0x00007ffff7ae2ba0  __ieee754_cosh
+0x00007ffff7ae2cc0  __ieee754_exp_sse2
+0x00007ffff7ae3280  __exp_finite
+0x00007ffff7ae3280  __ieee754_exp
+0x00007ffff7ae32d0  __exp1
+0x00007ffff7ae3770  __fmod_finite
+0x00007ffff7ae3770  __ieee754_fmod
+0x00007ffff7ae39a0  __hypot_finite
+0x00007ffff7ae39a0  __ieee754_hypot
+0x00007ffff7ae3c80  pzero
+0x00007ffff7ae3dc0  qzero
+0x00007ffff7ae3f20  __ieee754_j0
+0x00007ffff7ae3f20  __j0_finite
+0x00007ffff7ae4200  __ieee754_y0
+0x00007ffff7ae4200  __y0_finite
+0x00007ffff7ae44f0  pone
+0x00007ffff7ae4630  qone
+0x00007ffff7ae4790  __ieee754_j1
+0x00007ffff7ae4790  __j1_finite
+0x00007ffff7ae4a20  __ieee754_y1
+0x00007ffff7ae4a20  __y1_finite
+0x00007ffff7ae4d50  __ieee754_jn
+0x00007ffff7ae4d50  __jn_finite
+0x00007ffff7ae5220  __ieee754_yn
+0x00007ffff7ae5220  __yn_finite
+0x00007ffff7ae55d0  __ieee754_lgamma_r
+0x00007ffff7ae55d0  __lgamma_r_finite
+0x00007ffff7ae5f90  __ieee754_log_sse2
+0x00007ffff7ae7940  __ieee754_log
+0x00007ffff7ae7940  __log_finite
+0x00007ffff7ae7990  __ieee754_log10
+0x00007ffff7ae7990  __log10_finite
+0x00007ffff7ae7ab0  __ieee754_pow_sse2
+0x00007ffff7ae8e50  __ieee754_pow
+0x00007ffff7ae8e50  __pow_finite
+0x00007ffff7ae8e80  __ieee754_remainder
+0x00007ffff7ae8e80  __remainder_finite
+0x00007ffff7ae95a0  invalid_fn
+0x00007ffff7ae9620  __ieee754_scalb
+0x00007ffff7ae9620  __scalb_finite
+0x00007ffff7ae96e0  __ieee754_sinh
+0x00007ffff7ae96e0  __sinh_finite
+0x00007ffff7ae98c0  __ieee754_sqrt
+0x00007ffff7ae98c0  __sqrt_finite
+0x00007ffff7ae98d0  gamma_positive
+0x00007ffff7ae9c20  __gamma_r_finite
+0x00007ffff7ae9c20  __ieee754_gamma_r
+0x00007ffff7ae9ec0  __ieee754_ilogb
+0x00007ffff7ae9f60  __kernel_rem_pio2
+0x00007ffff7aeab20  __asinh
+0x00007ffff7aeab20  asinh
+0x00007ffff7aeac90  atanMp.constprop.0
+0x00007ffff7aeadf0  __atan_sse2
+0x00007ffff7aed190  atan
+0x00007ffff7aed1e0  __cbrt
+0x00007ffff7aed1e0  cbrt
+0x00007ffff7aed320  __ceil
+0x00007ffff7aed320  ceil
+0x00007ffff7aed340  __ceil_sse41
+0x00007ffff7aed350  __erf
+0x00007ffff7aed350  erf
+0x00007ffff7aed950  __erfc
+0x00007ffff7aed950  erfc
+0x00007ffff7aedf40  __expm1
+0x00007ffff7aedf40  expm1
+0x00007ffff7aee360  __fabs
+0x00007ffff7aee360  fabs
+0x00007ffff7aee370  __floor
+0x00007ffff7aee370  floor
+0x00007ffff7aee390  __floor_sse41
+0x00007ffff7aee3a0  __log1p
+0x00007ffff7aee3a0  log1p
+0x00007ffff7aee730  __logb
+0x00007ffff7aee730  logb
+0x00007ffff7aee7b0  __nextafter
+0x00007ffff7aee7b0  nextafter
+0x00007ffff7aee8f0  __nexttoward
+0x00007ffff7aee8f0  nexttoward
+0x00007ffff7aeea40  __rint
+0x00007ffff7aeea40  rint
+0x00007ffff7aeea60  __rint_sse41
+0x00007ffff7aeea70  __scalbln
+0x00007ffff7aeebb0  __w_scalbln
+0x00007ffff7aeebb0  scalbln
+0x00007ffff7aeec40  __significand
+0x00007ffff7aeec40  significand
+0x00007ffff7aeec70  bsloww
+0x00007ffff7aeeed0  csloww
+0x00007ffff7aef3d0  csloww1
+0x00007ffff7aef6c0  bsloww1
+0x00007ffff7aef9c0  bsloww2
+0x00007ffff7aefc80  __cos_sse2
+0x00007ffff7af0fa0  __sin_sse2
+0x00007ffff7af2e50  __cos
+0x00007ffff7af2e50  cos
+0x00007ffff7af2ea0  __sin
+0x00007ffff7af2ea0  sin
+0x00007ffff7af2ef0  tanMp
+0x00007ffff7af2f40  __tan_sse2
+0x00007ffff7af9050  tan
+0x00007ffff7af90a0  __tanh
+0x00007ffff7af90a0  tanh
+0x00007ffff7af91d0  __acos
+0x00007ffff7af91d0  acos
+0x00007ffff7af9220  __acosh
+0x00007ffff7af9220  acosh
+0x00007ffff7af9260  __asin
+0x00007ffff7af9260  asin
+0x00007ffff7af92b0  __atan2
+0x00007ffff7af92b0  atan2
+0x00007ffff7af9390  __atanh
+0x00007ffff7af9390  atanh
+0x00007ffff7af93e0  __cosh
+0x00007ffff7af93e0  cosh
+0x00007ffff7af9450  __drem
+0x00007ffff7af9450  drem
+0x00007ffff7af9460  __GI___exp
+0x00007ffff7af9460  __exp
+0x00007ffff7af9460  exp
+0x00007ffff7af9510  __exp2
+0x00007ffff7af9510  exp2
+0x00007ffff7af95c0  __exp10
+0x00007ffff7af95c0  __pow10
+0x00007ffff7af95c0  exp10
+0x00007ffff7af95c0  pow10
+0x00007ffff7af9670  __fmod
+0x00007ffff7af9670  fmod
+0x00007ffff7af9700  __tgamma
+0x00007ffff7af9700  tgamma
+0x00007ffff7af98b0  __hypot
+0x00007ffff7af98b0  hypot
+0x00007ffff7af9940  j0
+0x00007ffff7af9990  y0
+0x00007ffff7af9a20  j1
+0x00007ffff7af9a70  y1
+0x00007ffff7af9b00  jn
+0x00007ffff7af9b50  yn
+0x00007ffff7af9c00  __gamma
+0x00007ffff7af9c00  __lgamma
+0x00007ffff7af9c00  gamma
+0x00007ffff7af9c00  lgamma
+0x00007ffff7af9cc0  __lgamma_r
+0x00007ffff7af9cc0  lgamma_r
+0x00007ffff7af9d60  __log
+0x00007ffff7af9d60  log
+0x00007ffff7af9dc0  __log10
+0x00007ffff7af9dc0  log10
+0x00007ffff7af9e20  __pow
+0x00007ffff7af9e20  pow
+0x00007ffff7afa010  __remainder
+0x00007ffff7afa010  remainder
+0x00007ffff7afa090  sysv_scalb
+0x00007ffff7afa180  __scalb
+0x00007ffff7afa180  scalb
+0x00007ffff7afa2d0  __sinh
+0x00007ffff7afa2d0  sinh
+0x00007ffff7afa340  __sqrt
+0x00007ffff7afa340  sqrt
+0x00007ffff7afa370  __ilogb
+0x00007ffff7afa370  ilogb
+0x00007ffff7afa3b0  __GI___fpclassify
+0x00007ffff7afa3b0  __fpclassify
+0x00007ffff7afa400  __fmax
+0x00007ffff7afa400  fmax
+0x00007ffff7afa420  __fmin
+0x00007ffff7afa420  fmin
+0x00007ffff7afa440  __fdim
+0x00007ffff7afa440  fdim
+0x00007ffff7afa4f0  __nan
+0x00007ffff7afa4f0  nan
+0x00007ffff7afa550  __trunc
+0x00007ffff7afa550  trunc
+0x00007ffff7afa5c0  __remquo
+0x00007ffff7afa5c0  remquo
+0x00007ffff7afa790  __ieee754_log2
+0x00007ffff7afa790  __log2_finite
+0x00007ffff7afa9e0  __exp2_finite
+0x00007ffff7afa9e0  __ieee754_exp2
+0x00007ffff7afab70  __round
+0x00007ffff7afab70  round
+0x00007ffff7afac20  __nearbyint
+0x00007ffff7afac20  nearbyint
+0x00007ffff7afac40  __nearbyint_sse41
+0x00007ffff7afac50  __sincos
+0x00007ffff7afac50  sincos
+0x00007ffff7afacc0  __conj
+0x00007ffff7afacc0  conj
+0x00007ffff7afacd0  __cimag
+0x00007ffff7afacd0  cimag
+0x00007ffff7aface0  __creal
+0x00007ffff7aface0  creal
+0x00007ffff7afacf0  __cabs
+0x00007ffff7afacf0  cabs
+0x00007ffff7afad00  __carg
+0x00007ffff7afad00  carg
+0x00007ffff7afad20  __cexp
+0x00007ffff7afad20  cexp
+0x00007ffff7afb050  __csinh
+0x00007ffff7afb050  csinh
+0x00007ffff7afb450  __ccosh
+0x00007ffff7afb450  ccosh
+0x00007ffff7afb7f0  __clog
+0x00007ffff7afb7f0  clog
+0x00007ffff7afbc20  __catan
+0x00007ffff7afbc20  catan
+0x00007ffff7afc150  __casin
+0x00007ffff7afc150  casin
+0x00007ffff7afc230  __ccos
+0x00007ffff7afc230  ccos
+0x00007ffff7afc250  __csin
+0x00007ffff7afc250  csin
+0x00007ffff7afc690  __ctan
+0x00007ffff7afc690  ctan
+0x00007ffff7afc970  __ctanh
+0x00007ffff7afc970  ctanh
+0x00007ffff7afcc40  __cacos
+0x00007ffff7afcc40  cacos
+0x00007ffff7afcd00  __casinh
+0x00007ffff7afcd00  casinh
+0x00007ffff7afce20  __cacosh
+0x00007ffff7afce20  cacosh
+0x00007ffff7afcfd0  __catanh
+0x00007ffff7afcfd0  catanh
+0x00007ffff7afd4c0  __csqrt
+0x00007ffff7afd4c0  csqrt
+0x00007ffff7afd910  __cpow
+0x00007ffff7afd910  cpow
+0x00007ffff7afd940  __cproj
+0x00007ffff7afd940  cproj
+0x00007ffff7afd9b0  __clog10
+0x00007ffff7afd9b0  clog10
+0x00007ffff7afdde0  __fma_fma3
+0x00007ffff7afddf0  __fma_fma4
+0x00007ffff7afde00  __fma_sse2
+0x00007ffff7afe900  __fma
+0x00007ffff7afe900  fma
+0x00007ffff7afe940  __llrint
+0x00007ffff7afe940  __lrint
+0x00007ffff7afe940  llrint
+0x00007ffff7afe940  lrint
+0x00007ffff7afe950  __llround
+0x00007ffff7afe950  __lround
+0x00007ffff7afe950  llround
+0x00007ffff7afe950  lround
+0x00007ffff7afea00  __exp10_finite
+0x00007ffff7afea00  __ieee754_exp10
+0x00007ffff7afeb00  __log2
+0x00007ffff7afeb00  log2
+0x00007ffff7afeb60  __isinf_ns
+0x00007ffff7afeb90  __GI___issignaling
+0x00007ffff7afeb90  __issignaling
+0x00007ffff7afebd0  __GI___isinf
+0x00007ffff7afebd0  __isinf
+0x00007ffff7afebd0  isinf
+0x00007ffff7afec10  __GI___isnan
+0x00007ffff7afec10  __isnan
+0x00007ffff7afec10  isnan
+0x00007ffff7afec40  __GI___finite
+0x00007ffff7afec40  __finite
+0x00007ffff7afec40  finite
+0x00007ffff7afec70  __copysign
+0x00007ffff7afec70  copysign
+0x00007ffff7afec90  __modf
+0x00007ffff7afec90  modf
+0x00007ffff7afed50  __scalbn
+0x00007ffff7afed50  scalbn
+0x00007ffff7afee90  __frexp
+0x00007ffff7afee90  frexp
+0x00007ffff7afef20  __ldexp
+0x00007ffff7afef20  ldexp
+0x00007ffff7afefb0  __signbit
+0x00007ffff7afefc0  compare
+0x00007ffff7aff000  __x2y2m1
+0x00007ffff7aff1e0  __kernel_casinh
+0x00007ffff7b00090  __gamma_product
+0x00007ffff7b000f0  __acosf_finite
+0x00007ffff7b000f0  __ieee754_acosf
+0x00007ffff7b003c0  __acoshf_finite
+0x00007ffff7b003c0  __ieee754_acoshf
+0x00007ffff7b004a0  __asinf_finite
+0x00007ffff7b004a0  __ieee754_asinf
+0x00007ffff7b006e0  __atan2f_finite
+0x00007ffff7b006e0  __ieee754_atan2f
+0x00007ffff7b00930  __atanhf_finite
+0x00007ffff7b00930  __ieee754_atanhf
+0x00007ffff7b00a50  __coshf_finite
+0x00007ffff7b00a50  __ieee754_coshf
+0x00007ffff7b00ba0  __expf_finite
+0x00007ffff7b00ba0  __ieee754_expf
+0x00007ffff7b00d60  __fmodf_finite
+0x00007ffff7b00d60  __ieee754_fmodf
+0x00007ffff7b00f20  __hypotf_finite
+0x00007ffff7b00f20  __ieee754_hypotf
+0x00007ffff7b00fc0  pzerof
+0x00007ffff7b010c0  qzerof
+0x00007ffff7b011d0  __ieee754_j0f
+0x00007ffff7b011d0  __j0f_finite
+0x00007ffff7b01480  __ieee754_y0f
+0x00007ffff7b01480  __y0f_finite
+0x00007ffff7b01730  ponef
+0x00007ffff7b01830  qonef
+0x00007ffff7b01920  __ieee754_j1f
+0x00007ffff7b01920  __j1f_finite
+0x00007ffff7b01b90  __ieee754_y1f
+0x00007ffff7b01b90  __y1f_finite
+0x00007ffff7b01ef0  __ieee754_jnf
+0x00007ffff7b01ef0  __jnf_finite
+0x00007ffff7b022f0  __ieee754_ynf
+0x00007ffff7b022f0  __ynf_finite
+0x00007ffff7b025a0  __ieee754_lgammaf_r
+0x00007ffff7b025a0  __lgammaf_r_finite
+0x00007ffff7b02ef0  __ieee754_logf
+0x00007ffff7b02ef0  __logf_finite
+0x00007ffff7b031a0  __ieee754_log10f
+0x00007ffff7b031a0  __log10f_finite
+0x00007ffff7b03290  __ieee754_powf
+0x00007ffff7b03290  __powf_finite
+0x00007ffff7b03a90  __ieee754_rem_pio2f
+0x00007ffff7b03e10  __ieee754_remainderf
+0x00007ffff7b03e10  __remainderf_finite
+0x00007ffff7b03f20  invalid_fn
+0x00007ffff7b03fa0  __ieee754_scalbf
+0x00007ffff7b03fa0  __scalbf_finite
+0x00007ffff7b04040  __ieee754_sinhf
+0x00007ffff7b04040  __sinhf_finite
+0x00007ffff7b04200  __ieee754_sqrtf
+0x00007ffff7b04200  __sqrtf_finite
+0x00007ffff7b04210  gammaf_positive
+0x00007ffff7b044f0  __gammaf_r_finite
+0x00007ffff7b044f0  __ieee754_gammaf_r
+0x00007ffff7b04770  __ieee754_ilogbf
+0x00007ffff7b047d0  __kernel_cosf
+0x00007ffff7b04940  __kernel_rem_pio2f
+0x00007ffff7b05570  __kernel_sinf
+0x00007ffff7b05630  __kernel_tanf
+0x00007ffff7b058b0  __asinhf
+0x00007ffff7b058b0  asinhf
+0x00007ffff7b05a10  __atanf
+0x00007ffff7b05a10  atanf
+0x00007ffff7b05c60  __cbrtf
+0x00007ffff7b05c60  cbrtf
+0x00007ffff7b05d80  __ceilf
+0x00007ffff7b05d80  ceilf
+0x00007ffff7b05da0  __ceilf_sse41
+0x00007ffff7b05db0  __cosf
+0x00007ffff7b05db0  cosf
+0x00007ffff7b060f0  __erff
+0x00007ffff7b060f0  erff
+0x00007ffff7b065e0  __erfcf
+0x00007ffff7b065e0  erfcf
+0x00007ffff7b06ae0  __expm1f
+0x00007ffff7b06ae0  expm1f
+0x00007ffff7b06e50  __fabsf
+0x00007ffff7b06e50  fabsf
+0x00007ffff7b06e60  __floorf
+0x00007ffff7b06e60  floorf
+0x00007ffff7b06e80  __floorf_sse41
+0x00007ffff7b06e90  __log1pf
+0x00007ffff7b06e90  log1pf
+0x00007ffff7b071a0  __logbf
+0x00007ffff7b071a0  logbf
+0x00007ffff7b07200  __nextafterf
+0x00007ffff7b07200  nextafterf
+0x00007ffff7b072b0  __nexttowardf
+0x00007ffff7b072b0  nexttowardf
+0x00007ffff7b073b0  __rintf
+0x00007ffff7b073b0  rintf
+0x00007ffff7b073d0  __rintf_sse41
+0x00007ffff7b073e0  __scalblnf
+0x00007ffff7b074e0  __w_scalblnf
+0x00007ffff7b074e0  scalblnf
+0x00007ffff7b07560  __significandf
+0x00007ffff7b07560  significandf
+0x00007ffff7b07590  __sinf
+0x00007ffff7b07590  sinf
+0x00007ffff7b07910  __tanf
+0x00007ffff7b07910  tanf
+0x00007ffff7b079a0  __tanhf
+0x00007ffff7b079a0  tanhf
+0x00007ffff7b07ac0  __acosf
+0x00007ffff7b07ac0  acosf
+0x00007ffff7b07b10  __acoshf
+0x00007ffff7b07b10  acoshf
+0x00007ffff7b07b50  __asinf
+0x00007ffff7b07b50  asinf
+0x00007ffff7b07ba0  __atan2f
+0x00007ffff7b07ba0  atan2f
+0x00007ffff7b07c60  __atanhf
+0x00007ffff7b07c60  atanhf
+0x00007ffff7b07cb0  __coshf
+0x00007ffff7b07cb0  coshf
+0x00007ffff7b07d10  __dremf
+0x00007ffff7b07d10  dremf
+0x00007ffff7b07d20  __GI___expf
+0x00007ffff7b07d20  __expf
+0x00007ffff7b07d20  expf
+0x00007ffff7b07db0  __exp2f
+0x00007ffff7b07db0  exp2f
+0x00007ffff7b07e40  __exp10f
+0x00007ffff7b07e40  __pow10f
+0x00007ffff7b07e40  exp10f
+0x00007ffff7b07e40  pow10f
+0x00007ffff7b07ed0  __fmodf
+0x00007ffff7b07ed0  fmodf
+0x00007ffff7b07f40  __tgammaf
+0x00007ffff7b07f40  tgammaf
+0x00007ffff7b080b0  __hypotf
+0x00007ffff7b080b0  hypotf
+0x00007ffff7b08130  j0f
+0x00007ffff7b08170  y0f
+0x00007ffff7b081f0  j1f
+0x00007ffff7b08230  y1f
+0x00007ffff7b082b0  jnf
+0x00007ffff7b08300  ynf
+0x00007ffff7b083a0  __gammaf
+0x00007ffff7b083a0  __lgammaf
+0x00007ffff7b083a0  gammaf
+0x00007ffff7b083a0  lgammaf
+0x00007ffff7b08450  __lgammaf_r
+0x00007ffff7b08450  lgammaf_r
+0x00007ffff7b084e0  __logf
+0x00007ffff7b084e0  logf
+0x00007ffff7b08540  __log10f
+0x00007ffff7b08540  log10f
+0x00007ffff7b085a0  __powf
+0x00007ffff7b085a0  powf
+0x00007ffff7b08770  __remainderf
+0x00007ffff7b08770  remainderf
+0x00007ffff7b087e0  sysv_scalbf
+0x00007ffff7b088a0  __scalbf
+0x00007ffff7b088a0  scalbf
+0x00007ffff7b089b0  __sinhf
+0x00007ffff7b089b0  sinhf
+0x00007ffff7b08a10  __sqrtf
+0x00007ffff7b08a10  sqrtf
+0x00007ffff7b08a40  __ilogbf
+0x00007ffff7b08a40  ilogbf
+0x00007ffff7b08a80  __GI___fpclassifyf
+0x00007ffff7b08a80  __fpclassifyf
+0x00007ffff7b08ac0  __fmaxf
+0x00007ffff7b08ac0  fmaxf
+0x00007ffff7b08ae0  __fminf
+0x00007ffff7b08ae0  fminf
+0x00007ffff7b08b00  __fdimf
+0x00007ffff7b08b00  fdimf
+0x00007ffff7b08bb0  __nanf
+0x00007ffff7b08bb0  nanf
+0x00007ffff7b08c10  __truncf
+0x00007ffff7b08c10  truncf
+0x00007ffff7b08c60  __remquof
+0x00007ffff7b08c60  remquof
+0x00007ffff7b08e10  __ieee754_log2f
+0x00007ffff7b08e10  __log2f_finite
+0x00007ffff7b09010  __exp2f_finite
+0x00007ffff7b09010  __ieee754_exp2f
+0x00007ffff7b09170  __roundf
+0x00007ffff7b09170  roundf
+0x00007ffff7b091f0  __nearbyintf
+0x00007ffff7b091f0  nearbyintf
+0x00007ffff7b09210  __nearbyintf_sse41
+0x00007ffff7b09220  __sincosf
+0x00007ffff7b09220  sincosf
+0x00007ffff7b095e0  __conjf
+0x00007ffff7b095e0  conjf
+0x00007ffff7b09610  __cimagf
+0x00007ffff7b09610  cimagf
+0x00007ffff7b09620  __crealf
+0x00007ffff7b09620  crealf
+0x00007ffff7b09630  __cabsf
+0x00007ffff7b09630  cabsf
+0x00007ffff7b09650  __cargf
+0x00007ffff7b09650  cargf
+0x00007ffff7b09670  __cexpf
+0x00007ffff7b09670  cexpf
+0x00007ffff7b099a0  __csinhf
+0x00007ffff7b099a0  csinhf
+0x00007ffff7b09da0  __ccoshf
+0x00007ffff7b09da0  ccoshf
+0x00007ffff7b0a140  __clogf
+0x00007ffff7b0a140  clogf
+0x00007ffff7b0a580  __catanf
+0x00007ffff7b0a580  catanf
+0x00007ffff7b0aa30  __casinf
+0x00007ffff7b0aa30  casinf
+0x00007ffff7b0ab20  __ccosf
+0x00007ffff7b0ab20  ccosf
+0x00007ffff7b0ab60  __csinf
+0x00007ffff7b0ab60  csinf
+0x00007ffff7b0af80  __ctanf
+0x00007ffff7b0af80  ctanf
+0x00007ffff7b0b230  __ctanhf
+0x00007ffff7b0b230  ctanhf
+0x00007ffff7b0b4d0  __cacosf
+0x00007ffff7b0b4d0  cacosf
+0x00007ffff7b0b5e0  __casinhf
+0x00007ffff7b0b5e0  casinhf
+0x00007ffff7b0b740  __cacoshf
+0x00007ffff7b0b740  cacoshf
+0x00007ffff7b0b920  __catanhf
+0x00007ffff7b0b920  catanhf
+0x00007ffff7b0bdd0  __csqrtf
+0x00007ffff7b0bdd0  csqrtf
+0x00007ffff7b0c1e0  __cpowf
+0x00007ffff7b0c1e0  cpowf
+0x00007ffff7b0c280  __cprojf
+0x00007ffff7b0c280  cprojf
+0x00007ffff7b0c310  __clog10f
+0x00007ffff7b0c310  clog10f
+0x00007ffff7b0c760  __fmaf_fma3
+0x00007ffff7b0c770  __fmaf_fma4
+0x00007ffff7b0c780  __fmaf_sse2
+0x00007ffff7b0c870  __fmaf
+0x00007ffff7b0c870  fmaf
+0x00007ffff7b0c8b0  __llrintf
+0x00007ffff7b0c8b0  __lrintf
+0x00007ffff7b0c8b0  llrintf
+0x00007ffff7b0c8b0  lrintf
+0x00007ffff7b0c8c0  __lroundf
+0x00007ffff7b0c8c0  lroundf
+0x00007ffff7b0c940  __llroundf
+0x00007ffff7b0c940  llroundf
+0x00007ffff7b0c9c0  __exp10f_finite
+0x00007ffff7b0c9c0  __ieee754_exp10f
+0x00007ffff7b0c9e0  __log2f
+0x00007ffff7b0c9e0  log2f
+0x00007ffff7b0ca40  __isinf_nsf
+0x00007ffff7b0ca60  __GI___issignalingf
+0x00007ffff7b0ca60  __issignalingf
+0x00007ffff7b0ca80  __GI___isinff
+0x00007ffff7b0ca80  __isinff
+0x00007ffff7b0ca80  isinff
+0x00007ffff7b0cab0  __GI___isnanf
+0x00007ffff7b0cab0  __isnanf
+0x00007ffff7b0cab0  isnanf
+0x00007ffff7b0cad0  __GI___finitef
+0x00007ffff7b0cad0  __finitef
+0x00007ffff7b0cad0  finitef
+0x00007ffff7b0caf0  __copysignf
+0x00007ffff7b0caf0  copysignf
+0x00007ffff7b0cb10  __modff
+0x00007ffff7b0cb10  modff
+0x00007ffff7b0cba0  __scalbnf
+0x00007ffff7b0cba0  scalbnf
+0x00007ffff7b0cc90  __frexpf
+0x00007ffff7b0cc90  frexpf
+0x00007ffff7b0ccf0  __ldexpf
+0x00007ffff7b0ccf0  __ldexpf_internal
+0x00007ffff7b0ccf0  ldexpf
+0x00007ffff7b0cd70  __signbitf
+0x00007ffff7b0cd80  __x2y2m1f
+0x00007ffff7b0cdc0  __kernel_casinhf
+0x00007ffff7b0dcb0  __gamma_productf
+Quit
+Undefined info command: "lovals".  Try "help info".
+No locals.
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Program not restarted.
+A debugging session is active.
+
+	Inferior 1 [process 11371] will be killed.
+
+Quit anyway? (y or n) Not confirmed.
+Continuing.
+[Inferior 1 (process 11371) exited normally]
+malformed linespec error: unexpected string, "commands print r1 print r2"

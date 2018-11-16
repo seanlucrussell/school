@@ -1,0 +1,6 @@
+5
+triangle 4.0 2.1
+rectangle 8.3 7.1
+circle 3.3
+circle 4.2
+rectangle 9.1 2.3

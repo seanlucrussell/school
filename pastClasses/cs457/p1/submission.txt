@@ -1,0 +1,98 @@
+Sean Russell, CS457 Project 1
+
+	DOWNLOADING FROM WEB
+madison:~/cs457$ python client.py
+Socket created
+Ip address of finance.yahoo.com is 98.138.81.72
+Socket connected to finance.yahoo.com on ip 98.138.81.72
+Message sent successfully
+HTTP/1.1 400 Host Header Required
+Date: Thu, 25 Jan 2018 18:53:07 GMT
+Connection: keep-alive
+Via: http/1.1 r12.ycpi.ne1.yahoo.net (ApacheTrafficServer [c s f ])
+Server: ATS
+Cache-Control: no-store
+Content-Type: text/html
+Content-Language: en
+Content-Length: 2811
+
+<!DOCTYPE html>
+<html lang="en-us"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Yahoo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <style>
+html {
+    height: 100%;
+}
+body {
+    background: #fafafc url(https://s.yimg.com/nn/img/sad-panda-201402200631.png) 50% 50%;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    font: 300 18px "helvetica neue", helvetica, verdana, tahoma, arial, sans-serif;
+}
+table {
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+}
+h1 
+madison:~/cs457$
+
+	BASIC SERVER
+madison:~/cs457$ python server.py
+Socket created
+Socket bind complete
+Socket now listening
+Connected with 127.0.0.1:35180
+
+	TELNET CONNECTION
+adison:~/cs457$ telnet localhost 8888
+Trying ::1...
+telnet: connect to address ::1: Connection refused
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+Welcome traveler
+good morrow
+ECHO: good morrow
+
+	CHAT SERVER
+madison:~/cs457$ python chatserver.py
+Chat server started on port 5000
+Cliient (127.0.0.1, 37808) connected
+Cliient (127.0.0.1, 37848) connected
+
+	FIRST CHAT CLIENT
+madison:~/cs457$ python chatclient.py localhost 5000
+Connected to remote host. Start sending messages
+<You> 
+Disconnected from chat server
+madison:~/cs457$ 
+madison:~/cs457$ python chatclient.py localhost 5000
+Connected to remote host. Start sending messages
+<You> word up
+<You> [127.0.0.1:37848] entered room
+<('127.0.0.1', 37848)> stop it
+<You> borrd
+<You> talking too mysalf
+<('127.0.0.1', 37848)> i cant see the lighgt
+<('127.0.0.1', 37848)> bob
+<You>
+
+      SECOND CHAT CLIENT
+madison:~/cs457$ python chatclient.py localhost 5000
+Connected to remote host. Start sending messages
+<You> stop it
+<('127.0.0.1', 37808)> borrd
+<('127.0.0.1', 37808)> talking too mysalf
+<You> i cant see the lighgt
+<You> bob
+<You> 
+

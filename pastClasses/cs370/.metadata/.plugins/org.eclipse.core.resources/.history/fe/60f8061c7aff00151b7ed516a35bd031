@@ -1,0 +1,11 @@
+
+public class control {
+
+	public static void main(String[] args) {
+		final Object lock = new Object();
+		circBuffer buffer = new circBuffer(4);
+		(new Thread(new producer(buffer,lock))).start();
+		(new Thread(new consumer(buffer,lock))).start();
+	}
+
+}

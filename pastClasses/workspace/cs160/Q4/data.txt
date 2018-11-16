@@ -1,0 +1,13 @@
+Computer Science
+123456789 !@#$%^&*()
+Entire line of text.
+17
+9
+188
+7.234
+12.92
+888.32
+false
+false
+true
+

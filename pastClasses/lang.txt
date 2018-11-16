@@ -1,0 +1,19 @@
+All values keep track of references to them and free automatically
+All values are const
+
+Variables point to values
+Variables can change, the values they point to don't
+If a variable changes, it makes a copy of the underlying values and modifies those
+This means that all variables are passed by reference
+
+x(a,b) = a + b
+
+x(1,2)
+x('hey ','friend')
+
+
+if 0 <= a < b:
+   a++
+
+
+any function that changes any of its arguments must be prefaced by ! (compiler will check if any ! appears in the function and will throw errors if one appears in the function but not the function name)

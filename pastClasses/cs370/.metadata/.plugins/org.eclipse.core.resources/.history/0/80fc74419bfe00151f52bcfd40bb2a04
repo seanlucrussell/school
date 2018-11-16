@@ -1,0 +1,32 @@
+
+public class circBuffer<T>{
+
+	private T[] buffer;
+	private int tail;
+	private int head;
+	
+	// construct a buffer with provided size
+	public circBuffer(int size){
+		head = 0;
+		tail = 0;
+		buffer = (T[]) new Object[size];
+	}
+	
+	// add an item to the buffer
+	// returns true if succesfully added, false if buffer is full
+	public boolean add(T item){
+		return true;
+	}
+	
+	// get an item from the buffer
+	// returns item, or null if buffer is empty
+	public T get(){
+		return null;
+	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println("hello");
+	}
+
+}

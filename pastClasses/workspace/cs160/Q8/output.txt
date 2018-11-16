@@ -1,0 +1,5 @@
+Total number of tokens: 12
+Ints: 4
+Doubles: 3
+Chars: 4
+Strings: 1

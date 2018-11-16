@@ -1,0 +1,6 @@
+m = true and false
+h = m or true
+r = m and h 
+s = (m or h) and r
+b = true
+n = b and not s
