@@ -1,0 +1,178 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+import matplotlib.mlab as mlab
+%matplotlib inline
+from random import *
+import sys
+import csv
+import copy
+import math
+from matplotlib import colors
+
+#
+# Under development
+#
+
+OUT_OF_FIELD = -1
+WHITE = 0; #white is empty
+RED = 1
+GREEN = 2
+BLUE = 3
+YELLOW = 4
+DRONE = 9
+colors = [RED, GREEN, BLUE, YELLOW] #doesn't include empty (white) blocks
+
+MAX_X = 50
+MIN_X = -50
+MAX_Z = 50
+MIN_Z = -50
+MAX_Y = 50
+MIN_Y = 0
+
+#510,050 number of spaces
+
+#pos = [x, y, z] where y is height
+#field = [[x,y,z],[x,y,z],...,[x,y,z]]
+
+def genNum(): #at 10% liklihood per color
+    x = randint(0,9)
+    if (x > len(colors) -1):
+        return 0
+    else:
+        return x
+
+def initiateField(): 
+    blocks = []
+    randomField = [[[genNum() for i in range(MAX_Z-MIN_Z+1)] for j in range(MAX_Y-MIN_Y)] for k in range(MAX_X-MIN_X+1)]
+    randomField = np.array((randomField))
+    return randomField
+
+def getBlocksFromField(field):
+    blocks = []
+    for x, xPos in enumerate(field):
+        for y, yPos in enumerate(xPos):
+            for z, zPos in enumerate(yPos):
+                if (field[x, y, z] == WHITE):
+                    continue
+                blocks.append([field[x, y, z], [x + MIN_X, y + MIN_Y, z + MIN_Z]])
+    return blocks
+            
+field = initiateField()
+blocks = getBlocksFromField(field)
+
+#minOfEachColor = 5000
+#maxOfEachColor = 10000
+
+#LEADS TO REPEATS WHICH ARE SLOW TO REMOVE
+#def initiateRandomBlocksSolo(minOfEachColor, maxOfEachColor): 
+#    blocks = []
+#    pos = []
+#    count = 0
+#    for iter in colors:
+#        ri = randint(minOfEachColor, maxOfEachColor) #total num of this color
+#        for num in range(ri):
+#            x = randint(MIN_X, MAX_X+1)
+#            y = randint(MIN_Y, MAX_Y)
+#            z = randint(MIN_Z, MAX_Z+1)
+#            while ([x,y,z] in pos and count < 100000):
+#                count += 1
+#                if (count % 10 == 0):
+#                    print(count)
+#                x = randint(MIN_X, MAX_X+1)
+#                y = randint(MIN_Y, MAX_Y)
+#                z = randint(MIN_Z, MAX_Z+1)
+#            pos.append([x,y,z])
+#            blocks.append([iter, [x, y, z]])
+#    return blocks
+#blocks = initiateRandomBlocksSolo(minOfEachColor, maxOfEachColor)
+
+def sortBlocks(blocks):
+    blocks.sort(key=lambda x: x[1][1]) #by y (layer)
+    blocks.sort(key=lambda x: x[1][0]) #by x
+    blocks.sort(key=lambda x: x[1][2]) #by z
+    return blocks
+
+blocks = sortBlocks(blocks)
+
+def isAllBlocksUnique(blocks):
+    '''
+    relies on sorted (y->x->z) blocks
+    '''
+    for iter in range(1, len(blocks)):
+        if (blocks[iter][1][0] == blocks[iter-1][1][0] and
+            blocks[iter][1][1] == blocks[iter-1][1][1] and
+            blocks[iter][1][2] == blocks[iter-1][1][2]):
+            return False
+    return True
+
+isAllBlocksUnique(blocks)
+
+def isAnyFloatingBlock(blocks):
+    '''
+    relies on sorted (y->x->z) blocks
+    '''
+    for enum, block in enumerate(blocks[1:]):
+        if (block[1][1] > 0):
+            if (blocks[enum][1][0] != block[1][0] or
+               blocks[enum][1][1] != block[1][1] - 1 or
+               blocks[enum][1][2] != block[1][2]):
+                return True
+    return False
+
+isAnyFloatingBlock(blocks)
+
+def getBlocksInStack(blocks, xPos, zPos):
+    stack = []
+    for enum, block in enumerate(blocks):
+        if (block[1][0] == xPos and block[1][2] == zPos):
+            stack.append([block, enum])
+    return stack
+
+getBlocksInStack(blocks, -47, -50)
+
+def isFloatingBlock(blocks, blockXPos, blockYPos, blockZPos):
+    '''
+    Doesn't rely on sorted blocks
+    '''
+    stack = getBlocksInStack(blocks, blockXPos, blockZPos)
+    for iter in stack:
+        if (iter[0][1][0] == blockXPos and 
+            iter[0][1][1] == blockYPos - 1 and 
+            iter[0][1][2] == blockZPos):
+            return False
+    return True
+
+isFloatingBlock(blocks, -47, -50, 10)
+
+def applyGravity(blocks):
+    '''
+    Relies on sorted (y->x->z) blocks
+    '''
+    blocks[0][1][1] = MIN_Y #place the first block on the floor
+    iterBlocks = copy.deepcopy(blocks)
+
+    for enum, iter in enumerate(iterBlocks):
+        if (iter[1][1] > MIN_Y): #not on the floor
+            if (blocks[enum -1][1][0] == iter[1][0] and 
+                blocks[enum -1][1][2] == iter[1][2]):
+                blocks[enum][1][1] = blocks[enum -1][1][1] + 1
+            else:
+                blocks[enum][1][1] = MIN_Y #floor
+
+applyGravity(blocks)
+
+isAnyFloatingBlock(blocks)
+
+def getBlockAtPos(pos):
+    for iter in blocks:
+        if (iter[1] == pos):
+            return iter[0]
+    return WHITE
+
+def isValidMove(blocks, pos, move):
+    if (getBlockAtPos([pos[0] + move[0], pos[1], pos[2]]) != WHITE or
+        getBlockAtPos([pos[0] + move[0], pos[1] + move[1], pos[2]]) != WHITE or
+        getBlockAtPos([pos[0] + move[0], pos[1] + move[1], pos[2] + move[2]]) != WHITE):
+        return False
+    return True

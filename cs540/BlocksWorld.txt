@@ -1,0 +1,713 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+import matplotlib.mlab as mlab
+%matplotlib inline
+from random import *
+import sys
+import csv
+import copy
+import math
+import itertools
+from matplotlib import colors
+
+#
+# List operations
+#
+
+def sumListOfLists(x):
+    '''
+    combines [[1,2,3],[2,3,4],[3,4,5]] into [6,9,12]; should be same shapes, no chars
+    '''
+    if (x == []):
+        return x
+    sums = x[0]
+    for iter in x[1:]:
+        for inner in range(len(iter)):
+            sums[inner] += iter[inner]
+    return sums
+
+def sumTwoLists(listOne, listTwo):
+    '''
+    combines [1,2,3] and [2,3,4] into [3,5,7]; should be same shapes, no chars
+    '''
+    return [sum(item) for item in zip(listOne, listTwo)]
+
+def isAllListElementsGTEZero(x):
+    if any(i < 0 for i in x):
+        return False
+    return True
+
+def getLenOfListOfLists(listOfLists):
+    count = 0
+    for iter in listOfLists:
+        count += len(iter)
+    return count
+
+def removeListFromListOfLists(listOfLists, removeSubList):
+    '''
+    [[1,2,3],[2,3,4]], [2,3,4] will return [[1,2,3]]
+    '''
+    newListOfLists = []
+    for iter in listOfLists:
+        if (iter == list(removeSubList)):
+            continue
+        newListOfLists.append(iter)
+    return newListOfLists
+
+def removeListOfListsFromList(originalList, listOfElements):
+    originalList[:] = [item for i,item in enumerate(originalList) if i not in listOfElements]
+    return originalList
+
+def removeDuplicatesFromListOfLists(listOfLists):
+    listOfLists.sort()
+    return list(listOfLists for listOfLists,_ in itertools.groupby(listOfLists))
+
+#
+# General
+#
+
+def getCenterOfMass(group):
+    temp = []
+    for iter in group:
+        temp.append(list(iter[0]))
+    xPos = 0
+    yPos = 0
+    for iter in temp:
+        yPos += iter[0]
+        xPos += iter[1]
+    return [yPos/len(a), xPos/len(a)]
+
+def getTwoDDistanceBetweenPoints(pt1, pt2):
+    return math.sqrt(pow((pt1[0] - pt2[0]),2) + pow((pt1[1] - pt2[1]),2))
+
+def getOptimalMove(moves, goal):
+    lowest = 1000
+    best = []
+    for iter in moves:
+        x = getTwoDDistanceBetweenPoints(iter, goal)
+        if (x == lowest):
+            best.append(iter)
+            continue
+        if (x < lowest):
+            lowest = x
+            best = []
+            best.append(iter)
+    return best
+
+def getIndexMatches(indices, matches):
+    tempList = []
+    elements = getIndices(matches, 1)
+    for iter in elements:
+        tempList.append(indices[iter])
+    return tempList
+
+def isTwoDTouchingV(indexOne, indexTwo):
+    if (indexOne[1] == indexTwo[1]):
+        if (indexOne[0] == indexTwo[0] + 1 or indexOne[0] == indexTwo[0] -1):
+            return True
+    return False
+
+def isTwoDTouchingH(indexOne, indexTwo):
+    if (indexOne[0] == indexTwo[0]):
+        if (indexOne[1] == indexTwo[1] + 1 or indexOne[1] == indexTwo[1] -1):
+            return True
+    return False
+
+def isTwoDTouchingD(indexOne, indexTwo):
+    if ((indexOne[0] == indexTwo[0] + 1 and indexOne[1] == indexTwo[1] + 1) or
+        (indexOne[0] == indexTwo[0] - 1 and indexOne[1] == indexTwo[1] + 1) or
+        (indexOne[0] == indexTwo[0] + 1 and indexOne[1] == indexTwo[1] - 1) or
+        (indexOne[0] == indexTwo[0] - 1 and indexOne[1] == indexTwo[1] - 1)):
+        return True
+    return False
+
+def getIndices(field, colorId):
+    if (type(field) == list):
+        return [i for i, x in enumerate(field) if x == colorId]
+    return np.argwhere(field == colorId)
+
+def getNotIndices(field, colorId):
+    if (type(field) == list):
+        return [i for i, x in enumerate(field) if x != colorId]
+    return np.argwhere(field != colorId)
+
+def countFieldOccurances(field, colorId):
+    count = 0
+    for x, iter in enumerate(field):
+        for y, inner in enumerate(iter):
+            if (field[x, y] == colorId):
+                count += 1
+    return count
+
+def exploreTouching(indices, startAt):
+    explored = np.zeros(len(indices)).astype(int)
+    frontier = np.zeros(len(indices)).astype(int)
+    frontier[startAt] = 1
+    iterAgain = True
+    while (iterAgain == True):
+        iterAgain = False
+        for iter in getIndices(frontier, 1): #index of any newly touched block
+            for inner in getNotIndices(explored, 1): #index of any block not yet touched
+                if (iter == inner):
+                    continue
+                if (isTwoDTouchingV(indices[iter[0]], indices[inner[0]]) or isTwoDTouchingH(indices[iter[0]], indices[inner[0]])):
+                    frontier[inner] = 1
+            frontier[iter] = 0
+            explored[iter] = 1
+        if (np.sum(frontier) != 0):
+            iterAgain = True
+
+    return explored
+
+def getGroups(field, colorId):
+    indices = getIndices(field, colorId)
+    groups = []
+    groupIndices = []
+    startAt = 0
+    isDone = False
+    while(not isDone):
+        explored = exploreTouching(indices, startAt)
+        groupIndices.append(getIndexMatches(indices, explored))
+        if (groups == []):
+            groups = list(explored)
+        else:
+            groups = sumTwoLists(groups, explored)
+        if (sum(groups) == len(indices)):
+            isDone = True
+        else:
+            startAt = list(groups).index(0)
+    groups = []
+    for iter in groupIndices:
+        temp = []
+        for inner in iter:
+            temp.append(list(inner[0]))
+        groups.append(temp)
+    return groups
+    
+def getNeighbors(field, element):
+    urdl = []
+    urdl.append([element[0] - 1, element[1]])
+    urdl.append([element[0], element[1] + 1])
+    urdl.append([element[0] + 1, element[1]])
+    urdl.append([element[0], element[1] - 1])
+    return urdl
+
+def getMoves(field, element):
+    moves = []
+    urdl = getNeighbors(field, element)
+    for iter in urdl:
+        if (getPosType(field, iter) == EMPTY):
+            moves.append(iter)
+    return moves
+
+def getSmallestGroup(groups):
+    smallestGroups = []
+    smallestSize = len(groups[0])
+    for x, y in enumerate(groups):
+        if (len(y) < smallestSize):
+            smallestGroups = [x]
+            smallestSize = len(y)
+            continue
+        if (len(y) == smallestSize):
+            smallestGroups.append(x)
+    ri = randint(0,len(smallestGroups) - 1)
+    return smallestGroups[ri]
+
+def getLargestGroup(groups):
+    largestGroups = []
+    largestSize = len(groups[0])
+    for x, y in enumerate(groups):
+        if (len(y) > largestSize):
+            largestGroups = [x]
+            largestSize = len(y)
+            continue
+        if (len(y) == largestSize):
+            largestGroups.append(x)
+    ri = randint(0,len(largestGroups) - 1)
+    return largestGroups[ri]
+
+def removeGroupIfNoMoves(field, groups): #only works if group is tightly bound TODO
+    groupsToRemove = []
+    for x, y in enumerate(groups):
+        groupMoves = []
+        for inner in y:
+            groupMoves.append(getMoves(field, inner[0]))
+        if (getLenOfListOfLists(groupMoves) == 0):
+            groupsToRemove.append(x)
+    return removeListOfListsFromList(groups, groupsToRemove)
+
+def getDiags(listOfMoves):
+    '''
+    Given a list of lists where each inner list is a set of numbers, this returns all permutations of dissimilarCols&Rows
+    Purpose: given four possible moves (up, down, left, right) it will return the four diagonal possibilities
+        [[topMiddle,leftMiddle], [topMiddle,rightMiddle], [leftMiddle,bottomMiddle], [rightMiddle,bottomMiddle]]
+    '''
+    diags = []
+    for iter in range(len(listOfMoves) - 1):
+        for inner in range(iter + 1, len(listOfMoves)):
+            if (listOfMoves[iter][0] == listOfMoves[inner][0] or
+               listOfMoves[iter][1] == listOfMoves[inner][1]):
+                continue
+            diags.append([listOfMoves[iter], listOfMoves[inner]])
+    return diags
+
+def getOppositeCornerAndPaths(pos, diag):
+    '''
+    Given a position and a pair of it's diagonals (two diagonally adjacent potential moves) 
+        returns the corner opposite and each of it's adjacent possible moves
+    '''
+    oppositeCorner = []
+    if (min(diag[0][0], diag[1][0]) < pos[0]):
+        oppositeCorner.append(pos[0] + 1)
+    else:
+        oppositeCorner.append(pos[0] - 1)
+
+    if (min(diag[0][1], diag[1][1]) < pos[1]):
+        oppositeCorner.append(pos[1] + 1)
+    else:
+        oppositeCorner.append(pos[1] - 1)
+    return oppositeCorner, [pos[0], oppositeCorner[1]], [oppositeCorner[0], pos[1]]
+
+def isPosInField(field, pos):
+    fieldCols = len(field[0])
+    fieldRows = len(field)
+    return (isAllListElementsGTEZero(pos) and pos[0] < fieldRows and pos[1] < fieldCols)
+
+def getPosType(field, pos):
+    if (not isPosInField(field, pos)):
+        return -1
+    return (field[pos[0], pos[1]])
+
+def moveElement(field, pos, newPos, colorId):
+    field[pos[0], pos[1]] = EMPTY
+    field[newPos[0], newPos[1]] = colorId
+    return field
+
+def fillFieldElement(field, pos, colorIdOfFill):
+    field[pos[0], pos[1]] = colorIdOfFill
+    return field
+
+def fillCorners(field):
+    count = 0
+    filledField = copy.deepcopy(field)
+    while (True):
+        count += 1
+        tempField = copy.deepcopy(filledField)
+        for row, iter in enumerate(tempField):
+            for col, inner in enumerate(tempField): #for each position in the field
+                if (getPosType(tempField, [row, col]) == EMPTY):
+                    moves = getNeighbors(tempField, [row, col])
+                    diags = getDiags(moves)
+                    for diag in diags:
+                        diagZeroType = getPosType(tempField, diag[0])
+                        diagOneType = getPosType(tempField, diag[1])
+                        if (diagZeroType == OUT_OF_FIELD or diagZeroType == IMMOVABLE):
+                            if (diagOneType == OUT_OF_FIELD or diagOneType == IMMOVABLE):
+                                oppCorner, pathOne, pathTwo = getOppositeCornerAndPaths([row, col], diag)
+                                oppCornerType = getPosType(tempField, oppCorner)
+                                pathOneType = getPosType(tempField, pathOne)
+                                pathTwoType = getPosType(tempField, pathTwo)
+                                if (oppCornerType == OUT_OF_FIELD or
+                                    pathOneType == OUT_OF_FIELD or
+                                    pathTwoType == OUT_OF_FIELD or
+                                    oppCornerType == EMPTY or
+                                    oppCornerType != IMMOVABLE or
+                                    pathOneType == IMMOVABLE or
+                                    pathTwoType == IMMOVABLE):
+                                    fillFieldElement(filledField, [row, col], IMMOVABLE)
+        if ((filledField == tempField).all()):
+            break
+        if (count == 100):
+            print('Error filling corners')
+            break
+    return filledField
+
+def getAura(field, pos): #does V and H
+    aura = []
+    groupElements = []
+    for iter in pos:
+        groupElements.append(list(iter))
+    #get all moves around
+    for iter in groupElements:
+        aura.append([iter[0],iter[1]+1])
+        aura.append([iter[0],iter[1]-1])
+        aura.append([iter[0]+1,iter[1]])
+        aura.append([iter[0]-1,iter[1]])
+    #remove duplicates
+    aura = removeDuplicatesFromListOfLists(aura)
+    #remove goal moves which occur from neighbors touching
+    for iter in groupElements:
+        aura = removeListFromListOfLists(aura, iter)
+    temp = copy.deepcopy(aura)
+    #remove moves outside of the field or without an empty position present
+    for iter in temp:
+        x = getPosType(field, iter)
+        if (x != EMPTY):
+            aura = removeListFromListOfLists(aura, iter)
+    return aura
+
+def getAuraScattered(field, groups):
+    auras = []
+    temp = []
+    for iter in groups:
+        temp.append(getAura(field, iter))
+    for iter in temp:
+        for inner in iter:
+            auras.append(inner)
+    return auras
+
+def getABlockNextToAura(field, aura):
+    neighbors = getNeighbors(field, aura)
+    possible = []
+    for iter in neighbors:
+        if (isPosInField(field, aura)):
+            if (getPosType(field, iter) == RED):
+                possible.append(iter)
+    if (possible != []):
+        if (len(possible) > 1):
+            possible = possible[randint(0, len(possible) -1)]
+        return possible
+    return [-1, -1]
+
+def getPathMoves(field, seriesOfMoves):
+    '''
+    Chooses infield, empty moves which annot repeat
+    '''
+    moves = []
+    urdl = getNeighbors(field, seriesOfMoves[-1])
+    for iter in urdl:
+        if (getPosType(field, iter) == EMPTY and
+           iter not in seriesOfMoves):
+            moves.append(iter)
+    return moves
+
+def isPathPossible(field, goalElements, pos, maxEffort, dontCountPops=False): #pos == [2,3], not [[2,3]]
+    '''
+    Deepest first, optimum decision (rand if multiple), no loops or repeat of progeny
+    '''
+    deadProgeny = []
+    seriesOfMoves = [pos] #starting position
+    efforts = 0
+    pathFound = False
+    aura = getAura(field, goalElements)
+
+    while (efforts < maxEffort):
+        efforts += 1
+        moves = getPathMoves(field, seriesOfMoves)
+        for iter in deadProgeny:
+            moves = removeListFromListOfLists(moves, iter)
+        if (len(moves) == 0):
+            deadProgeny.append(seriesOfMoves[-1])
+            seriesOfMoves.pop()
+            if (dontCountPops):
+                efforts -= 1
+            if (len(seriesOfMoves) == 0):
+                return False
+            continue
+        if (len(moves) > 1):
+            moves = getOptimalMove(moves, aura[randint(0, len(aura) -1)])
+            if (len(moves) > 1):
+                moves = [moves[randint(0, len(moves) -1)]]
+        seriesOfMoves.append(moves[0])
+        #print(count, seriesOfMoves)
+        if (seriesOfMoves[-1] in aura):
+            pathFound = True
+            break
+
+    if (pathFound):
+        return True
+    else:
+        return False
+    
+def getNearestNeighbor(field, pos, targetAuras, MAX_EFFORT=100):
+    '''
+    Expanding sphere finds nearest neighbor; returns moves and pos; pos == -1 if no neighbor found
+    '''
+    frontier = [pos]
+    secondTier = []
+    continueRunning = True
+    effort = 0
+    nearestNeighbor = -1
+    while (continueRunning):
+        effort += 1
+        if (effort == MAX_EFFORT):
+            continueRunning = False
+            break
+        newFrontier = getAura(field, frontier)
+        #remove second tier to prevent regression
+        for iter in secondTier:
+            newFrontier = removeListFromListOfLists(newFrontier, iter)
+        #fully expanded, cease efforts
+        if (len(newFrontier) == 0):
+            continueRunning = False
+            break
+        for iter in newFrontier:
+            #test neighbor found conition
+            if (iter in targetAuras):
+                nearestNeighbor = iter
+                continueRunning = False
+                break
+        secondTier = frontier
+        frontier = newFrontier
+    return effort, nearestNeighbor
+
+def removeCloserExploredChildren(exploredDistanceChild, seriesOfMoves, moves):
+    for x, iter in enumerate(exploredDistanceChild):
+        if (iter[1] in moves and
+           (len(seriesOfMoves) >= iter[0])):
+            moves = removeListFromListOfLists(moves, exploredDistanceChild[x][1])
+    return moves
+    
+def exciseLoops(seriesOfMoves):
+    for x, iter in enumerate(seriesOfMoves[:-1]):
+        if (iter[0] == seriesOfMoves[-1][1]):
+            movesExcised = len(seriesOfMoves) - x
+            seriesOfMoves = seriesOfMoves[:x]
+            return seriesOfMoves, movesExcised
+    return seriesOfMoves, 0
+
+#
+#
+# For now, the field is designed where blocks may move up, down, left or right, one space at a time, so long as the space is not occupied by another block.  Only the target block, red, may be moved, while the block blocks may not.  The goal is to have all red blocks touching in the fewest moves possible.
+#
+#
+
+OUT_OF_FIELD = -1
+EMPTY = 0
+IMMOVABLE = 1
+RED = 2
+
+colorId = RED #delete; for insertion into isAllOneColorTouching TODO
+
+initialField = [ 0,0,0,0,0,0,0,1,2,2,
+                 0,0,1,1,1,1,0,0,2,2,
+                 0,1,0,0,0,1,0,1,0,1,
+                 0,0,0,2,0,1,0,1,0,1,
+                 0,0,0,0,0,1,0,0,0,0,
+                 0,0,1,1,1,1,0,0,0,0,
+                 0,2,0,0,1,0,0,0,0,0,
+                 0,0,1,1,1,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,1,0,
+                 0,0,0,0,0,0,0,0,1,0]
+initialField = np.array((initialField)).reshape(10,10)
+
+def findPath(field, destinationGroup, targetAuras):
+    '''
+    Complete 
+    Will return the best path from the closest member of the destinationGroup (random if tie) 
+        to the nearest neighbor (random if tie)
+    Returns [] if no path is found
+    '''
+    #find nearest neighbor to destinationGroup, random if multiple, stop if none
+    bestMaxLength = 100
+    nearestNeighbor = []
+    destinationPos = []
+    for iter in destinationGroup:
+        maxLength, endPos = getNearestNeighbor(field, iter, targetAuras)
+        if (endPos != -1 and maxLength == bestMaxLength):
+            nearestNeighbor.append(endPos)
+            destinationPos.append(iter)
+        if (endPos != -1 and maxLength < bestMaxLength):
+            bestMaxLength = maxLength
+            nearestNeighbor = [endPos]
+            destinationPos = [iter]
+    if (len(nearestNeighbor) == 0):
+        return []
+    if (len(nearestNeighbor) > 1):
+        ri = randint(0, len(nearestNeighbor) -1)
+        nearestNeighbor = [nearestNeighbor[ri]]
+        destinationPos = [destinationPos[ri]]
+        
+    target = getABlockNextToAura(field, nearestNeighbor[0])
+    targetAuras = getAura(field, [target]) #to speed path finding process
+
+    #find path to nearestNeighbor
+    maxEffort = 2000
+    exploredDistanceChild = [] #[[distance, [progenyCoord1, progenyCoord2]], ...]
+    seriesOfMoves = destinationPos
+    continueRunning = True
+    efforts = 0
+    bestPath = []
+    while (continueRunning == True):
+        if ((len(seriesOfMoves) > len(bestPath) and bestPath != []) or
+           len(seriesOfMoves) > bestMaxLength + 1): #bestMaxLength doesn't include start, seriesOfMoves does
+            exploredDistanceChild.append([len(seriesOfMoves) -1, seriesOfMoves[-1]]) #distance to child, child
+            seriesOfMoves.pop()
+            continue
+        efforts += 1
+        if (efforts == maxEffort):
+            print('Max effort reached: ', list(iter[0]))
+            continueRunning = False
+            break
+        moves = getPathMoves(field, seriesOfMoves)
+        moves = removeCloserExploredChildren(exploredDistanceChild, seriesOfMoves, moves)
+
+        if (len(moves) > 0):
+            moves = [moves[randint(0, len(moves) -1)]]
+            seriesOfMoves.append(moves[0])
+            if (seriesOfMoves[-1] in targetAuras):
+                if (bestPath == [] or len(seriesOfMoves) < len(bestPath)):
+                    bestPath = copy.deepcopy(seriesOfMoves)
+        if (len(moves) == 0):
+            #no move global moves
+            if (len(seriesOfMoves) == 1):
+                continueRunning = False
+                break
+            #no more local moves
+            if (len(seriesOfMoves) > 1):
+                exploredDistanceChild.append([len(seriesOfMoves) -1, seriesOfMoves[-1]]) #distance to child, child
+                seriesOfMoves.pop()
+                efforts -= 1
+    bestPath.append(target)
+    return bestPath
+
+def genNum():
+    x = randint(0,9)
+    if (x < 5):
+        return 0
+    if (x < 8):
+        return 1
+    return 2
+
+randomField = [[genNum() for i in range(10)] for j in range(10)]
+randomField = np.array((randomField))
+randomField
+
+def getAura(field, pos): #does V and H
+    aura = []
+    groupElements = []
+    if (len(pos) == 1 and type(pos[0]) == list and len(pos[0]) == 2):
+        groupElements = pos
+    else:    
+        for iter in pos:
+            groupElements.append(list(iter))
+    #get all moves around
+    for iter in groupElements:
+        aura.append([iter[0],iter[1]+1])
+        aura.append([iter[0],iter[1]-1])
+        aura.append([iter[0]+1,iter[1]])
+        aura.append([iter[0]-1,iter[1]])
+    #remove duplicates
+    aura = removeDuplicatesFromListOfLists(aura)
+    #remove goal moves which occur from neighbors touching
+    for iter in groupElements:
+        aura = removeListFromListOfLists(aura, iter)
+    temp = copy.deepcopy(aura)
+    #remove moves outside of the field or without an empty position present
+    for iter in temp:
+        x = getPosType(field, iter)
+        if (x != EMPTY):
+            aura = removeListFromListOfLists(aura, iter)
+    return aura
+
+getAura(field, target)
+
+def findPath(field, destinationGroup, targetAuras):
+    '''
+    Complete 
+    Will return the best path from the closest member of the destinationGroup (random if tie) 
+        to the nearest neighbor (random if tie)
+    Returns [] if no path is found
+    '''
+    #find nearest neighbor to destinationGroup, random if multiple, stop if none
+    bestMaxLength = 100
+    nearestNeighbor = []
+    destinationPos = []
+    for iter in destinationGroup:
+        maxLength, endPos = getNearestNeighbor(field, iter, targetAuras)
+        if (endPos != -1 and maxLength == bestMaxLength):
+            nearestNeighbor.append(endPos)
+            destinationPos.append(iter)
+        if (endPos != -1 and maxLength < bestMaxLength):
+            bestMaxLength = maxLength
+            nearestNeighbor = [endPos]
+            destinationPos = [iter]
+    if (len(nearestNeighbor) == 0):
+        return []
+    if (len(nearestNeighbor) > 1):
+        ri = randint(0, len(nearestNeighbor) -1)
+        nearestNeighbor = [nearestNeighbor[ri]]
+        destinationPos = [destinationPos[ri]]
+        
+    target = getABlockNextToAura(field, nearestNeighbor[0])
+    targetAuras = getAura(field, target) #to speed path finding process
+
+    #find path to nearestNeighbor
+    maxEffort = 2000
+    exploredDistanceChild = [] #[[distance, [progenyCoord1, progenyCoord2]], ...]
+    seriesOfMoves = destinationPos
+    continueRunning = True
+    efforts = 0
+    bestPath = []
+    while (continueRunning == True):
+        if ((len(seriesOfMoves) > len(bestPath) and bestPath != []) or
+           len(seriesOfMoves) > bestMaxLength + 1): #bestMaxLength doesn't include start, seriesOfMoves does
+            exploredDistanceChild.append([len(seriesOfMoves) -1, seriesOfMoves[-1]]) #distance to child, child
+            seriesOfMoves.pop()
+            continue
+        efforts += 1
+        if (efforts == maxEffort):
+            print('Max effort reached: ', list(iter[0]))
+            continueRunning = False
+            break
+        moves = getPathMoves(field, seriesOfMoves)
+        moves = removeCloserExploredChildren(exploredDistanceChild, seriesOfMoves, moves)
+
+        if (len(moves) > 0):
+            moves = [moves[randint(0, len(moves) -1)]]
+            seriesOfMoves.append(moves[0])
+            if (seriesOfMoves[-1] in targetAuras):
+                if (bestPath == [] or len(seriesOfMoves) < len(bestPath)):
+                    bestPath = copy.deepcopy(seriesOfMoves)
+        if (len(moves) == 0):
+            #no move global moves
+            if (len(seriesOfMoves) == 1):
+                continueRunning = False
+                break
+            #no more local moves
+            if (len(seriesOfMoves) > 1):
+                exploredDistanceChild.append([len(seriesOfMoves) -1, seriesOfMoves[-1]]) #distance to child, child
+                seriesOfMoves.pop()
+                efforts -= 1
+    if (type(target[0]) == list):
+        target = target[0]
+    bestPath.append(target)
+    return bestPath
+
+field = copy.deepcopy(initialField)
+steps = 0
+allPaths = []
+
+#create all groups, select largest group (random if multiple), create targest aura around all targets
+groups = getGroups(field, RED)
+
+continueRunning = True
+MAX_EFFORT = 20
+effort = 0
+while (continueRunning):
+    effort += 1
+    if (effort > MAX_EFFORT):
+        continueRunning = False
+        break
+    #create final group elements to test
+    destinationGroupIndex = getLargestGroup(groups) #select largest group pos, random between any ties
+    destinationGroup = groups[destinationGroupIndex]
+    #create scattered elements aura
+    scatteredElements = copy.deepcopy(groups)
+    del scatteredElements[destinationGroupIndex]
+    targetAuras = getAuraScattered(field, scatteredElements)
+
+    path = findPath(field, destinationGroup, targetAuras)
+    allPaths.append(path)
+    if (path == []): #TODO, remove largest group from groups and pick next largest group
+        continueRunning = False 
+        break
+    
+    steps += len(path) - 2 #don't count starting position or ending position
+    field = moveElement(field, path[-1], path[1], RED) #[-1] is who is moving, [1] is the aura next to [0]
+
+print(steps)
+
+
+allPaths

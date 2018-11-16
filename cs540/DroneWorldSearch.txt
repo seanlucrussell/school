@@ -1,0 +1,208 @@
+Drone World Planning
+------------------------------------------------------------------------
+OUTLINE:
+	Title
+	Authors
+	Abstract:
+		Overview of theory, methods, and results
+	Introduction:
+		Review past work
+			Hyperheurstics
+			Do any papers compare heuristics across algorithms?
+		State hypothesis
+			A really good heuristic counts for more than a really good algorithm
+		Describe problem
+			Planning problem: discover a sequence of actions that takes an
+			agent from intial state to goal state
+		Give motivation
+	Methodology:
+		What did we do?
+		Describe problem specifics
+			3d grid world filled with colored blocks and 1 drone
+			Drone can move in any direction (flying) and pick up blocks
+			Unless held by a drone, block cannot defy gravity
+		Describe the two algorithms
+			Gotta decide on which ones still
+			Hopefully will be able to provide justification for selection
+		Describe the three heurstics
+	Results:
+		Present data
+		Data I'm looking for:
+			Time to completion
+			Path length
+			Data in this format
+			 	 	Algorithm 1	Algorithm 2
+			-------------------------------------------
+			Heuristic 1	DATA		DATA
+			Heuristic 2	DATA		DATA
+			Heuristic 3	DATA		DATA
+		Analyze data
+			Did it match up to hypothesis? In what regards?
+			How much better were alternate algorithms as compared to heuristics
+			Was there bigger differenced between speed or path lenght
+	Conclusion:
+		Restate theory and evidence
+		Future work
+			Do more stuff with comparing heuristics across algorithms
+
+Heuristic ideas:
+Large penalty for having block above another block if the stack of blocks beneath it is wrong (if the stack beneath is wrong, then the top block will need to be moved to fix those beneath it)
+Penalty for distance of drone from blocks that are out of place (if a drone is super far from the blocks it needs to move, then it can't be of any use)
+Manhattan distance of the blocks from their destination
+
+Misc. notes about the problem:
+3d planning is interesting because of high branching factor (25) and ease of visualization
+Visual analogs for local optima (like blocks being in the wrong order)
+Very difficult to find feasible solution
+Problems can be varied as really easy or really hard. Some hard problems for the search are trivial to humans
+
+Other ideas:
+Decompose problem into 2 parts:
+	Part 1: act as if you can just magically teleport blocks from 1 position to another
+		This simplifies the problem into just arranging blocks in the correct position
+	Part 2: only worry about moving one block from point A to point B
+		The higher level planner can worry about the entire problem
+Probably want to try experiments with several difficulties of problems, see which algorithms can run to completion and which dont.
+Useful visuals for paper:
+Comparison of easy problem vs hard problem (side by side visuals of start state and goal state for both)
+Comparison of running time and path lengths for algorithms using a variety of heuristics (also include easy way to visualize which did not complete within a given running time)
+	   
+	
+AHH WHAT IS OUR HYPOTHESIS?!?!?!
+
+Hypothesis:
+Selecting good heuristic more important than selecting good algorithm
+
+Previous work:
+Hyper heuristics
+
+Our problem:
+Planning in discrete environment, has applications to robotics and
+control systems. Planning is here defined as the process of
+discovering a sequence of actions that takes an agent from an initial
+state to a goal state.
+
+Outline:
+
+What is this paper about: How much does encoding domain information
+help with planning?
+
+What is domain information? Certain information is useful in solving
+problems in a given environment. The more time that is spent on giving
+an artificial agent information on how to interact with its domain,
+the better it will be at accomplishing its task.
+
+In the world of heuristic search algorithms, there are generally two
+types of domain specific information that an algorithm creator passes
+on. The most intuitive is in the form of the heuristic. A useful
+heuristic must be tailored to the problem it is trying to solve, so an
+algorithm creator spends time up front researching the problem space
+to come up with a useful heuristic.
+
+The second form of domain specific information is that of the
+algorithm itself. Certain algorithms are better suited for some
+problem spaces and will do worse in others. Much research has been
+done on the selection of algorithms for a given problem, not as much
+research exists on the methods for selecting heuristics.
+
+We propose that a thourough heuristic selection process gives 
+
+
+
+Since the beginning, planning problems have been centerpiece to the
+field of artificial intelligence. A planning problem consists of
+finding a sequence of actions that transitions a given start state
+into a goal state.
+
+Planning is an essential problem in the fields of AI and Robotics. It
+has applications ranging from navigation to long term decision
+making. A planning problem can be defined as any problem where the
+task is to find a plan (some sequence of actions) that when taken transform a
+given initial state into a desired goal state.
+
+WHY ARE PLANNING PROBLEMS SO DIFFICULT?
+Planning problems are quite difficult. Often, the worlds involved have
+many potential futures that can branch quite radically based off of an
+agents actions. In addition, it can sometimes be unclear if a given
+action gets one closer or further to the goal state. Furthermore, many
+invalid paths can exist, and paths can be of varying lengths
+preventing easy encoding.
+
+EVALUATING ALGORITHMS
+
+Planning algorithms can be evaluated in three ways.
+
+First, a planning algorithm must produce a feasible plan. A feasible
+plan is one that reaches the goal state when carried out from the
+initial state.
+
+Once a planning algorithm produces a feasible plan, it can be
+evaluated based off a measure of the plan.
+
+Firstly it is  necessary that a plan be
+feasible. A feasible plan is one that reaches the goal when carried
+out from the inital state.
+
+A second measure of a plan is its cost. Each action can be assigned a
+cost, and the cost of a plan is the sum of the costs of its
+constituent actions
+
+In some cases, finding a feasable plan alone is enough. However in
+some cases it is not enough for a plan to be feasible, it must also
+be optimal. In some cases different plans have costs associated with
+them. Take for instance the problem of route finding for a GPS. Most
+drivers are looking for the shortest path to their destination, and
+routes that take more time or use more gas are 
+that a plan be as short as possible. In  So one measure of the
+effectiveness of a planning algorithm is how many steps are involved
+in the produced plan. Another way of measuring planning algorithms is
+the time needed to generate a solution. For certain applications, a
+real time method for planning is needed and speed of the planner is
+crucial.
+
+For simple pathfinding situations, A* search, first described in [1]
+may suffice. However, many problems are not tractable with A*,
+particularly those in which there are many possible actions to choose
+from at each step along the way. Because of this, local searches are
+often needed in order to 
+
+
+Introduction to a variety of planning algorithms across disciplines,
+including discrete and continuous environments
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.225.1874&rep=rep1&type=pdf
+
+
+[1]  http://ai.stanford.edu/~nilsson/OnlinePubs-Nils/PublishedPapers/astar.pdf
+
+
+More things to read
+
+Path planning and repairing paths when the environment changes
+https://www.ri.cmu.edu/pub_files/pub4/carsten_joseph_2006_1/carsten_joseph_2006_1.pdf
+
+Cross-entropy path finding
+http://biomimetic.pbworks.com/f/EMERGENT%20BEHAVIOR%20BASED%20IMPLEMENTS%20FORWITTNER.pdf#page=47
+
+Real-time heuristic search for pathfinding in video games
+https://www.researchgate.net/profile/Yngvi_Bjoernsson/publication/228849302_Real-Time_Heuristic_Search_for_Pathfinding_in_Video_Games/links/0fcfd507f06e1cfb17000000.pdf
+
+Ant system and local search for the TSP
+https://www.researchgate.net/profile/Holger_Hoos/publication/2760385_MAX-MIN_Ant_System_and_Local_Search_for_the_Traveling_Salesman_Problem/links/0912f51289a4038f85000000.pdf
+
+Genetic local search for TSP
+https://pdfs.semanticscholar.org/c0ea/44a41840ab59d7d5abe228800996b26e9e60.pdf
+
+Constraint programming and local search to solve vehicle routing problems
+http://www.diku.dk/OLD/undervisning/2003f/448/shaw98.pdf
+
+Discrete firefly meta-heuristic with local search for makespan minimization
+http://growingscience.com/ijiec/VOL1/IJIEC_2010_7.pdf
+
+Analysis of local search heuristic for facility location problems
+https://pdfs.semanticscholar.org/b6a6/65541c9a199208c7614612ff0a77b55becf3.pdf
+
+Survey of pickup and delivery problems
+https://pdfs.semanticscholar.org/b6a6/65541c9a199208c7614612ff0a77b55becf3.pdf
+
+Fast plan generation through heuristic search
+http://www.jair.org/media/855/live-855-1976-jair.pdf
