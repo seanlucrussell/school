@@ -1,0 +1,92 @@
+import os
+import random
+import soundfile as sf
+from sklearn.neural_network import MLPClassifier
+from numpy.fft import rfft,rfftfreq
+import numpy as np
+import matplotlib.pyplot as plt
+
+classes = {'trumpet':0,'violin':1,'guitar':2,'piano':3,'saxaphone':4,
+           0:'trumpet',1:'violin',2:'guitar',3:'piano',4:'saxaphone',}
+
+def SplitSamples(samples, widthOfSlice = 2000):
+    return np.reshape(samples[:len(samples)-len(samples)%widthOfSlice],(-1,widthOfSlice))
+
+def DeleteSamplesLowAmplitude(samples):
+    threshold = np.mean(samples) * np.std(samples)
+    return np.delete(samples,np.where(np.mean(samples,axis=1) < threshold),axis=0)
+
+def FourierTransform(samples):
+    return np.abs(rfft(samples))
+
+def FileToData(filename):
+    samples,samplerate = sf.read(filename)
+    samples = SplitSamples(samples)
+    samples = DeleteSamplesLowAmplitude(samples)
+    samples = FourierTransform(samples)
+    return samples
+
+def GenerateDataFromLabel(label):
+    train = []
+    test = []
+    for file in os.listdir('samples/' + label):
+        if(file.endswith('.wav')):
+            if(random.choice([True,False])):
+               train += FileToData('samples/' + label + '/' + file).tolist()
+            else:
+               test += FileToData('samples/' + label + '/' + file).tolist()
+    train = np.array(train)
+    test = np.array(test)
+    train = np.insert(train,0,classes[label],axis=1)
+    test = np.insert(test,0,classes[label],axis=1)
+    return train,test
+
+def GenerateData():
+    trumpetTrain,trumpetTest = GenerateDataFromLabel('trumpet')
+    violinTrain,violinTest = GenerateDataFromLabel('violin')
+    guitarTrain,guitarTest = GenerateDataFromLabel('guitar')
+    pianoTrain,pianoTest = GenerateDataFromLabel('piano')
+    saxaphoneTrain,saxaphoneTest = GenerateDataFromLabel('saxaphone')
+    train = np.vstack((trumpetTrain,violinTrain,guitarTrain,pianoTrain,saxaphoneTrain))
+    test = np.vstack((trumpetTest,violinTest,guitarTest,pianoTest,saxaphoneTest))
+    traindata = train[:,1:]
+    testdata = test[:,1:]
+    traintargets = train[:,0].astype(int)
+    testtargets = test[:,0].astype(int)
+    return traindata,traintargets,testdata,testtargets
+
+def CreateModel():
+    print('Generating data...')
+    trainingData,trainingTargets,testingData,testingTargets = GenerateData()
+    print('Finished generating data. Training model...')
+    classifier = MLPClassifier(solver='lbfgs',hidden_layer_sizes=(100))
+    classifier.fit(trainingData,trainingTargets)
+    print('Finished training model. Gathering statistics...')
+    predicted = classifier.predict(testingData)
+    totalNumberCorrect = np.sum(predicted == testingTargets)
+    print('total % correct on testing data:',totalNumberCorrect / len(testingTargets))
+    predictedVsTargets = np.vstack((predicted,testingTargets)).T
+    for c in range(5):
+        subset = predictedVsTargets[predictedVsTargets[:,0] == c]
+        print('\t' + classes[c].upper())
+        print(classes[c],'% correct:',
+              "%.2f" % (100*len(subset[subset[:,0]==subset[:,1]]) / len(subset)))
+        print('% guessed piano:',
+              "%.2f" % (100*len(subset[subset[:,1]==classes['piano']])/len(subset)))
+        print('% guessed violin:',
+              "%.2f" % (100*len(subset[subset[:,1]==classes['violin']])/len(subset)))
+        print('% guessed trumpet:',
+              "%.2f" % (100*len(subset[subset[:,1]==classes['trumpet']])/len(subset)))
+        print('% guessed guitar:',
+              "%.2f" % (100*len(subset[subset[:,1]==classes['guitar']])/len(subset)))
+        print('% guessed saxaphone:',
+              "%.2f" % (100*len(subset[subset[:,1]==classes['saxaphone']])/len(subset)))
+    return classifier
+
+def ClassifyAudioFile(classifier,filename):
+    vectors = FileToData(filename)
+    if len(vectors) < 1:
+        return -1
+    predicted = classifier.predict(vectors)
+    mostPredicted = np.argmax(np.bincount(predicted))
+    return classes[mostPredicted]

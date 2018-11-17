@@ -1,0 +1,625 @@
+// This file contains material supporting section 3.7 of the textbook:
+// "Object Oriented Software Engineering" and is issued under the open-source
+// license found at www.lloseng.com
+package server;
+import java.io.*;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+import common.ChatIF;
+import ocsf.server.*;
+
+/**
+ * This class overrides some of the methods in the abstract superclass in order
+ * to give more functionality to the server.
+ *
+ * @author Dr Timothy C. Lethbridge
+ * @author Dr Robert Lagani&egrave;re
+ * @author Fran&ccedil;ois B&eacute;langer
+ * @author Paul Holden
+ * @version July 2000
+ */
+public class EchoServer extends AbstractServer {
+	// Class variables *************************************************
+
+	final public static int DEFAULT_PORT = 5555;
+	
+	ChatIF serverConsole;
+	
+	private List<String> userNames;
+	private Set<ConnectionToClient> newClients;
+	private List<User> users;
+	
+	private HashMap<String, ConnectionToClient> connectedClients;
+	private HashMap<String, Set<String>> userIdsIveBlocked;
+	private HashMap<String, Set<String>> userIdsBlockingMe;
+	private HashMap<String, Set<String>> channels;
+
+	// Constructors ****************************************************
+
+	/**
+	 * Constructs an instance of the echo server.
+	 *
+	 * @param port
+	 *            The port number to connect on.
+	 * @throws UnsupportedEncodingException 
+	 * @throws NoSuchAlgorithmException 
+	 */
+	public EchoServer(int port, String useridFilename, ChatIF serverConsole) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		super(port);
+		this.serverConsole = serverConsole;
+		newClients = new HashSet<ConnectionToClient>();
+		connectedClients = new HashMap<String, ConnectionToClient>();
+		userIdsIveBlocked = new HashMap<String, Set<String>>();
+		userIdsBlockingMe = new HashMap<String, Set<String>>();
+		channels = new HashMap<String, Set<String>>();
+		
+		userIdsIveBlocked.put("SERVER", new HashSet<String>());
+		userIdsBlockingMe.put("SERVER", new HashSet<String>());
+		connectedClients.put("SERVER", null);
+		createPairs(useridFilename);
+		for(User up : users){
+			userIdsIveBlocked.put(up.getUser(), new HashSet<String>());
+			userIdsBlockingMe.put(up.getUser(), new HashSet<String>());
+		}
+	}
+
+	// Instance methods ************************************************
+
+	public void handleMessageFromServerUI(String message) {
+		try {
+
+			String[] splitMessage = message.split(" ");
+
+			switch (splitMessage[0]) {
+			case "#quit":
+				this.sendToAllClients("SERVER IS SHUTTING DOWN");
+				close();
+				System.exit(0);
+				break;
+			case "#stop":
+				stopListening();
+				break;
+			case "#close":
+				this.sendToAllClients("SERVER IS CLOSING");
+				close();
+				break;
+			case "#setport":
+				if (isListening()){
+					System.out.println("Cannot set port while server is active");
+				} else if (splitMessage.length == 2 && splitMessage[1].matches("^\\d+$")) {
+					setPort(Integer.parseInt(splitMessage[1]));
+					System.out.println("Port set to " + Integer.parseInt(splitMessage[1]));
+				} else {
+					System.out.println("Please provide a port to connect to");
+				}
+				break;
+			case "#getport":
+				System.out.println(getPort());
+				break;
+			case "#start":
+				if (isListening()) {
+					System.out.println("Cannot start server while already running");
+				} else {
+					listen();
+				}
+				break;
+			case "#status":
+				if(splitMessage.length != 2) { sendToClient("No username given.", "SERVER"); break;}
+				if (getUser(splitMessage[1]) != null){
+					if (System.currentTimeMillis() >= getUser(splitMessage[1]).getTime() + 300000){
+						getUser(splitMessage[1]).setStatus("idle");
+					}
+					sendToClient("User "+splitMessage[1]+" is currently "+getUser(splitMessage[1]).getStatus(), "SERVER");
+				}
+				else sendToClient("User "+splitMessage[1]+" does not exist", "SERVER");
+				break;
+			case "#available":
+				getUser("SERVER").setStatus("online");
+				break;
+			case "#unavailable":
+				getUser("SERVER").setStatus("unavailable");
+				break;
+			case "#block":
+				if(splitMessage.length != 2) { sendToClient("No username given.", "SERVER"); break;}
+				block("SERVER", splitMessage[1]);
+				break;
+			case "#unblock":
+				if(splitMessage.length != 2) { unblock("Server", ""); break;}
+				unblock("SERVER", splitMessage[1]);
+				break;
+			case "#whoiblock":
+				whoIBlock("SERVER");
+				break;
+			case "#whoblocksme":
+				whoBlocksMe("SERVER");
+				break;
+			case "#private":
+				privateMessage("SERVER", splitMessage[1], message.toString().substring(splitMessage[0].length() + splitMessage[1].length() + 2));
+				break;
+			default:
+				if(channels.containsKey(splitMessage[0])){
+					// TODO: remove channel name from message string
+					sendToClients(message.toString().substring(splitMessage[0].length()+1), "SERVER", splitMessage[0]);
+				}
+				else {
+					sendToClients(message.toString(), "SERVER", null);
+				}
+			}
+		} catch (Exception e) {
+			//clientUserInterfacy.display("Could not send message to server.  Terminating client.");
+			//quit();
+		}
+	}
+	
+	/**
+	 * This method handles any messages received from the client.
+	 *
+	 * @param msg
+	 *            The message received from the client.
+	 * @param client
+	 *            The connection from which the message originated.
+	 */
+	public void handleMessageFromClient(Object message, ConnectionToClient client) {
+
+		String[] splitMessage = message.toString().split(" ");
+		try {
+			switch (splitMessage[0]) {
+			case "#login":
+				sendToClient("Logging in with username " + splitMessage[1], client);
+				
+				String userInfo = "#users ";
+				for (int i=0;i<users.size();i++)
+					userInfo += users.get(i) + " ";
+				sendToClient(userInfo, client);
+				
+				clientLogin(splitMessage[1],splitMessage[2], client);
+				break;
+			case "#logoff":
+				clientLogoff(client.getName());
+				break;
+			case "#status":
+				if(splitMessage.length != 2) { sendToClient("No username given.", client); break;}
+				if (getUser(splitMessage[1]) != null){
+					if (System.currentTimeMillis() >= getUser(splitMessage[1]).getTime() + 300000){
+						getUser(splitMessage[1]).setStatus("idle");
+					}
+					sendToClient("User "+splitMessage[1]+" is currently "+getUser(splitMessage[1]).getStatus(), client);
+				}
+				else sendToClient("User "+splitMessage[1]+" does not exist", client);
+				break;
+			case "#available":
+				getUser(client.getName()).setStatus("online");
+				break;
+			case "#unavailable":
+				getUser(client.getName()).setStatus("unavailable");
+				break;
+			case "#block":
+				if(splitMessage.length != 2) { sendToClient("No username given.", client); break;}
+				block(client.getName(), splitMessage[1]);
+				break;
+			case "#unblock":
+				if(splitMessage.length != 2) { unblock(client.getName(), ""); break;}
+				unblock(client.getName(), splitMessage[1]);
+				break;
+			case "#whoiblock":
+				whoIBlock(client.getName());
+				break;
+			case "#whoblocksme":
+				whoBlocksMe(client.getName());
+				break;
+			case "#private":
+				privateMessage(client.getName(), splitMessage[1], message.toString().substring(splitMessage[0].length() + splitMessage[1].length() + 2));
+				break;
+			case "#channel":
+				createChannel(splitMessage[1], client);
+				break;
+			case "#join":
+				joinChannel(splitMessage[1], client);
+				break;
+			case "#leave":
+				leaveChannel(splitMessage[1], client);
+				break;
+			case "#forward":
+				forwardMessage(client.getName(), splitMessage[1], message.toString().substring(splitMessage[0].length() + splitMessage[1].length() + 2));
+				break;
+			default:
+				clientUpdateTime(client.getName());
+				getUser(client.getName()).setStatus("online");
+				if(channels.containsKey(splitMessage[0])){
+					// TODO: remove channel name from message string
+					sendToClients(message.toString().substring(splitMessage[0].length()+1), client.getName(), splitMessage[0]);
+				}
+				else {
+					sendToClients(message.toString(), client.getName(), null);
+				}
+				break;
+			}
+		} catch(Exception e) {
+			sendToClient("ERROR: "+e, client);
+			sendToClient("Something went wrong with your message: " + message, client);
+		}
+		
+	}
+
+	/**
+	  * Hook method called each time a new client connection is
+	  * accepted. The default implementation does nothing.
+	  * @param client the connection connected to the client.
+	  */
+	protected void clientConnected(ConnectionToClient client) {
+		newClients.add(client);
+	}
+
+	/**
+	  * Hook method called each time a client disconnects.
+	  * The default implementation does nothing. The method
+	  * may be overridden by subclasses but should remains synchronized.
+	  *
+	  * @param client the connection with the client.
+	  */
+	synchronized protected void clientDisconnected(ConnectionToClient client) {
+		if(newClients.contains(client)) {
+			newClients.remove(client);
+		}
+		connectedClients.remove(client.getName());
+		
+	}
+
+	/**
+	  * Hook method called each time an exception is thrown in a
+	  * ConnectionToClient thread.
+	  * The method may be overridden by subclasses but should remains
+	  * synchronized.
+	  *
+	  * @param client the client that raised the exception.
+	  * @param Throwable the exception thrown.
+	  */
+	synchronized protected void clientException(
+	    ConnectionToClient client, Throwable exception) {}
+
+	/**
+	  * Hook method called when the server stops accepting
+	  * connections because an exception has been raised.
+	  * The default implementation does nothing.
+	  * This method may be overriden by subclasses.
+	  *
+	  * @param exception the exception raised.
+	  */
+	protected void listeningException(Throwable exception) {}
+
+	/**
+	 * This method overrides the one in the superclass. Called when the server
+	 * starts listening for connections.
+	 */
+	protected void serverStarted() {
+		System.out.println("Server listening for connections on port "
+				+ getPort());
+	}
+
+	/**
+	 * This method overrides the one in the superclass. Called when the server
+	 * stops listening for connections.
+	 */
+	protected void serverStopped() {
+		System.out.println("Server has stopped listening for connections.");
+	}
+	
+	protected boolean clientCheck(String username){
+		return getUser(username) != null;
+	}
+	
+	protected boolean clientValidate(String username, String pass, ConnectionToClient client){
+		for (User up : users){
+			if (up.getUser().equals(username)) {
+				return up.validate(pass);
+			}
+		}
+		return false;
+	}
+	
+	protected void clientUpdateTime(String username){
+		getUser(username).setTime(System.currentTimeMillis());
+	}
+	
+	protected void clientLogin(String username, String pass, ConnectionToClient client) {
+		if(newClients.contains(client)) {	
+			if(userNames.contains(username) && !connectedClients.containsKey(username)) {
+				if (!clientValidate(username, pass, client)){
+					sendToClient("incorrect password - disconnecting", client);
+					try {
+						client.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else {
+					newClients.remove(client);
+					connectedClients.put(username, client);
+					client.setName(username);
+					sendToClients(client.getName() + " has logged in.", "SERVER", null);
+					getUser(username).setStatus("online");
+					clientUpdateTime(username);
+				}
+			}
+			else if (!userNames.contains(username)){
+				sendToClient("username invalid - disconnecting", client);
+				try {
+					client.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else if (connectedClients.containsKey(username)){
+				sendToClient("You are already logged in and cannot log in again.", client);
+				try {
+					client.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		else {
+			sendToClient("You are already logged in and cannot log in again.", client);
+		}
+	}
+
+	protected void clientLogoff(String username) {
+		sendToClients(username + " has logged off.", "SERVER", null);
+		getUser(username).setStatus("offline");
+		connectedClients.remove(username);
+	}
+	
+	private void block(String clientUserid, String blockUserid) {
+		if(clientUserid.equals(blockUserid)) {
+			sendToClient("You cannot block yourself", clientUserid);
+			return;
+		}
+		
+		Set<String> blockedUserIds = userIdsIveBlocked.get(clientUserid);
+		Set<String> blockedByUsers = userIdsBlockingMe.get(blockUserid);
+		
+		if(userNames.contains(blockUserid) || blockUserid.equals("SERVER")) {
+			if(blockedUserIds.contains(blockUserid)) {
+				sendToClient("You are already blocking " + blockUserid + ". If you wish to unblock use '#unblock <username>'.", clientUserid);
+				return;
+			}
+			blockedUserIds.add(blockUserid);
+			blockedByUsers.add(clientUserid);
+			sendToClient("You are now blocking " + blockUserid + ". You will recieve no messages from them. If you wish to unblock use '#unblock <username>'.", clientUserid);
+		}
+		else {
+			sendToClient("Invalid username", clientUserid);
+		}
+		
+	}	
+	
+	private void unblock(String clientUserid, String unblockUserid) {
+		
+		Set<String> blockedUserIds = userIdsIveBlocked.get(clientUserid);
+		Set<String> blockedByUsers = userIdsBlockingMe.get(unblockUserid);
+		if(unblockUserid.equals("")) {
+			if(!blockedUserIds.isEmpty()) {
+				for(String blockedUserid : blockedUserIds) {
+					userIdsBlockingMe.get(blockedUserid).remove(clientUserid);
+				}
+				blockedUserIds.clear();
+				sendToClient("You are no longer blocking any users", clientUserid);
+			}
+			else {
+				sendToClient("You are not blocking any users", clientUserid);
+			}
+			return;
+		}
+		if(userNames.contains(unblockUserid) || unblockUserid.equals("SERVER")) {
+			if(!blockedUserIds.contains(unblockUserid)) {
+				sendToClient("You are not blocking " + unblockUserid + ". Block user with '#block <username>'.", clientUserid);
+				return;
+			}
+			blockedUserIds.remove(unblockUserid);
+			blockedByUsers.remove(clientUserid);
+			sendToClient("You are no longer blocking " + unblockUserid + ". You will start recieving messages from them.", clientUserid);
+		}
+		else {
+			sendToClient("Invalid username", clientUserid);
+		}
+	}
+		
+	private void whoIBlock(String clientUserid) {
+		Set<String> blockedUserIds = userIdsIveBlocked.get(clientUserid);
+		if(blockedUserIds.isEmpty()) {
+			sendToClient("You are not blocking any users", clientUserid);
+			return;
+		}
+		String blockedUsers = blockedUserIds.toString();
+		blockedUsers = blockedUsers.replaceAll("[\\[\\]]","");
+		sendToClient("You are blocking: " + blockedUsers, clientUserid);
+	}
+
+
+	private void whoBlocksMe(String clientUserid) {
+		Set<String> blockedByUsers = userIdsBlockingMe.get(clientUserid);
+		if(blockedByUsers.isEmpty()) {
+			sendToClient("You are not being blocked by any users", clientUserid);
+			return;
+		}
+		String blockedUsers = blockedByUsers.toString();
+		blockedUsers = blockedUsers.replaceAll("[\\[\\]]","");
+		sendToClient("You are being blocked by: " + blockedUsers, clientUserid);
+	}
+	
+	private void privateMessage(String fromUser, String toUser, String message) {
+		message = "[PRIVATE] " + fromUser + "> " + message;
+		if(!connectedClients.containsKey(toUser)) {
+			sendToClient("User " + toUser + " is not logged in", fromUser);
+			return;
+		}
+		if(userIdsIveBlocked.get(toUser).contains(fromUser)) {
+			sendToClient("User " + toUser + " is blocking you", fromUser);
+			return;
+		}
+		
+		sendToClient(message, toUser);
+		
+	}
+	
+	private void createChannel(String channelName, ConnectionToClient client) {
+		if(channels.containsKey(channelName)) {
+			sendToClient("Channel " + channelName + " already exists", client);
+			return;
+		}
+		
+		channels.put(channelName, new HashSet<String>());
+		sendToClient("Channel " + channelName + " created", client);
+	}
+	
+	private void joinChannel(String channelName, ConnectionToClient client) {
+		if(!channels.containsKey(channelName)) {
+			sendToClient("Channel " + channelName + " does not exist", client);
+			return;
+		}
+		if(channels.get(channelName).contains(client.getName())) {
+			sendToClient("You are already a member of channel " + channelName, client);
+			return;
+		}
+		
+		channels.get(channelName).add(client.getName());
+		sendToClient("You have joined channel " + channelName, client);
+		
+	}
+	
+	private void leaveChannel(String channelName, ConnectionToClient client) {
+		if(!channels.containsKey(channelName)) {
+			sendToClient("Channel " + channelName + " does not exist", client);
+			return;
+		}
+		if(!channels.get(channelName).contains(client.getName())) {
+			sendToClient("You are not a member of channel " + channelName, client);
+			return;
+		}
+		
+		channels.get(channelName).remove(client.getName());
+		sendToClient("You have left channel " + channelName, client);
+		
+	}
+	
+	private void forwardMessage(String fromUser, String toUser, String message) {
+		message = "[FORWARDING FROM " + fromUser + "] " + message;
+		if(!connectedClients.containsKey(toUser)) {
+			sendToClient("User " + toUser + " is not logged in", fromUser);
+			return;
+		}
+		if(userIdsIveBlocked.get(toUser).contains(fromUser)) {
+			sendToClient("User " + toUser + " is blocking you", fromUser);
+			return;
+		}
+		
+		sendToClient(message, toUser);
+		
+	}
+
+	private void sendToClients(String message, String sender, String channel) {
+		message = sender + "> " + message;
+		Set<String> keyset = null;
+		if(channel == null) {
+			keyset = connectedClients.keySet();
+		}
+		else {
+			if(channels.containsKey(channel)) {
+				keyset = channels.get(channel);
+				message = "[" + channel + "] " + message;
+				if(!(keyset.contains(sender) || sender.equals("SERVER"))) {
+					sendToClient("You are not a member of channel " + channel, sender);
+					return;
+				}
+			}
+		}
+		for(String username : keyset) {
+			if(userIdsBlockingMe.get(sender) != null) { 
+				if(userIdsBlockingMe.get(sender).contains(username)){
+					continue;
+				}
+			}
+			sendToClient(message, username);
+		}
+		
+	}
+	
+	private void sendToClient(String message, ConnectionToClient client) {
+		try {
+			client.sendToClient(message);
+		} catch (IOException e) {}
+	}
+	
+	private void sendToClient(String message, String username) {
+		if(username.equals("SERVER")) {
+			serverConsole.display(message);
+			return;
+		}
+		sendToClient(message, connectedClients.get(username));
+	}
+	
+//	private boolean readInUserIds(String useridFilename) {
+//		try {
+//			userNames = Files.lines(Paths.get(useridFilename))
+//				    .map(line -> line.split("\\s+")).flatMap(Arrays::stream)
+//				    .collect(Collectors.toList());
+//		} catch (Exception e) {
+//			System.out.println("Userid file \""+useridFilename+"\" could not be opened.");
+//			return false;
+//		}
+//		
+//		return true;
+//	}
+	
+	private User getUser(String username){
+		for (User up : users){
+			if (up.getUser().equals(username)) return up;
+		}
+		return null;
+	}
+	
+	private boolean createPairs(String filename) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		try {
+			Scanner file = new Scanner(new File(filename));
+			users = new ArrayList<User>();
+			while (file.hasNextLine()){
+				try {
+					String split[] = file.nextLine().split(" ");
+					users.add(new User(split[0], split[1]));
+				} catch (Exception e1) {
+					System.out.println(e1);
+					System.out.println("ERROR: incorrect syntax in file "+filename);
+					file.close();
+					return false;
+				}
+			}
+			file.close();
+		} catch (Exception e2){
+			System.out.println(e2);
+			System.out.println("ERROR: Userid file \""+filename+"\" could not be opened.");
+			return false;
+		}
+		
+		userNames = new ArrayList<String>();
+		for (User up : users){
+			userNames.add(up.getUser());
+		}
+		return true;
+	}
+	
+//	private void printSensitiveData(){
+//		for (User up : users){
+//			System.out.println(up);
+//		}
+//	}
+
+	// Class methods ***************************************************
+
+}
+// End of EchoServer class

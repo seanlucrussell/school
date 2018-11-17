@@ -1,0 +1,8 @@
+Colorado Springs,Denver
+Denver,Loveland
+Loveland,Fort Collins
+Loveland,Greeley
+Greeley,Fort Collins
+Fort Collins,Cheyenne
+Fort Collins,Laramie
+Laramie,Cheyenne

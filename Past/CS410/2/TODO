@@ -1,0 +1,90 @@
+
+BASICS:
+
+Components:
+
+Driver reader (generates camera and objects in scene)
+Ray tracer (takes camera and objects and generates depth for each pixel)
+Image writer (takes depth for each pixel and writes image to file)
+
+Executable named raytracer accepts 2 arguments, driver file and filename for rendered image to be saved as.
+Example:
+The contents of the camera specification should be familiar to you now. The first line
+represents a comment. The next three lines supply the location of the focal point (the Eye),
+the look at point, and the up vector. Then comes the focal length, i.e. the distance from
+the focal point to the image plane (near clipping plane). Pay particular attention to the
+next two arguments. The 'bounds' values indicate the minimum and maximum extend of the bounded
+image rectangle on the infinite image plane in the camera horizontal and vertical directions
+respectively. Then the resolution values separately indicate the pixel sampling resolution
+across the horizontal and vertical dimensions of the bounded rectangle. One feature of this
+specification format is that you can generate intermediate cameras with low resolution, say
+
+
+8 by 8 or even 4 by 4, when developing and debugging code. This speeds development
+considerably. Do note that the dimensions of your output image must match the resolution
+specification exactly; no off by one errors allowed.
+
+Finally, you could have zero or more spheres and/or zero or more models. A sphere is
+represented by keyword sphere followed by three numbers cx, cy, and cz which represent
+the center of the sphere in world coordinates, followed by the fourth number representing
+the radius of that sphere. Note that you do not have to do model-to-world transformation
+for spheres since they will already be represented in the world coordinate system. Next,
+the model will follow same formatting as it was in the first assignment (model wx wy wz
+theta scale tx ty tz model.obj). You need to perform model-to-world transformations for
+all the models given in the driver file.
+
+For this assignment you may assume that the row structure, including the single word headers
+on each line, do not change in a driver file. You need to ignore any comment lines.
+
+Images should be written as legal ASCII PPM files. Although some variations are permissible,
+I recommend the following. The first line contains the characters P3 and nothing else. The
+next line contains the image width, the image height, and the number 255 (the maximum
+possible pixel value), all integers. Pixel values begin on the next line, and contain 3
+values per pixel (a red value, a green value, and a blue value, in that order). Since the
+total number of pixels in an image is width times height, the number of values in the file
+(after the two header lines) must be 3 times width times height. To make images “readable”
+by humans (when they are small), you will want to put a newline at the end of each row. The
+image generated from this driver file might therefore begin with:
+
+    P3 
+    256 256 255
+    239 239 239 239 239 ...
+
+The models to be used in this assignment are specified in WaveFront OBJ. In this format the
+faces will be limited to 3 vertices. In other words, you need only consider the intersection
+of a ray with a triangle as opposed to an arbitrary polygon.
+
+        Relative Depth
+
+You encoding of relative depth must follow exactly the following specification. First, when
+your algorithm completes ray casting for every pixel, record the tmin and tmax values. To be
+clear, these are the minimum and maximum distances from pixels to first polygons as determined
+by the t value returned when a ray intersects a polygon. Then, for every pixel intersecting a
+polygon, use the resulting t value to determine color as follows:
+
+	 ratio = 2 * (t - tmin) / (tmax - tmin) 
+	 r = max(0, 255 * (1 - ratio)) 
+	 b = max(0, 255 * (ratio - 1)) 
+	 g = 255 - b - r 
+
+Credit where credit is due, this simple code for generating a thermal color map originated
+from a post by John1024.
+
+Notice that to create the color coding your code must have determined all t values. A brute
+force approach is a two pass system that essentially ray casts the scene twice. A better
+approach would be to record the t-value to the nearest surface for every pixel in an
+intermediate data structure, a 2D array, and then use that structure to find the min and
+max t-values and finally to generate the color output image.
+
+    SUBMISSION
+
+Due Tuesday 10-10
+
+Your source files
+A makefile if appropriate
+README.txt file that explicitly contain (1) A command to compile your program and (2) A
+command to execute it.
+If you are using C++, your executable should be named 'raytracer'. If your are using java,
+the main executable class should be named 'Raytracer'. Notice the change in case for the
+first letter between C++ and Java. It is must for this assignment to take exactly two
+arguments as described above.

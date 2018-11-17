@@ -1,0 +1,6 @@
+
+def ReadMidi(filename):
+    return
+
+def WriteMidi(midi):
+    

@@ -1,0 +1,11 @@
+Sean Russell, Deter Assignment 3
+
+FCCU.php was vulnerable to SQL injection. In this memo I will describe the nature of this weakness and the method used to fix it.
+
+FCCU.php handles the FrobozzCo Community Credit Union page and interfaces with our database of users. The users login with their account ID and password, and they have access to a number of features, like cash withdrawals and transfers. Unfortunately, a malicious user, when logging in, can inject SQL so that they are able to access any account without any prior knowledge. They don't need to know passwords or account IDs, and they don't even have to know the names of the users. They can gain full access to any account without any of this information.
+
+My proposed patch to prevent these attacks checks the inputs provided by the user. PHP has build in methods for interfacing with SQL databases, so the patch just sanitizes inputs using mysql_real_escape_string() before any SQL queries are made.
+
+The included files are the patched FCCU.php, with the fixed code at lines 34 and 35, and exploit3.txt which is a step by step guide on how to gain total access to any users account by using SQL injection on the old server.
+
+This breach is serious. There could be significant monetary losses if an attacker should chose to exploit this vulnerability. However, the scope of this breach is somewhat limited. While the attacker can break into any users account, they cannot gain root access to the system through this vulnerability, and they cannot freely manipulate user accounts at an administrators level (ie creating new accounts, creating money that did not exist).

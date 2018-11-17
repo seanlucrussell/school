@@ -1,0 +1,87 @@
+// P7 Assignment
+// Author: Sean Russell
+// Date:   May 4, 2015
+// Class:  CS161
+// Email:  srussel@rams.colostate.edu
+
+public class FBaccount {
+	
+	protected String name;
+	protected String username;
+	protected FBlinkedList friends;
+	
+	public FBaccount(String username, String name){
+		this.name = name;
+		this.username = username;
+		friends = new FBlinkedList();
+	}
+	
+	public void addFriend(FBaccount friend){
+		if (friend.equals(this) || friends.indexOf(friend)!=-1)
+			return;
+		friends.add(friend);
+		friend.getFriends().add(this);
+	}
+	
+	public boolean unfriend(String username){
+		if (friends.indexOf(username)==-1)
+			return false;
+		friends.remove(friends.indexOf(username));
+		friends.getFriend(friends.indexOf(username)).getFriends().remove(friends.getFriend(friends.indexOf(username)).getFriends().indexOf(this));
+		return true;
+	}
+	
+	public FBlinkedList friendsInCommon(FBaccount other){
+		return null;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getUsername(){
+		return username;
+	}
+	
+	public FBlinkedList getFriends(){
+		return friends;
+	}
+	
+	public boolean equals(Object other){
+		if (other == this){
+			return true;
+		}
+		
+		if (!(other instanceof FBaccount)){
+			return false;
+		}
+		
+		FBaccount fbother = (FBaccount) other;
+		if (fbother.getUsername().equals(username)){
+			return true;
+		}
+		return false;
+		
+	}
+
+	public int numFriends(){
+		return friends.size();
+	}
+	
+	public static void main(String args[]){
+		FBaccount jess = new FBaccount("jess", "jess j smith");
+		FBaccount jane = new FBaccount("jane", "jane j adams");
+		FBaccount james = new FBaccount("james", "james joyce");
+		FBaccount john = new FBaccount("john", "john adams");
+		FBaccount jamie = new FBaccount("jamie", "jamie j");
+		
+		jess.addFriend(jane);
+		jess.addFriend(james);
+		jess.addFriend(john);
+		jess.addFriend(jamie);
+		jess.addFriend(jane);
+		
+		System.out.println(jess.getFriends());
+	}
+	
+}

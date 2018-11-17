@@ -1,0 +1,60 @@
+import java.util.Arrays;
+
+// P3 Assignment
+// Author: Sean Russell
+// Date:   Feb 9, 2015
+// Class:  CS161
+// Email:  srussel@rams.colostate.edu
+
+public class LineSegment {
+	
+	private int[] coordinates = new int[4];
+	
+	public LineSegment(int [] coordinates){
+		this(coordinates[0],coordinates[1],coordinates[2],coordinates[3]);
+	}
+	
+	public LineSegment(int x1, int y1, int x2, int y2){
+		coordinates[0] = x1;
+		coordinates[1] = y1;
+		coordinates[2] = x2;
+		coordinates[3] = y2;
+	}
+	
+	public int [] getCoordinates(){
+		int returnInts[] = new int[4];
+		for (int i=0;i<4;i++){
+			returnInts[i] = coordinates[i];
+		}
+		return returnInts;
+	}
+	
+	public String toString(){
+		return Arrays.toString(coordinates);
+	}
+	
+	public boolean equals (Object other){
+		if (!(other instanceof LineSegment)){
+			return false;
+		}
+		LineSegment otherSegment = (LineSegment) other;
+		if ((lineSegments[i][0] == lineSegments[j][0]
+				&& lineSegments[i][1] == lineSegments[j][1]
+				&& lineSegments[i][2] == lineSegments[j][2] && lineSegments[i][3] == lineSegments[j][3])
+				|| (lineSegments[i][0] == lineSegments[j][2]
+						&& lineSegments[i][1] == lineSegments[j][3]
+						&& lineSegments[i][2] == lineSegments[j][0] && lineSegments[i][3] == lineSegments[j][1])) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean intersects(LineSegment other){
+		return false;
+	}
+	
+	public boolean inBox(int xmin, int xmax, int ymin, int ymax){
+		return false;
+	}
+
+}

@@ -1,0 +1,13 @@
+Sean Russell, Deter Assignment 3
+
+webserver.c was vulnerable to a buffer overflow attack. In this memo I will describe the nature of this weakness and the method used to fix it.
+
+When a client requests a page from the server, the server does a lookup in it's filesystem for the desired file. Whether or not the file is present, the server sends a response. If the request was successful, the server proceeds as normal and starts sending out the requested information. However, if the request fails, the server responds with a 'bad request' message. As part of that message, the file path that the client sent in the request is sent back to the user. The problem arises from the fact that the buffer to hold this return message is 1024 bytes long and uses buffer unsafe c methods to build the message. So a potential attacker can inject a bad filepath of a certain length to cause a buffer overflow.
+
+In order to prevent this attack, the only thing that needs to be changed is one use of strcat in favor of the buffer safe strncat. By limiting the length of the filepath sent back to the user, the buffer won't overflow and the problem is solved.
+
+The included files are the patched webserver.c, with the fixed code around line 315, and exploit1.sh which takes advantage of the vulnerability in the old server to crash it by sending the HTTP request payload1.
+
+To simulate the attack, all you need to do is execute exploit1.sh and the server will crash.
+
+This breach is fairly serious. A buffer overflow could crash the server. A more dedicated attacker could exploit the overflow to inject code into the system to do any number of nefarious things. Fortunately, this fix totally seals the flaw.

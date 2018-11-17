@@ -1,0 +1,35 @@
+1.
+p		F		p∧F
+1		0		0
+1		0		0
+0		0		0
+0		0		0
+
+2.
+p		q		p∧q		p→q		(p∧q)→(p→q)
+1		1		1			1				1
+1		0		0			0				1
+0		1		0			1				1
+0		0		0			1				1
+
+3.
+Converse: q→p
+Contrapositive: ¬q→¬p
+Inverse: ¬p→¬q
+
+4.
+1. p ∨ (¬p ∧ q)						Premise
+2. (p ∨ ¬ p) ∧ (p ∨ q)			Distribution,1
+3. (T) ∧ (p ∨ q)						Negation,2
+4. (p ∨ q)								Identity,3
+
+5.
+Since not r is true, r must be false. Since p and r must be equivalent, p must also be false. Since one and only one of p or q must be true, q must be ture.
+
+6.
+1. p→q			Premise
+2. r→p			Premise
+3. r					Premise
+4. p					Modus Ponens,2,3
+5. q					Modus Ponens,1,4
+6. p ∧ q			Conjunction

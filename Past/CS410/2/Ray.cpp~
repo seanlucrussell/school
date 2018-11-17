@@ -1,0 +1,39 @@
+#include "Ray.h"
+#include "iostream"
+#include "Eigen/Geometry"
+using namespace std;
+using namespace Eigen;
+
+bool Ray::ShootIntoScene(vector<Object>& objects, vector<Sphere>& spheres) {
+  intersect = false;
+  direction.normalize();
+  for (int objectIndex = 0; objectIndex < objects.size(); ++objectIndex) {
+    Object object = objects[objectIndex];
+    for (int faceIndex = 0; faceIndex < object.faces.size(); ++faceIndex) {
+      vector<int> face = object.faces[faceIndex];      
+      Vector3d a = object.vertices.col(face[0]-1).hnormalized();
+      Vector3d b = object.vertices.col(face[1]-1).hnormalized();
+      Vector3d c = object.vertices.col(face[2]-1).hnormalized();
+      MatrixXd M(3,3);
+      M.col(0) = a - b;
+      M.col(1) = a - c;
+      M.col(2) = direction;
+      Vector3d Y = a - start;
+      // matrix is not invertible if determinant is zero
+      if (M.determinant() != 0) {
+	Vector3d solution = M.inverse() * Y;
+	float beta = solution(0);
+	float gamma = solution(1);
+	float t = solution(2);
+	if (beta >= 0 && gamma >= 0 && beta + gamma <= 1 && t > 0) {
+	  // the solution is inside the triangle and in front of the starting point
+	  intersect = true;
+	  if (depth == -1 || t < depth) {
+	    depth = t;
+	  }
+	}
+      }
+    }
+  }
+  // check sphere intersections
+}

@@ -1,0 +1,9 @@
+Filesystem                                              1K-blocks       Used  Available Use% Mounted on
+/dev/sda1                                                16508572    2520416   13149568  17% /
+udev                                                      2015872          4    2015868   1% /dev
+tmpfs                                                      404936        288     404648   1% /run
+none                                                         5120          0       5120   0% /run/lock
+none                                                      2024660          0    2024660   0% /run/shm
+users.isi.deterlab.net:/mnt/other/users/cos356cu       2031313216 1730476032  138332096  93% /users/cos356cu
+users.isi.deterlab.net:/mnt/projects/proj/ColoState356 2974748096  958392192 1778376064  36% /proj/ColoState356
+users.isi.deterlab.net:/mnt/share                       507823232  231651264  235546112  50% /share

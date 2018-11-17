@@ -1,0 +1,38 @@
+// P7 Assignment
+// Author: Sean Russell
+// Date:   May 4, 2015
+// Class:  CS161
+// Email:  srussel@rams.colostate.edu
+
+import java.util.ArrayList;
+
+public class FB {
+	
+	protected ArrayList<FBaccount> accounts;
+	
+	public FB(){
+		accounts = new ArrayList<FBaccount>();
+	}
+	
+	public boolean newAccount(String username, String name){
+		for (FBaccount a: accounts)
+			if (a.equals(new FBaccount(username,name)))
+				return false;
+		accounts.add(new FBaccount(username,name));
+		return true;
+	}
+	
+	public boolean closeAccount(String username){
+		return false;
+	}
+	
+	public boolean makeFriends(String username1, String username2){
+		
+		return false;
+	}
+	
+	public String friendRecommend(String username){
+		return null;
+	}
+	
+}

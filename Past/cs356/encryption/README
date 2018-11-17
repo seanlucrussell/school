@@ -1,0 +1,7 @@
+To compile the program, simply type "make" into the command line
+To run the program type "./cipher" followed by five arguments as follow-
+  arg1: should be either 'S' for stream encyption or 'B' for block encryption
+  arg2: the path to the file to be encrypted/decrypted
+  arg3: the desired path to the output file
+  arg4: the path to the file that contains the key to be used for encrypting/decrypting
+  arg5: 'E' for encryption or 'D' for decryption

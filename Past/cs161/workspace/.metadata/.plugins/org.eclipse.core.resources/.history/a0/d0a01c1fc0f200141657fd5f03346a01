@@ -1,0 +1,142 @@
+public class FBlinkedList {
+
+	private FBnode head;
+	private int size;
+
+	public FBlinkedList() {
+		head = null;
+		size = 0;
+	}
+
+	public void clear() {
+		head = null;
+	}
+
+	public void add(FBaccount item) {
+		add(size, item);
+	}
+
+	public void add(int index, FBaccount item) {
+		if (index < 0 || index > size)
+			throw new IndexOutOfBoundsException(
+					"List index out of bounds on add");
+		if (index == 0) {
+			head = new FBnode(item, head);
+		} else { // find predecessor
+			FBnode curr = head;
+			for (int i = 0; i < index - 1; i++) {
+				curr = curr.getNext();
+			}
+			// append after predecessor
+			curr.setNext(new FBnode(item, curr.getNext()));
+		}
+		size++;
+	}
+	
+	public int indexOf(FBaccount item){
+		FBnode curr = head;
+		System.out.println("Current size:" + size);
+		for (int i=0;i<size;i++){
+			System.out.println("In the loop at iteration: " + i);
+			if (curr.equals(item)){
+				return i;
+			}
+			curr = curr.getNext();
+		}
+		return -1;
+	}
+
+	public int indexOf(String username){
+		FBnode curr = head;
+		for (int i=0;i<size-1;i++){
+			if (curr.getItem().getUsername().equals(username)){
+				return i;
+			}
+			curr = curr.getNext();
+		}
+		return -1;
+	}
+
+	public boolean addBefore(FBaccount item1, Object item2) {
+
+		FBnode curr = head;
+		while (curr.getNext()!=null){
+			if (curr.getNext().getItem().equals(item2)){
+				System.out.println("adding");
+				curr.setNext(new FBnode(item1, curr.getNext()));
+				size++;
+				return true;
+			}
+			curr=curr.getNext();
+		}
+		return false;
+	}
+
+	public FBaccount getFriend(int index){
+		FBnode curr = head;
+		for (int i=0;i<index;i++)
+			curr = curr.getNext();
+		return curr.getItem();
+	}
+	
+	public String friendliest(){
+		return null;
+	}
+	
+	public void remove(int index) {
+		if (index < 0 || index >= size)
+			throw new IndexOutOfBoundsException(
+					"List index out of bounds on remove");
+		if (index == 0) {
+			head = head.getNext();
+		} else { // locate predecessor of node to be removed
+			FBnode curr = head;
+			for (int i = 0; i < index - 1; i++)
+				curr = curr.getNext();
+			curr.setNext(curr.getNext().getNext());
+		}
+		size--;
+	}
+
+	public boolean remove(FBaccount item) {
+
+		if (size == 0)
+			return false;
+		if (item.equals(head.getItem())) {
+			head = head.getNext();
+			size--;
+			return true;
+		} else {
+			// locate predecessor of node to be removed
+			FBnode curr = head;
+			while (curr.getNext() != null
+					&& !item.equals(curr.getNext().getItem())) {
+				curr = curr.getNext();
+			}
+			// if node is not in the list
+			if (curr.getNext() == null)
+				return false;
+			else {
+				curr.setNext(curr.getNext().getNext());
+				size--;
+				return true;
+			}
+		}
+	}
+
+	public int size() {
+		return size;
+	}
+
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	public String toString() {
+		String res = "[" + size + ": ";
+		for (FBnode current = head; current != null; current = current.getNext())
+			res += current.getItem().toString() + " ";
+		return res + "]";
+	}
+
+}

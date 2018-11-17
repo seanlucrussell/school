@@ -1,0 +1,201 @@
+NOTES -*- mode: org -*-
+
+* Daily TODO Goals
+** Stretching
+** Excercise
+** Cook
+** Shower, brush teeth, shave
+** Plan, take notes, journal
+** Work on projects
+* Weekly TODO Goals
+** Clean a room on rotation (go between bed, bath, living, dining, kitchen, and halls)
+** Grocery shopping
+** Every time we go shopping, get ingredients for 1 recipe
+** Laundry
+** Plan week and meals
+* Summer Rules
+** No 4chan except /w/ and /wg/
+** Seasonal anime only
+** Only play games with friends
+** No computer within 1 hour of waking up
+** Do weekly planning every saturday. If too busy on saturday, do it sunday instead
+** First saturday of every month, plan the month
+** Keep track of expenditures
+** Have fun! (no actually don't life is too short for fun)
+* Budget
+** Food
+*** $100 per month
+** Housing
+*** $540 per month
+* Cooking
+** Broccoli beef rice bowl
+*** Brisket
+*** Broccoli
+*** Green onion
+*** Rice
+*** Butter
+*** Procedure: Steam rice with butter. Pan fry broccoli and brisket. Combine all three, and then add chopped green onion
+** Chicken noodle soup
+*** Chicken breast
+*** Onions
+*** Celery
+*** Egg noodles
+*** Basil
+*** Oregano
+*** Chicken broth
+*** Butter
+*** Procedure: In a large pot over medium heat, melt butter. Cook onion and celery in butter until just tender, 5 minutes. Pour in broth and stir in chopped chicken, noodles, basil, oregano, salt and pepper. Bring to a boil, then reduce heat and simmer 20 minutes before serving.
+** Dragon noodles
+*** Recipe here: https://www.budgetbytes.com/2012/08/spicy-noodles/
+** Spinach feta grilled cheese
+*** Recipe here: https://www.budgetbytes.com/2013/08/spinach-feta-grilled-cheese/
+*** Replace bread with pita bread
+** Tomato spinach pasta
+*** Recipe here: https://www.budgetbytes.com/2013/07/creamy-tomato-spinach-pasta/
+** Crepes
+** Cesar salad
+** Shakes
+*** Recipe TBD
+** Orange Chicken
+** Scalloped Potatoes
+** Oatmeal
+** Dumplings
+** Traditional grilled cheese
+* Shopping List
+** Garlic
+** Spinach
+** Pita bread
+** Mozerella
+** Feta
+** Milk
+** Oatmeal
+** Dried fruit
+* Week of 5-22
+** Monday Todo list
+*** DONE Laundry
+*** DONE Plan week
+*** DONE Plan meals
+*** DONE Make budget
+** Tuesday TODO
+*** DONE Plan daily and weekly recurring things
+*** DONE Put away laundry
+*** DONE Unpack
+** Wednesday TODO
+*** DONE Email prof anderson about helping with his work
+*** DONE Make grocery list
+** Thursday TODO
+*** DONE Plan summer, set up goals with due dates
+** Friday TODO
+*** DONE PARTAY!!!
+** Saturday TODO
+*** DONE Plan next week
+*** DONE Plan long term
+** Sunday TODO
+*** DONE Clear tabs from devices
+*** DONE Make grocery list
+*** DONE Plan next week
+*** DONE Order mouse and computer cleaning supplies
+* Week of 5-29
+** MONDAY
+*** DONE Plan summer
+*** DONE Plan long term
+*** DONE Go shopping
+*** DONE Clear stuff off of computer desk
+** TUESDAY
+*** TODO Clear stuff off of bedstand (and inside)
+*** DONE Call grandma russell
+** WEDNESDAY
+*** TODO Clean up floor, find more permanant place for 3d printer
+** THURSDAY
+*** TODO Organize closet, find things to get rid of
+** FRIDAY
+*** TODO Organize desk, find out what clothes to get rid of
+** SATURDAY
+*** TODO Clean computer
+*** DONE Laundry
+*** DONE Plan next week
+** SUNDAY
+*** TODO Vaccum room
+*** TODO Put machine learning assignments up on github
+* Week of 6-5
+** MONDAY
+*** DONE Figure out what clothes to keep/get rid of
+** TUESDAY
+*** TODO Make spinach feta grilled cheese
+** WEDNESDAY
+*** TODO Organize bedstand
+** THURSDAY
+*** TODO Clean floor, find place for printer
+** FRIDAY
+*** TODO PARTAY
+** SATURDAY
+*** TODO Make waffles
+*** TODO Plan next week
+** SUNDAY
+*** TODO Clean closet, find things to get rid of
+* Summer Plans
+** TODO Read Clean Code by June 15
+** TODO Write down ideas for next steps in machine learning audio by June 15
+** TODO Plan out chess AI that knows when it will win by June 30
+** TODO Come up with daily todo by June 15
+** TODO Find 3 interesting newssources for machine learning/ai by June 30
+** TODO Plan past June
+* Over The Summer
+** Reading
+*** The clean code book
+*** Borrow books from nick/dad
+*** Introduction to algorithms
+*** AI textbook
+** Programming projects
+*** Continue machine learning audio thing
+*** Chess AI that predicts when it will beat you
+*** Strategy RPG
+** General quality of life things
+*** Cooking (waffles, dinner, baking pies and bread)
+*** Getting in the habit of cleaning and get rid of junk
+*** Be better at brushing teeth
+*** Bike to work and go to gym and stretch (yoga) and b-ball
+** Administrative
+*** Work on this list
+*** Come up with goals and completion dates
+*** Figure out a daily schedule
+*** Prioritize
+*** Begin to budget properly
+** Software
+*** Model stuff in blender
+*** Learn more about emacs
+*** Clean up computers (mac, pc, and phone, get rid of uneccesary files and programs)
+** Games
+*** Pokemon
+*** Monster hunter
+*** Flesh out DnD campaign
+** Career
+*** Research AI field (big companies, important people, news sources)
+* Near Future Ideas
+** Classify more than one instrument
+Issue is data collection- probably less samples for each combination, and must find combinations of everything (must I though? maybe it will for instance learn to recognize VIOLIN and NOISE, so that I only need a bunch of examples of violin with other sounds, and it will learn to ignore things not violin)
+** Try using the current classifier on weird inputs
+See what happens when the classifier gets used on inputs that do not contain any instruments, or instruments that I have not trained it on, or one of the instruments I have trained it on with background noise, or multiples of the instruments I have trained it on.
+** Improve current classifier
+Make the current classifier more adaptable and easy to add new instruments to by making it collect data from a directory. Also, improve accuracy to at least 90% for every instrument. Further, allow saving of classifier for use in the future. Also improve performance and experiment with alternative algorithms.
+* Far Future Ideas
+** Music streaming services
+Things like pandora but better, because they could be fully automated.
+*** Learn preferences of users
+This will probably be easier. The users would listen to songs, and the program will create a database of user preferences. Then machine learning will be applied based solely off of what songs someone likes and doesn't like.
+*** Learn attributes of music
+The network will analyze the song and look for specific attributes. Users will then listen to music, and the program will gather data on what attributes the listener enjoys. Then, the network will be able to analyze new music that no one has ever heard before and guess whether a user will enjoy it.
+* Life Map
+** Finish college and internship
+** Find work at robotics/ai company (maybe should work for medical type thing instead?)
+** Get sponsored to go back to school for PhD
+** This needs more thought
+
+
+* Put pants back
+
+* Read more
+
+* Play with robots
+
+* Make dinner

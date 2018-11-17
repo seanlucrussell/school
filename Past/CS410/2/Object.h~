@@ -1,0 +1,16 @@
+#ifndef OBJECT_H
+#define OBJECT_H
+
+#include <Eigen/Dense>
+#include <string>
+#include <vector>
+
+class Object {
+ public:
+  Eigen::MatrixXd vertices;
+  std::vector<std::string> otherLines;
+
+  bool ReadFromFile(const std::string& fileNames);
+};
+
+#endif

@@ -1,0 +1,236 @@
+// This file contains material supporting section 3.7 of the textbook:
+// "Object Oriented Software Engineering" and is issued under the open-source
+// license found at www.lloseng.com 
+
+package client;
+
+import ocsf.client.*;
+import common.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+/**
+ * This class overrides some of the methods defined in the abstract superclass
+ * in order to give more functionality to the client.
+ *
+ * @author Dr Timothy C. Lethbridge
+ * @author Dr Robert Lagani&egrave;
+ * @author Fran&ccedil;ois B&eacute;langer
+ * @version July 2000
+ */
+public class ChatClient extends AbstractClient {
+	// Instance variables **********************************************
+
+	/**
+	 * The interface type variable. It allows the implementation of the display
+	 * method in the client.
+	 */
+	ChatIF clientUserInterface;
+	Timer statusTimer;
+	boolean updateStatus;
+	String status;
+	
+
+	private ArrayList<String> forwardingAddresses;
+
+	// Constructors ****************************************************
+	// Constructs an instance of the chat client.
+	public ChatClient(String username, String pass, String host, int port, ChatIF clientUserInterface) throws IOException {
+		super(host, port); // Call the superclass constructor
+		forwardingAddresses = new ArrayList<String>();
+		this.clientUserInterface = clientUserInterface;
+		openConnection();
+<<<<<<< HEAD
+		//sendToServer("#login "+username+" "+pass);
+=======
+		sendToServer("#login "+username+" "+pass);
+		
+		statusTimer = new Timer();
+		statusTimer.schedule(idleStatus(), 30*1000);
+	}
+
+	private TimerTask idleStatus() {
+		return new TimerTask() {
+			public void run() {
+                try {
+                	status = "idle";
+                	clientUserInterface.display("You are now idle");
+					sendToServer("#idle");
+				} catch (IOException e) {
+					clientUserInterface.display("Failed to update status");
+				}
+                
+                statusTimer.cancel();
+            }
+		};
+	}
+	
+	private void resetTimer() {
+		try {
+			if(status.equals("idle")) {
+				clientUserInterface.display("You are no longer idle");
+			}
+			else if(status.equals("unavailable")) {
+				clientUserInterface.display("You are available");
+			}
+			status = "online";
+			sendToServer("#available");
+		} catch (IOException e) {
+			clientUserInterface.display("Failed to update status");
+		}
+		statusTimer.cancel();
+		statusTimer = new Timer();
+		statusTimer.schedule(idleStatus(), 30*1000);
+>>>>>>> refs/heads/master
+	}
+
+	// Instance methods ************************************************
+
+	// This method handles all data that comes in from the server.
+	public void handleMessageFromServer(Object msg) {
+		if (msg.toString().split(" ")[0].equals("[PRIVATE]"))
+		{
+			for (String address : forwardingAddresses) {
+				try {
+					sendToServer("#forward " + address + " " + msg);
+				} catch (IOException e) {
+					clientUserInterface.display("Could not forward message " + msg + " to user " + address);
+				}
+			}
+		}
+		clientUserInterface.display(msg.toString());
+	}
+
+	// This method handles all data coming from the UI
+	public void handleMessageFromClientUI(String message) {
+		try {
+			if(updateStatus) {
+				resetTimer();
+			}
+
+			String[] splitMessage = message.split(" ");
+
+			switch (splitMessage[0]) {
+			case "#available":
+				updateStatus = true;
+				resetTimer();
+				break;
+			case "#unavailable":
+				updateStatus = false;
+				statusTimer.cancel();
+				status = "unavailable";
+				clientUserInterface.display("You are now unavailable");
+				sendToServer("#unavailable");
+				break;
+			case "#quit":
+				sendToServer("#logoff");
+				closeConnection();
+				quit();
+				break;
+			case "#logoff":
+				if (isConnected()) {
+					clientUserInterface.display("Connection to server closed");
+					sendToServer("#logoff");
+				} else {
+					clientUserInterface
+							.display("Cannot logoff - not connected to any server");
+				}
+				closeConnection();
+				updateStatus = false;
+				status = "offline";
+				statusTimer.cancel();
+				break;
+			case "#sethost":
+				if (isConnected()) {
+					clientUserInterface
+							.display("Cannot set host while connected to server");
+				} else if (splitMessage.length == 2) {
+					setHost(splitMessage[1]);
+					clientUserInterface.display("Host server set to "
+							+ splitMessage[1]);
+				} else {
+					clientUserInterface
+							.display("Please provide a host to connect to");
+				}
+				break;
+			case "#gethost":
+				clientUserInterface.display(getHost());
+				break;
+			case "#setport":
+				if (isConnected()) {
+					clientUserInterface
+							.display("Cannot set port while connected to server");
+				} else if (splitMessage.length != 2
+						|| !splitMessage[1].matches("^\\d+$")) {
+					clientUserInterface
+							.display("Please provide a port to connect to");
+				} else {
+					clientUserInterface.display("Port set to "
+							+ Integer.parseInt(splitMessage[1]));
+					setPort(Integer.parseInt(splitMessage[1]));
+				}
+				break;
+			case "#getport":
+				clientUserInterface.display(Integer.toString(getPort()));
+				break;
+			case "#login":
+				if (isConnected()) {
+					sendToServer(message);
+					break;
+				}
+				clientUserInterface.display("Connection to server opened");
+				openConnection();
+				sendToServer(message);
+				resetTimer();
+				updateStatus = true;
+				status = "online";
+				break;
+			case "#startforwarding":
+				if (splitMessage.length != 2) {
+					clientUserInterface
+							.display("Must include a user to forward messages to");
+				} else if (forwardingAddresses.contains(splitMessage[1])) {
+					clientUserInterface.display("Messages already being forwarded to " + splitMessage[1]);
+				} else {
+					clientUserInterface.display("Messages now being forwarded to " + splitMessage[1]);
+					forwardingAddresses.add(splitMessage[1]);
+				}
+				break;
+			case "#cancelforwarding":
+				if (splitMessage.length != 2) {
+					clientUserInterface.display("Must include a user to stop forwarding messages to");
+				} else {
+					clientUserInterface.display("Stopped forwarding to " + splitMessage[1]);
+					forwardingAddresses.remove((splitMessage[1]));
+				}
+				break;
+			default:
+				sendToServer(message);
+			}
+		} catch (IOException e) {
+			clientUserInterface
+					.display("Could not send message to server.  Terminating client.");
+			quit();
+		}
+	}
+
+	/**
+	 * This method terminates the client.
+	 */
+	public void quit() {
+		try {
+			closeConnection();
+		} catch (IOException e) {
+		}
+		System.exit(0);
+	}
+
+	// The client should optionally be able to take a port number from the Java
+	// command line arguments. If the argument is not provided, then the default
+	// port is used. */
+
+}
+// End of ChatClient class

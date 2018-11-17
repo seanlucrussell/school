@@ -1,0 +1,9 @@
+a = not false
+b = a and not false
+m1 = true and false
+h2 = m1 or true
+r = m1 and h2
+s = (m1 or h2) and r
+bbb = true
+n = bbb and not r
+

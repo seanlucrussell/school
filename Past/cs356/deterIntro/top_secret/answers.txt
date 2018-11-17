@@ -1,0 +1,20 @@
+Sean Russell
+slrussel@rams.colostate.edu
+username: cos356cu
+
+
+  Five files containing 'intro'
+“Forbidden Planet”: /usr/share/pixmaps/xbzf136INTRO-1.jpg
+“It Came From Outer Space”: /var/log/136intro-3.jpg
+“2001 A Space Odyssey”:/.hidden/asdf136Intro-5kqlw.jpeg
+“The Fly”: /etc/wuer136intro-4.JPG
+“Godzilla”: /dev/136intro-2jjaj.JPEG
+
+  What goes in the '/var' directory in UNIX?
+/var contains variables that are used by the operating system.
+
+  What is the '/dev' directory for in UNIX?
+/dev contains files for all of the devices used by the system.
+
+  Processor Vendor ID:
+GenuineIntel, found in /proc/cpuinfo

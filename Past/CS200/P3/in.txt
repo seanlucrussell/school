@@ -1,0 +1,8 @@
+not false
+not false and true
+true or false and true
+(true or false) and true
+not not true or false
+not(true or false)
+not not not (((true)))
+not true or not false or false

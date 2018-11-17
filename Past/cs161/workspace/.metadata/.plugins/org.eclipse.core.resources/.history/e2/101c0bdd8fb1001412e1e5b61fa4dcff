@@ -1,0 +1,115 @@
+// P3 Assignment
+// Author: Sean Russell
+// Date:   Feb 9, 2015
+// Class:  CS161
+// Email:  srussel@rams.colostate.edu
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class LineSegmentDB {
+
+	public ArrayList<LineSegment> lineSegments;
+
+	public boolean isValid(int x1, int y1, int x2, int y2) {
+		boolean returnVal = false;
+		if ((x1 >= 0 && x1 <= 200 && y1 >= 0 && y1 <= 200 && x2 >= 0
+				&& x2 <= 200 && y2 >= 0 && y2 <= 200)
+				&& (x1 == x2 || y1 == y2)) {
+			returnVal = true;
+		}
+		if (x1 == x2 && y1 == y2) {
+			returnVal = false;
+		}
+		return returnVal;
+	}
+
+	public LineSegmentDB() {
+		lineSegments = new ArrayList<LineSegment>();
+	}
+
+	public boolean addLineSegment(int x1, int y1, int x2, int y2) {
+		LineSegment segment = new LineSegment(x1,y1,x2,y2);
+		return addLineSegment(segment);
+	}
+	
+	public boolean addLineSegment(LineSegment segment) {
+		for (LineSegment arraySegment: lineSegments){
+			if(segment.equals(arraySegment)){
+				return false;
+			}
+		}
+		lineSegments.add(segment);
+		return true;
+	}
+	
+	public static void main(String[] args){
+		LineSegmentDB db = new LineSegmentDB();
+		System.out.println(db.size());
+	}
+	
+	public int size() {
+		return lineSegments.size();
+	}
+	
+	public boolean areIntersecting(int i, int j){
+		if (lineSegments.get(i).intersects(lineSegments.get(j))){
+			return true;
+		}
+		return false;
+	}
+
+
+//	public int removeDuplicates() {
+//		// Go through array, find if there are duplicate line segments (forwards
+//		// and back)
+//		// Delete all but one, keep track of the number deleted
+//		// At the end, move line segments towards the end to fill up empty
+//		// spaces
+//		// Finally, shorten the array
+//		int numberRemoved = 0;
+//		// Remove duplicate line segments
+//		for (int i = 0; i < lineSegments.length - 1; i++) {
+//			for (int j = i+1; j < lineSegments.length; j++) {
+//				if (((lineSegments[i][0] == lineSegments[j][0]
+//						&& lineSegments[i][1] == lineSegments[j][1]
+//						&& lineSegments[i][2] == lineSegments[j][2]
+//						&& lineSegments[i][3] == lineSegments[j][3])
+//						|| (lineSegments[i][0] == lineSegments[j][2]
+//						&& lineSegments[i][1] == lineSegments[j][3]
+//						&& lineSegments[i][2] == lineSegments[j][0]
+//						&& lineSegments[i][3] == lineSegments[j][1]))&&lineSegments[i][0]!=-1) {
+//					numberRemoved++;
+//					lineSegments[j][0] = -1;
+//				}
+//			}
+//		}
+//		
+//		for (int i=0;i<numberRemoved;i++){
+//			for (int j=lineSegments.length-1;j>0;j--){
+//				if (lineSegments[j][0]!=-1){
+//					for (int k=0;k<lineSegments.length;k++){
+//						if (lineSegments[k][0]==-1){
+//							lineSegments[k]=lineSegments[j];
+//							break;
+//						}
+//					}
+//				}
+//			}
+//		}
+//		
+//		int tempLineSegments[][] = new int[lineSegments.length-numberRemoved][4];
+//		for (int i=0;i<tempLineSegments.length;i++){
+//			for (int j=0;j<4;j++){
+//				tempLineSegments[i][j] = lineSegments[i][j];
+//			}
+//		}
+//		
+//		lineSegments = tempLineSegments;
+//		
+//		return numberRemoved;
+//	}
+
+
+}
