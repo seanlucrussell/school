@@ -1,3 +1,0 @@
-a1 = true
-b2 = false
-c3 = a1 or b2

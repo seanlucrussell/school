@@ -1,9 +1,0 @@
-To compile:
-make
-To run:
-raytracer [driver_file] [output_image]
-
-The raytracer executable takes a driver file that contains a description
-of a camera and several objects/spheres and renders an image with
-(semi) realistic lighting and colors.
-Using linear algebra package Eigen to perform computations.

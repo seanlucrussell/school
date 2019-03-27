@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;TokenIter.java&apos; to &apos;P3/src/(default package)&apos;&#x0A;- Original project: &apos;P4&apos;&#x0A;- Destination element: &apos;P3/src/(default package)&apos;&#x0A;- Original element: &apos;TokenIter.java&apos;" description="Copy compilation unit" destination="=P3/src&lt;" element1="/src&lt;{TokenIter.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1445895283091" units="1" version="1.0"/>
-</session>

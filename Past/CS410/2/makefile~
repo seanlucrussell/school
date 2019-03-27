@@ -1,2 +1,0 @@
-raytracer: main.cpp DriverReader.cpp Object.cpp Ray.cpp
-	g++ -I ./ main.cpp Object.cpp DriverReader.cpp Ray.cpp -o raytracer
